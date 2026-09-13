@@ -1,0 +1,18 @@
+# 统一换行符为 LF：本仓库为纯文本提示词与 skill，
+# 会被跨平台 Agent 读取，CRLF 会污染 diff 与部分解析器
+* text=auto eol=lf
+
+# 明确文本类型
+*.md   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+
+# 二进制文件不做转换
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
