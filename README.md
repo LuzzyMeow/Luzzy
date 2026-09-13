@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-19-1f6feb?style=flat-square)](skills/)
-[![Resident](https://img.shields.io/badge/resident-12.7k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
+[![Resident](https://img.shields.io/badge/resident-12.9k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
 [![Convention](https://img.shields.io/badge/format-agentskills.io-0969da?style=flat-square)](https://agentskills.io/specification)
 
 ## 30 秒上手
@@ -196,12 +196,12 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 层 | 内容 | 行数 | 实测 token |
 |---|---|---|---|
-| 常驻 | `prompt/LuzzyCode.md` | 447 | 12,746 |
-| 按需 | 19 个 skill 合计 | 1,683 | 29,210 |
+| 常驻 | `prompt/LuzzyCode.md` | 447 | 12,862 |
+| 按需 | 19 个 skill 合计 | 1,684 | 29,328 |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git`，约 18k token。纯闲聊只付常驻的 12.7k。
+典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git`，约 18k token。纯闲聊只付常驻的 12.9k。
 
 skill 的加载靠 description 触发。每个 description 都写了「何时用」和「不要用」，避免误激活。
 

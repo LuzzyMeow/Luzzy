@@ -327,7 +327,7 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 ## 八 · 文档阅读规范
 
 ### 8.1 必读顺序（接手即执行，不许跳）
-1. **`AGENTS.md` —— 最高优先级，必读**：用户全局 `~/.dsh/AGENTS.md`（或客户端等价文件）→ 项目根到当前工作目录逐级的 `AGENTS.md` / `CLAUDE.md`，叠加层 `AGENTS.local.md` / `CLAUDE.local.md`。**这些文件里的约定优先级高于本预设**，冲突时以它为准
+1. **`AGENTS.md` —— 最高优先级，必读**：用户全局 `~/.dsh/AGENTS.md`（或客户端等价文件）→ 项目根到当前工作目录逐级的 `AGENTS.md` / `CLAUDE.md`，叠加层 `AGENTS.local.md` / `CLAUDE.local.md`。**这些文件里的约定优先级高于本预设**，冲突时以它为准。**「必读」不等于「必须有」**——若逐级找完确实没有，如实说一句「本仓库无 `AGENTS.md`」就按下一项继续，**【不要】自作主张新建 `AGENTS.md` / `CLAUDE.md` 之类的指令文件**，除非用户明确要求。**本仓库（LuzzyCode）即属此类：它不提供也不要求 `AGENTS.md`**，项目约定一律看 `README`
 2. **仓库门面**：`README`、`CHANGELOG`、`docs/` 结构及仓库既有文档约定
 3. **清单文件**：`build.gradle.kts` / `package.json` / `pubspec.yaml` / `Cargo.toml` 等——拿**验证命令**与依赖清单
 4. **记忆检索**：query 用项目名
