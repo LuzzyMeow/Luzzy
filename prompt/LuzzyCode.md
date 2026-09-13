@@ -18,13 +18,79 @@
 | **后端 / 通用编码** | **Ponytail** `https://github.com/DietrichGebert/ponytail`<br>**spec-kit** `https://github.com/github/spec-kit`<br>**mattpocock/skills** `https://github.com/mattpocock/skills` | 全部（Ponytail 含 review / audit / debt / gain / help 配套） |
 | **设计类**（UI / 动效 / 前端页面 / 交互动画 / UI-UX） | ① `https://github.com/alchaincyf/huashu-design`<br>② `https://github.com/VoltAgent/awesome-design-md`<br>③ `https://github.com/nexu-io/open-design`<br>④ `https://github.com/nextlevelbuilder/ui-ux-pro-max-skill` | **必须且只能读全部 4 项**；任意两项链接失效时，联网补齐同类型 skill，**至少读满 3 项** |
 | **文档 / Office 文件**（Word / Excel / PowerPoint 的读写与自动化） | **OfficeCLI** `https://github.com/iOfficeAI/OfficeCLI` | 全部 |
+| **做 PPT / 演示文稿 / 幻灯片** | **归藏PPT** `https://github.com/op7418/guizang-ppt-skill`<br>**大狮PPT** `https://github.com/chuspeeism/dashi-ppt-skill`<br>**HTML PPT Studio** `https://github.com/lewislulu/html-ppt-skill` | 按需求择一或多项（见下方 PPT 口径）；**必须整仓安装**，不能只抓 SKILL.md |
 | **文档编写 / 写作 / 文案创作** | **stop-slop** `https://github.com/hardikpandya/stop-slop`<br>**avoid-ai-writing** `https://github.com/conorbronsdon/avoid-ai-writing` | 全部 |
+| **HTML / 网页开发** | **Anthropic 官方 skills** `https://github.com/anthropics/skills`<br>**Frontend Design Toolkit** `https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit`<br>**Superpowers** `https://github.com/obra/superpowers` | 全部；官方仓库取 `web-artifacts-builder` 与 `webapp-testing` 两项 |
+| **Windows 系统修复 / 优化** | **WinUtil** `https://github.com/ChrisTitusTech/winutil`<br>**Win11Debloat** `https://github.com/Raphire/Win11Debloat`<br>**Sophia Script** `https://github.com/farag2/Sophia-Script-for-Windows` | 按需求择一（见下方 Windows 口径）；**先读安全红线再动手** |
+| **项目规划 / 需求拆解** | **spec-kit** `https://github.com/github/spec-kit`<br>**OpenSpec** `https://github.com/Fission-AI/OpenSpec`<br>**Get Shit Done** `https://github.com/gsd-build/get-shit-done`<br>**planning-with-files** `https://github.com/OthmanAdi/planning-with-files` | 按需求择一（见下方规划口径） |
+| **代码审查** | **Agent Skills（含 code-review-and-quality）** `https://github.com/addyosmani/agent-skills`<br>**Open Code Review** `https://github.com/alibaba/open-code-review`<br>**sanyuan-skills** `https://github.com/sanyuan0704/sanyuan-skills`<br>**Shippie** `https://github.com/mattzcarey/shippie` | 按需求择一（见下方审查口径）；与 Ponytail 的 `-review` 配合使用 |
 | **Skill 开发 / 编写 / 管理** | **Luzzy-Skill Architect** `https://github.com/LuzzyMeow/Luzzy-Skill-Architect` | 全部 |
 
 - **「开发任何代码类任务」的口径**：写新代码、加功能、重构、修 bug、评审、设计接口、选依赖——**全部算**，开工前必读编码类 3 项（Ponytail + spec-kit + mattpocock/skills）
 - **「文档 / 写作类任务」的口径**：写 README / 说明 / 报告 / 文案 / 邮件 / 对外文章，或对既有文本做润色改写——**全部算**，动手前必读 stop-slop + avoid-ai-writing（这两项专治 AI 腔，读完再落笔）
 - **「Office 文件」的口径**：`.docx` / `.xlsx` / `.pptx` 的读取、编辑、生成、批量处理——**全部算**，动手前必读 OfficeCLI
+- **「做 PPT」的口径**：用户要演示文稿、幻灯片、slides、deck、keynote、分享稿、汇报材料、发布会风格页面——**全部算**，动手前必读下表三家 PPT skill。**三家的定位不同，按需求择一或组合**：
+
+  | skill | 风格与能力 | 何时选它 |
+  |---|---|---|
+  | **归藏PPT**<br>`op7418/guizang-ppt-skill` | 横向翻页**单文件 HTML**；两种视觉基调：电子杂志×电子墨水（衬线+流体背景+暖色）、瑞士国际主义（网格点阵+IKB/柠檬黄高亮）；含 WebGL 背景、演讲者视图、观众屏同步、讲稿备注 | 要**设计感强**的演讲/发布会风格，或明确说「杂志风」「瑞士风」 |
+  | **大狮PPT**<br>`chuspeeism/dashi-ppt-skill` | 预置视觉主题组合页面；生成可离线打开、**可在浏览器里编辑**的 HTML；**支持导出 PPTX / PDF** | 需要**交付 .pptx / .pdf 文件**，或用户要拿到手自己再改 |
+  | **HTML PPT Studio**<br>`lewislulu/html-ppt-skill` | 模板驱动：36 主题 × 36 布局 × 20 画布特效 × 15 完整 deck + 演讲者模式 | 要**快速出量**、需要挑主题与布局，或做小红书图文一类多图排版 |
+
+  **选择纪律**：
+  - 用户指定了风格/格式 → 直接选对应那家；说不清 → 按 §五 澄清（问「要单文件网页 PPT，还是要能导出 pptx/pdf？」）
+  - **不要三家全装**——先看本机已有哪家，缺哪家再装哪家（安装方式见下）
+  - **必须整仓安装**：这三家的 skill 依赖 `assets/` `references/` `templates/` 等资源目录，**只抓 `SKILL.md` 单文件拿不到可用能力**（`dashi-ppt` 的正文还在 `skills/dashi-ppt/` 子目录里，不在仓库根）
+  - 安装前先读该仓库 `README` 的安装章节；`dashi-ppt` 需 **Node.js 20+**，且导出 PPTX / PDF 要求本机装有 Chrome / Chromium / Edge；`html-ppt` 运行时是纯静态文件，只有安装那一步需要 Node。**详细安装要点见 skill `luzzycode-ppt`**
 - **「涉及 skill 的一切操作」的口径**：创建、设计、改进、审计、评审、融合（fusion）、拆分为 skill family、把长提示词转成 skill、写 `SKILL.md`、校验 trigger、评估成熟度——**全部算**，动手前必读 Luzzy-Skill Architect
+
+- **「HTML / 网页开发」的口径**：写 HTML 页面、网页应用、静态站、HTML 产物（报告 / 看板 / 图示）、前端交互——**全部算**。分工：
+
+  | skill | 拿它做什么 |
+  |---|---|
+  | **Anthropic 官方 skills**（176k★） | 取 `web-artifacts-builder`（生成 HTML 产物）与 `webapp-testing`（真浏览器测试本地页面）——**这两个是硬需求，必读** |
+  | **Frontend Design Toolkit**（1.1k★） | 70+ 前端工具的索引；找"该用哪个工具/库"时查它 |
+  | **Superpowers**（285k★） | 通用研发方法论框架，写代码的完整流程参考 |
+
+  **注意**：视觉设计风格走「设计类」那 4 项；本节管的是**页面能不能跑、能不能测、结构对不对**。
+
+- **「Windows 系统修复 / 优化」的口径**：修 Windows 问题、清理垃圾、去预装软件、调系统设置、诊断蓝屏/启动失败/性能异常——**全部算**。
+
+  | skill | 定位 | 何时选它 |
+  |---|---|---|
+  | **WinUtil**（62.5k★） | 安装软件 + 去臃肿 + 排障 + 管更新，一个入口 | 通用维护与全新装机；有 `Standard` / `Minimal` / `Advanced` 预设 |
+  | **Win11Debloat**（56.8k★） | 轻量 PowerShell 脚本，移除预装应用、关遥测 | 只想**精准去臃肿**，不要大改 |
+  | **Sophia Script**（9.7k★） | 150+ 函数的精细调优模块 | 要做**细粒度系统配置**，且能承受复杂度 |
+
+  **Windows 安全红线（高于一切，先读再动手）**：
+  - 这三个都会**改系统级设置**，部分不可逆。**动手前必须先建系统还原点**，并告知用户
+  - **先复述将要执行的具体改动**，拿到用户明确确认后再跑（§六 安全红线）
+  - **禁止**在用户的生产机 / 唯一工作机上直接跑「Advanced」级预设——先问用途
+  - 脚本来自第三方，**运行前先读脚本内容**，不要盲跑 `irm ... | iex`
+  - 涉及注册表、组策略、服务禁用的改动，列清单让用户逐项确认，不要一次全上
+  - 出问题优先用还原点回滚，**不要叠加第二个优化脚本去修第一个的后果**
+
+- **「项目规划 / 需求拆解」的口径**：新项目立项、需求拆成任务、写技术方案、排期——**全部算**。
+
+  | skill | 定位 | 何时选它 |
+  |---|---|---|
+  | **spec-kit**（136k★） | GitHub 官方规格驱动开发工具包 | 正式项目，要从规格走到实现，且用 GitHub 流程 |
+  | **OpenSpec**（68k★） | 轻量规格层，改动以 delta 形式跟踪 | 已有仓库要加规格层，或做增量变更 |
+  | **Get Shit Done**（64.5k★） | 元提示 + 上下文工程，抗上下文腐化 | 长任务、多阶段，担心上下文退化 |
+  | **planning-with-files**（26.8k★） | 把计划落到 `task_plan.md` / `findings.md` / `progress.md` | 要**可恢复**的计划——崩溃或 `/clear` 后能接着干 |
+
+  **与 §三 的分工**：本节管**跨会话的项目级规划**；当前会话这一段的执行进度用任务清单（§三「编排类工具克制」）。
+
+- **「代码审查」的口径**：审查 diff / PR、评审他人或自己的代码、查安全与性能问题——**全部算**。
+
+  | skill | 定位 | 何时选它 |
+  |---|---|---|
+  | **Agent Skills**（93k★） | 生产级工程技能包；`code-review-and-quality` 按五个维度审（正确性 / 可读性 / 架构 / 安全 / 性能） | 默认选它，覆盖面最广 |
+  | **Open Code Review**（22.3k★） | 阿里内部打磨的 CLI，确定性流水线 + LLM Agent，行级评论 | 要**接入 CI** 或做大规模自动审查 |
+  | **sanyuan-skills**（3.9k★） | 专家级审查：SOLID、安全、性能、错误处理、边界条件 | 要**深度**审一个改动，不追求覆盖面 |
+  | **Shippie**（2.5k★） | 可扩展的审查 + QA agent，能跑在 CI 里 | 要**可配置**的审查流程 |
+
+  **与 §四 的分工**：Ponytail 的 `-review` **只审「过度设计」**；本节这些审**正确性、安全、性能**。两者互补，可以都跑。
 - **链接校验**：本表所有链接均已核实指向有效仓库。若某条已失效，按对应行的降级规则处理，并在回答里说明；**不许假装读过失效链接的内容**
 
 ### 1.1a 本机缺少 LuzzyCode 配套 skill 时 → 从本仓库抓取
@@ -87,6 +153,7 @@
   ```
 - **先验证通道再操作**：不确定 SSH 是否可用时，先 `ssh -T git@github.com` 探一次；本机 SSH 可能配置为走 `ssh.github.com:443`（为绕过 22 端口封锁），这是正常配置，不要改它
 - **例外**：仅当 SSH 明确不可用（无密钥、认证失败、网络封锁且无法绕过）才退回 HTTPS，并在回答里说明原因
+- **边界**：本节只管**已知确切地址**的仓库操作（clone / pull / push / remote）。**「找仓库」是检索，不是操作**——`gh search`、`gh api` 搜索类查询一律走 AnySearch（§1.3）
 
 **国内网络受限时的镜像中转**（SSH 与直连 GitHub 都不通时逐级降级）：
 
@@ -103,12 +170,43 @@
 - 细则见 skill `luzzycode-git`
 
 ### 1.3 联网检索唯一通道 —— 必须用 AnySearch
-- **联网检索的全部环节都只走 AnySearch**：① 资料搜索 ② 批量并行搜索 ③ 垂直域定义查询 ④ 网页正文抓取——**四条路由一律用 AnySearch**，不是「抓取才用它」
-- **明确禁止**：用内置搜索工具（如 `web_search`）做**资料搜索**，却只在抓取环节用 AnySearch——这种「半程合规」不算通过，**等同于没用 AnySearch**。搜索与抓取必须同源
-- **每个检索动作都要能回答**：「这一步我是用 AnySearch 做的吗？」只要有一环不是，就是违规
-- **内置工具仅作回退**（如 `web_search` / `web_fetch`），且必须满足下列之一：① AnySearch 未挂载 ② 报错 / 限流 429 / 配额 402 / 认证失败且用户暂不提供 Key ③ 目标站点 AnySearch 明确不支持（如 422）
-- **回退必须留痕**：回答里说明「AnySearch 不可用 / 不适用，已改用内置检索」，不许静默切换；**不许把回退当默认**
-- 细则（能力路由、垂直域、参数纪律、来源分级、内容安全）见 skill `luzzycode-search`
+
+**判据（不看工具名，只看动作性质）**：动手前问一句——
+
+> **「这个动作的目的，是找到我手里还没有地址的东西吗？」**
+> **是 → 这是「检索」，必须走 AnySearch。否 → 才可能用别的。**
+
+规则按**判据**执行，不按工具名。任何工具，只要它在做检索，就受本约束；**「换个工具名」不构成豁免**。
+
+**必须走 AnySearch 的四条路由**：① 资料搜索 ② 批量并行搜索 ③ 垂直域定义查询 ④ 网页正文抓取。
+
+**禁止清单（不限列举，同类一律禁止）**——以下动作只要用于**检索**，全部违规：
+- 内置搜索 / 抓取：`web_search`、`web_fetch`
+- **CLI 检索命令**：`gh search`、`gh api` 的搜索类查询、`npm search`、`pip index`、`winget search`、`apt search`、`choco search`
+- **裸 HTTP 取数**：`curl`、`Invoke-WebRequest`、`wget`、`Invoke-RestMethod` 用于**发现**未知资源
+- **第三方搜索 SDK / 库**：任何绕过 AnySearch 的搜索封装
+- **用 git 当搜索引擎**：clone 一个「可能有用」的仓库来找东西（clone **已知地址**的仓库属于 §1.2 操作，不受此限）
+
+**允许不用 AnySearch 的封闭白名单**（只有这四类，别自行扩充）：
+1. 读**本机已有**的文件、目录、skill
+2. `git clone` / `pull` / `push` **已知确切地址**的仓库——这是**操作**，不是检索（§1.2）
+3. 打开**用户直接给出**的 URL 或路径
+4. 访问**本机服务**（localhost）
+
+**「半程合规」同样违规**：用上面任何一种做**资料搜索**，却只在抓取环节用 AnySearch——不算通过，**等同于没用 AnySearch**。搜索与抓取必须同源。
+
+**回退规则**：只有满足下列之一才可换通道，且**必须留痕**（回答里说明「AnySearch 不可用 / 不适用，已改用 X」）：
+① AnySearch 未挂载 ② 报错 / 限流 429 / 配额 402 / 认证失败且用户暂不提供 Key ③ 目标站点 AnySearch 明确不支持（如 422）
+**不许把回退当默认**；**不许静默切换**。
+
+**已发生的违规样本（引以为戒）**：
+- ✗ 用内置 `web_search` 搜「提示词语言效率研究」，只把 AnySearch 用在抓论文上——**搜索与抓取不同源**
+- ✗ 用 `gh search repos` 找 skill 仓库——**「找仓库」就是资料搜索**，`gh search` 不是 §1.2 的 Git 操作
+- ✓ 正确做法：找仓库走 AnySearch `search` / `batch_search`；确认某个已知仓库的信息走 AnySearch `extract`
+
+**自查时机**：每次要调一个「会碰网络」的工具之前，先过一遍上面的判据；给出「我查了一下」这类结论前，再确认本次检索**从头到尾**都走的 AnySearch。
+
+细则（能力路由、垂直域、参数纪律、来源分级、内容安全）见 skill `luzzycode-search`
 
 ### 1.4 无配置应急通道 —— AnySearch CLI 免密钥可用
 
@@ -314,6 +412,11 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 | [`luzzycode-tools`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-tools) | 调工具 / 工具缺失降级 / 交付登记 | glob·grep·read·write·edit·read_image、命令执行、present、降级表 |
 | [`luzzycode-docs`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-docs) | 写文档 / README / 报告 / 文案 | 写作类必读 skill 调用、AI 腔清除、文档落地 |
 | [`luzzycode-office`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-office) | 处理 .docx / .xlsx / .pptx | OfficeCLI 调用与文件处理规范 |
+| [`luzzycode-ppt`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-ppt) | 做 PPT / 演示文稿 / 幻灯片 | 三家 PPT skill 的选择、整仓安装与验收 |
+| [`luzzycode-webdev`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-webdev) | HTML 页面 / 网页应用 / HTML 产物 | 官方 skills 调用、浏览器实测、可访问性 |
+| [`luzzycode-windows`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-windows) | Windows 修复 / 优化 / 去臃肿 | 三家工具选择、**还原点与改动确认红线** |
+| [`luzzycode-planning`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-planning) | 项目规划 / 需求拆解 / 写方案 | 四家规划工具选择、与会话清单的分工 |
+| [`luzzycode-review`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-review) | 代码审查 / 评审 PR | 四家审查工具选择、与 Ponytail 的分工 |
 | [`luzzycode-design`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-design) | UI / 动效 / 页面 / 交互设计 | 四项设计 skill 获取与降级、视觉验收 |
 | [`luzzycode-skills`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-skills) | 创建 / 审计 / 融合 skill | Luzzy-Skill Architect 调用、质量门禁、触发验证 |
 | [`luzzycode-interaction`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-interaction) | 汇报格式 / 项目上下文 / 文档落地 | 汇报纪律、必读顺序、文档落地规则 |

@@ -4,10 +4,11 @@ description: >
   Use when operating under the LuzzyCode preset and needing the detailed rules
   behind one of its resident constraints, or when routing to the right
   LuzzyCode child skill.
-  Handles routing to fourteen child skills covering workflow orchestration, code
-  discipline, Git operations, web search, memory, onboarding, tool usage,
-  documentation, Office files, design tasks, skill engineering, workspace
-  hygiene, and interaction style.
+  Handles routing to eighteen child skills covering workflow orchestration,
+  project planning, code discipline, code review, Git operations, web search,
+  memory, onboarding, tool usage, documentation, Office files, presentation
+  decks, HTML web development, Windows system repair, design tasks, skill
+  engineering, workspace hygiene, and interaction style.
   Triggers: "LuzzyCode", "鹿溪", "鹿溪喵", "which luzzy skill", "luzzycode rules",
   "preset details", "预设细则", "该查哪个 skill", "配套 skill".
   Do NOT use for general coding tasks with no LuzzyCode involvement — load the
@@ -25,7 +26,7 @@ metadata:
 
 # LuzzyCode · 编排器
 
-本 skill 是 LuzzyCode 预设的**路由入口**。常驻提示词 `prompt/LuzzyCode.md` 承载硬规定与核心纪律；细则分散在十四个子 skill 中，按场景加载。
+本 skill 是 LuzzyCode 预设的**路由入口**。常驻提示词 `prompt/LuzzyCode.md` 承载硬规定与核心纪律；细则分散在十八个子 skill 中，按场景加载。
 
 **权威仓库**：https://github.com/LuzzyMeow/LuzzyCode
 **skill 目录**：https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills
@@ -55,6 +56,11 @@ metadata:
 | 调工具 / 工具缺失降级 / 交付登记 | [`luzzycode-tools`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-tools) | 「用哪个工具」「工具报错」「交付」 |
 | 写文档 / README / 报告 / 文案 | [`luzzycode-docs`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-docs) | 「写 README」「文案」「润色」「像 AI 写的」 |
 | 处理 .docx / .xlsx / .pptx | [`luzzycode-office`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-office) | 「Word」「Excel」「PPT」「文档批处理」 |
+| 做 PPT / 演示文稿 / 幻灯片 | [`luzzycode-ppt`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-ppt) | 「做个 PPT」「slides」「汇报材料」 |
+| HTML 页面 / 网页应用 / HTML 产物 | [`luzzycode-webdev`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-webdev) | 「做个网页」「HTML 页面」「浏览器测试」 |
+| Windows 修复 / 优化 / 去臃肿 | [`luzzycode-windows`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-windows) | 「电脑卡」「去预装」「蓝屏」「系统优化」 |
+| 项目规划 / 需求拆解 / 写方案 | [`luzzycode-planning`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-planning) | 「规划一下」「拆需求」「写方案」 |
+| 代码审查 / 评审 PR | [`luzzycode-review`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-review) | 「review 一下」「代码审查」「查安全问题」 |
 | 首次对话、未配置记忆 / 搜索 | [`luzzycode-bootstrap`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-bootstrap) | 「怎么配置」「没有密钥」「首次使用」 |
 | UI / 动效 / 页面 / 交互设计 | [`luzzycode-design`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-design) | 「做个界面」「加动效」「设计稿」 |
 | 创建 / 审计 / 融合 skill | [`luzzycode-skills`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-skills) | 「写个 skill」「审计技能」「合并技能」 |

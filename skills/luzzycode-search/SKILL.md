@@ -19,7 +19,37 @@ description: >
 <!-- self-link -->
 > **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-search/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-search) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-search/SKILL.md)
 
-**前提（常驻硬规定，不因本 skill 是否加载而改变）**：联网检索的**全部环节**——资料搜索、批量并行、垂直域定义、网页抓取——**只走 AnySearch**。用内置搜索做资料搜索、只在抓取时用 AnySearch 属于「半程合规」，视为违规。
+**前提（常驻硬规定，不因本 skill 是否加载而改变）**：联网检索的**全部环节**——资料搜索、批量并行、垂直域定义、网页抓取——**只走 AnySearch**。
+
+## 判据优先于工具名（最重要的一节）
+
+动手前问一句：**「这个动作的目的，是找到我手里还没有地址的东西吗？」**
+
+- **是** → 这是「检索」，必须走 AnySearch
+- **否** → 才可能用别的（读本机文件 / 操作已知仓库 / 打开用户给的 URL / 访问 localhost）
+
+**规则靠判据执行，不靠工具名。换个工具名不构成豁免**——规则若只列举禁止的工具，列举不全就必然被钻空子。
+
+## 禁止清单（同类一律禁止，不限列举）
+
+- **内置搜索 / 抓取**：`web_search`、`web_fetch`
+- **CLI 检索命令**：`gh search`、`gh api` 的搜索类查询、`npm search`、`pip index`、`winget search`、`apt search`、`choco search`
+- **裸 HTTP 取数**：`curl`、`Invoke-WebRequest`、`wget`、`Invoke-RestMethod` 用于**发现**未知资源
+- **第三方搜索 SDK / 库**：任何绕过 AnySearch 的搜索封装
+- **用 git 当搜索引擎**：clone 一个「可能有用」的仓库来找东西（clone **已知地址**的仓库属操作，不受限）
+
+## 允许不用 AnySearch 的封闭白名单（只有这四类）
+
+1. 读**本机已有**的文件、目录、skill
+2. `git clone` / `pull` / `push` **已知确切地址**的仓库（操作，不是检索）
+3. 打开**用户直接给出**的 URL 或路径
+4. 访问**本机服务**（localhost）
+
+## 违规样本（引以为戒）
+
+- ✗ 用内置 `web_search` 搜「提示词语言效率研究」，只把 AnySearch 用在抓论文上 —— **搜索与抓取不同源**
+- ✗ 用 `gh search repos` 找 skill 仓库 —— **「找仓库」就是资料搜索**，`gh search` 不是 Git 操作
+- ✓ 找仓库走 AnySearch `search` / `batch_search`；查某个**已知**仓库的信息走 `extract`
 
 ## 默认先搜原则
 

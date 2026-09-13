@@ -1,10 +1,10 @@
 # LuzzyCode
 
-鹿溪（Coding 模式）：给编码 Agent 用的一套行为契约，拆成常驻提示词与 14 个按需加载的 skill。
+鹿溪（Coding 模式）：给编码 Agent 用的一套行为契约，拆成常驻提示词与 19 个按需加载的 skill。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-14-1f6feb?style=flat-square)](skills/)
-[![Resident](https://img.shields.io/badge/resident-8.4k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
+[![Skills](https://img.shields.io/badge/skills-19-1f6feb?style=flat-square)](skills/)
+[![Resident](https://img.shields.io/badge/resident-12.7k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
 [![Convention](https://img.shields.io/badge/format-agentskills.io-0969da?style=flat-square)](https://agentskills.io/specification)
 
 ## 30 秒上手
@@ -72,15 +72,22 @@ LuzzyCode/
 
 ### 一、必读 skill
 
-五类任务各有指定 skill，读完正文才算通过。看仓库首页或目录列表不算。
+十类任务各有指定 skill，读完正文才算通过。看仓库首页或目录列表不算。
 
 | 任务类型 | 必读 |
 |---|---|
 | 后端 / 通用编码 | [Ponytail](https://github.com/DietrichGebert/ponytail) · [spec-kit](https://github.com/github/spec-kit) · [mattpocock/skills](https://github.com/mattpocock/skills) |
 | 设计类 | [huashu-design](https://github.com/alchaincyf/huashu-design) · [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) · [open-design](https://github.com/nexu-io/open-design) · [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
 | 文档 / Office | [OfficeCLI](https://github.com/iOfficeAI/OfficeCLI) |
+| 做 PPT | [归藏PPT](https://github.com/op7418/guizang-ppt-skill) · [大狮PPT](https://github.com/chuspeeism/dashi-ppt-skill) · [HTML PPT Studio](https://github.com/lewislulu/html-ppt-skill) |
 | 写作 / 文案 | [stop-slop](https://github.com/hardikpandya/stop-slop) · [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) |
+| HTML / 网页开发 | [anthropics/skills](https://github.com/anthropics/skills) · [Frontend Design Toolkit](https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit) · [Superpowers](https://github.com/obra/superpowers) |
+| Windows 修复 / 优化 | [WinUtil](https://github.com/ChrisTitusTech/winutil) · [Win11Debloat](https://github.com/Raphire/Win11Debloat) · [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) |
+| 项目规划 / 需求拆解 | [spec-kit](https://github.com/github/spec-kit) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) · [Get Shit Done](https://github.com/gsd-build/get-shit-done) · [planning-with-files](https://github.com/OthmanAdi/planning-with-files) |
+| 代码审查 | [Agent Skills](https://github.com/addyosmani/agent-skills) · [Open Code Review](https://github.com/alibaba/open-code-review) · [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) · [Shippie](https://github.com/mattzcarey/shippie) |
 | skill 开发 / 管理 | [Luzzy-Skill Architect](https://github.com/LuzzyMeow/Luzzy-Skill-Architect) |
+
+编码、设计、PPT、网页开发、Windows、规划、审查这几类都给了多家，按需求择一或组合，细则各在对应的 `luzzycode-*` skill 里。
 
 任一链接失效，Agent 立刻告诉你哪一条需要更新，然后走降级规则继续干活。
 
@@ -109,7 +116,7 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 
 用内置搜索做资料搜索、只在抓取时用 AnySearch，这种半程合规视为违规。内置工具仅作回退，且要在回答里说明。
 
-## 十四个 skill
+## 十九个 skill
 
 <details open>
 <summary><b>编排与流程</b></summary>
@@ -118,6 +125,7 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 |---|---|---|
 | `luzzycode` | 需要路由到子 skill | 路由表、冲突裁决 |
 | `luzzycode-workflow` | 立清单 / 进计划态 / 开目标 / 委派子代理 | 清单三态语义、计划态只读、目标生命周期（含 3 回合阻塞规则）、后台任务 |
+| `luzzycode-planning` | 立项 / 拆需求 / 写方案 | spec-kit·OpenSpec·Get Shit Done·planning-with-files 四家选择、与会话清单的分工 |
 | `luzzycode-interaction` | 汇报 / 获取项目上下文 | 汇报格式、AGENTS.md 优先的阅读顺序、文档落地 |
 
 </details>
@@ -128,11 +136,14 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 | skill | 加载时机 | 覆盖内容 |
 |---|---|---|
 | `luzzycode-code` | 写代码 / 重构 / 修 bug | 命名、控制流、注释、测试、产出格式 |
+| `luzzycode-review` | 评审 diff / PR / 既有代码 | Agent Skills·Open Code Review·sanyuan-skills·Shippie 四家选择、与 Ponytail 的分工 |
 | `luzzycode-git` | 克隆 / 推送 / 建仓库 / remote | SSH 优先、remote 纠正、镜像中转、提交卫生、换行符归一 |
 | `luzzycode-tools` | 调工具 / 工具缺失 | glob·grep·read·write·edit·read_image、后台命令、present 登记、降级表 |
 | `luzzycode-workspace` | 开工 / 收尾清理 | 落点纪律、命名、收尾自检、脏工作区授权边界 |
 | `luzzycode-docs` | 写 README / 报告 / 文案 | 两项写作 skill 调用、AI 腔清除、文档落点 |
 | `luzzycode-office` | 处理 Office 文件 | OfficeCLI 调用、格式坑位、产出回读验证 |
+| `luzzycode-ppt` | 做 PPT / 演示文稿 / 幻灯片 | 归藏·大狮·HTML PPT Studio 三家选择、整仓安装、逐页验收 |
+| `luzzycode-webdev` | 做 HTML 页面 / 网页应用 | 官方 skills 调用、浏览器实测、响应式与可访问性 |
 
 </details>
 
@@ -145,11 +156,12 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 | `luzzycode-memory` | 检索 / 写入 / 删除记忆 | MemOS 能力清单、写入格式、四步安全判断、知识库操作 |
 | `luzzycode-bootstrap` | 首次对话且未配置 | 免密钥通道、文档抓取、配置引导 |
 | `luzzycode-design` | UI / 动效 / 页面设计 | 四项设计 skill 获取与降级、截图验收 |
+| `luzzycode-windows` | Windows 修复 / 优化 / 去臃肿 | WinUtil·Win11Debloat·Sophia Script 三家选择、还原点与改动确认红线 |
 | `luzzycode-skills` | 创建 / 审计 / 融合 skill | Architect 调用、质量门禁、触发验证 |
 
 </details>
 
-十四个 skill 相互独立。常驻提示词 §12.1 有完整索引，删掉某个 skill 时同步删掉索引里那一行即可。
+十九个 skill 相互独立。常驻提示词 §12.1 有完整索引，删掉某个 skill 时同步删掉索引里那一行即可。
 
 ## 零配置启动
 
@@ -182,12 +194,14 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 ## 提示词预算
 
-| 层 | 内容 | 行数 | 估算 token |
+| 层 | 内容 | 行数 | 实测 token |
 |---|---|---|---|
-| 常驻 | `prompt/LuzzyCode.md` | 285 | 8,320 |
-| 按需 | 14 个 skill 合计 | 1,182 | 20,533 |
+| 常驻 | `prompt/LuzzyCode.md` | 447 | 12,746 |
+| 按需 | 19 个 skill 合计 | 1,683 | 29,210 |
 
-典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git`，约 12k token。纯闲聊只付常驻的 8.3k。
+token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
+
+典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git`，约 18k token。纯闲聊只付常驻的 12.7k。
 
 skill 的加载靠 description 触发。每个 description 都写了「何时用」和「不要用」，避免误激活。
 
@@ -195,7 +209,7 @@ skill 的加载靠 description 触发。每个 description 都写了「何时用
 
 提示词与 Agent 无关，能直接当 system prompt 用。
 
-skill 走 agentskills.io 的 `SKILL.md` 规范，`name` 用 kebab-case，`description` 必填。DeepSeek Harness、Claude Code 以及符合该规范的宿主都能加载。十四个 skill 逐个过了 DSH 的解析器校验。
+skill 走 agentskills.io 的 `SKILL.md` 规范，`name` 用 kebab-case，`description` 必填。DeepSeek Harness、Claude Code 以及符合该规范的宿主都能加载。十九个 skill 逐个过了 DSH 的解析器校验。
 
 提示词里出现的工具名（`todo_write`、`glob`、`present` 等）都当能力示例看。预设要求 Agent 先盘点本机真实工具再映射，缺失时走 `luzzycode-tools` 里的降级表。
 
