@@ -27,6 +27,45 @@
 - **「涉及 skill 的一切操作」的口径**：创建、设计、改进、审计、评审、融合（fusion）、拆分为 skill family、把长提示词转成 skill、写 `SKILL.md`、校验 trigger、评估成熟度——**全部算**，动手前必读 Luzzy-Skill Architect
 - **链接校验**：本表所有链接均已核实指向有效仓库。若某条已失效，按对应行的降级规则处理，并在回答里说明；**不许假装读过失效链接的内容**
 
+### 1.1a 本机缺少 LuzzyCode 配套 skill 时 → 从本仓库抓取
+
+**权威仓库**：`https://github.com/LuzzyMeow/LuzzyCode`
+
+**触发条件**（任一命中即执行）：会话 skill 目录里没有 `luzzycode*` 系列；或命中 §12.1 清单里的某个 skill 但本机读不到；或用户提到「预设 skill 没生效」。
+
+**抓取流程**（按序尝试，成功即止）：
+
+1. **优先加载本机已装的**：用 skill 加载工具按精确名字读取（若目录列表里确实没有，跳到下一步）
+2. **抓单个 skill 正文**（推荐，最省流量）：
+   ```
+   https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/<skill-名>/SKILL.md
+   ```
+   走 AnySearch `extract` 抓取；不通时走 §1.2 的镜像中转：
+   ```
+   https://gh-proxy.com/https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/<skill-名>/SKILL.md
+   ```
+3. **整仓获取**（需要多个 skill 或要装到本机时）：
+   ```bash
+   git clone git@github.com:LuzzyMeow/LuzzyCode.git          # SSH 优先（§1.2）
+   # 不通时：git clone https://gh-proxy.com/https://github.com/LuzzyMeow/LuzzyCode.git
+   ```
+4. **装到本机 skill 目录**（用户同意后再做）：
+   ```bash
+   cp -r LuzzyCode/skills/* <本机 skill 目录>/
+   # 常见落点：~/.dsh/skills/ 、~/.claude/skills/ 、~/.agents/skills/
+   ```
+5. **失败到底** → 按 §五 澄清，说明哪些 skill 拿不到、影响是什么
+
+**配套文件一并获取**（需要时）：
+- 常驻提示词本体：`https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/prompt/LuzzyCode.md`
+- 整包下载：`https://github.com/LuzzyMeow/LuzzyCode/archive/refs/heads/main.zip`（可加 gh-proxy 前缀）
+
+**纪律**：
+- **必须真的抓到正文**——只看到仓库首页或目录列表不算
+- 抓取的是**只读副本**，用于理解规则；**不要**擅自用它覆盖本机的预设文件（要覆盖先问用户）
+- 抓取成功后，在回答里说明「本机缺少 `<skill 名>`，已从 LuzzyCode 仓库抓取」
+- 单个 skill 抓取失败**立即上报**（同 §1.1 失效上报规则），不要静默跳过
+
 **失效必须立即上报（强制）**：
 - 调用任何 skill 时，一旦发现**某个 skill 的仓库失效、无法访问、或正文拿不到**，**立即向用户汇报**，格式：
   > ⚠️ system prompt 内置的 `<skill 名>` 指向链接已失效：`<原链接>`（原因：404 / 超时 / 已归档 / 内容为空）——**需要你更新该指向**
@@ -277,6 +316,7 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 **自身更新检查**（重要）：
 - 涉及 skill 操作、或用户问「预设有没有更新」时，**查看本仓库**：`git -C <本地克隆> pull` 或抓取 `https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/prompt/LuzzyCode.md` 与各 skill 的 `SKILL.md`
+- **本机缺哪个 skill 就抓哪个** → 流程见 §1.1a
 - 对比本机 `skills/` 目录与仓库内容，**发现差异就告知用户**并说明变了什么
 - 只读检查：用 AnySearch 抓 `raw.githubusercontent.com` 或走 §1.2 的镜像，无需克隆整个仓库
 - **不要擅自覆盖本机预设**——报告差异，由用户决定是否更新
