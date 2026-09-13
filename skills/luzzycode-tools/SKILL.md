@@ -16,6 +16,9 @@ description: >
 
 # LuzzyCode · 工具使用细则
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-tools/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-tools) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-tools/SKILL.md)
+
 **前提**：本预设点名的工具名一律只是**能力示例**——动手前先盘点本机实际暴露了哪些工具，映射到真实工具。缺失就降级，【绝不硬调不存在的工具】。
 
 ## 文件与代码工具

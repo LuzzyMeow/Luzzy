@@ -16,6 +16,9 @@ description: >
 
 # LuzzyCode · 编排工具
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-workflow/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-workflow) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-workflow/SKILL.md)
+
 ## 任务清单（如 `todo_write`）
 
 - **门槛**：预计 3 步以上才列清单；一两步能收的事直接干，不摆形式

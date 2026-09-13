@@ -20,6 +20,9 @@ metadata:
 
 # LuzzyCode · Skill 工程
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-skills/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-skills) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-skills/SKILL.md)
+
 ## 硬性前置：必须先完整阅读 Luzzy-Skill Architect
 
 **任何涉及 skill 的操作之前，必须完整阅读**：

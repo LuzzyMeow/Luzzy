@@ -16,6 +16,9 @@ description: >
 
 # LuzzyCode · 联网检索细则
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-search/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-search) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-search/SKILL.md)
+
 **前提（常驻硬规定，不因本 skill 是否加载而改变）**：联网检索的**全部环节**——资料搜索、批量并行、垂直域定义、网页抓取——**只走 AnySearch**。用内置搜索做资料搜索、只在抓取时用 AnySearch 属于「半程合规」，视为违规。
 
 ## 默认先搜原则

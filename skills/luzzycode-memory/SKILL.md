@@ -15,6 +15,9 @@ description: >
 
 # LuzzyCode · 记忆系统细则
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-memory/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-memory) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-memory/SKILL.md)
+
 **前提（常驻硬规定）**：动手前必检索、收尾必写入，不许跳过；本机未挂载时说明「记忆能力不可用」再继续其余工作。工具名仅为示例，以本机实际暴露的工具为准。
 
 ## 能力清单

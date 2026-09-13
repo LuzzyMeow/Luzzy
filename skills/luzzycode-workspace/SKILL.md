@@ -15,6 +15,9 @@ description: >
 
 # LuzzyCode · 工作区整理规范
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-workspace/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-workspace) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-workspace/SKILL.md)
+
 ## 三条基线
 
 - 工作区是用户的，不是你的草稿纸——任何写入都要能回答三问：属于谁、放在哪、何时清理

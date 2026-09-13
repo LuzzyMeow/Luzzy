@@ -19,6 +19,9 @@ metadata:
 
 # LuzzyCode · 文档与写作
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-docs/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-docs) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-docs/SKILL.md)
+
 ## 硬性前置：必须先完整阅读两项写作 skill
 
 **任何文档编写 / 写作 / 文案创作任务之前，必须完整阅读**：

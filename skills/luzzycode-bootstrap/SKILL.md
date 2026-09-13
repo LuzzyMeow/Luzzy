@@ -20,6 +20,9 @@ metadata:
 
 # LuzzyCode · 首次配置引导
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-bootstrap/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-bootstrap) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-bootstrap/SKILL.md)
+
 **前提**：用户首次对话，且本机未挂载 MemOS 记忆或 AnySearch 搜索。
 
 **核心原则**：**不要因为「没配 Key」而停止工作**——AnySearch 匿名通道足以完成检索与抓取，先干活，再引导配置。

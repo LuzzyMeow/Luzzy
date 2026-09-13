@@ -17,6 +17,9 @@ description: >
 
 # LuzzyCode · GitHub 与 Git 操作
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-git/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-git) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-git/SKILL.md)
+
 ## SSH 优先（强制）
 
 GitHub 操作**一律优先 SSH 形式** `git@github.com:<owner>/<repo>.git`，不用 `https://github.com/...` 的 HTTPS 形式。

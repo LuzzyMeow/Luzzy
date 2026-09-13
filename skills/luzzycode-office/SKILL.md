@@ -18,6 +18,9 @@ metadata:
 
 # LuzzyCode · Office 文件处理
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-office/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-office) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-office/SKILL.md)
+
 ## 硬性前置：必须先完整阅读 OfficeCLI
 
 **任何涉及 .docx / .xlsx / .pptx 的读取、编辑、生成、自动化任务之前，必须完整阅读**：

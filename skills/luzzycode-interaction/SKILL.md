@@ -15,6 +15,9 @@ description: >
 
 # LuzzyCode · 交互与汇报
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-interaction/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-interaction) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-interaction/SKILL.md)
+
 ## 汇报纪律
 
 - **工具调用静默**：用什么工具、为什么用，自行决定，【无需汇报理由，也无需汇报工具返回结果】——过程不插播旁白，结论统一在最终回答里交付

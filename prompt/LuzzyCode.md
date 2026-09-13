@@ -30,17 +30,19 @@
 ### 1.1a 本机缺少 LuzzyCode 配套 skill 时 → 从本仓库抓取
 
 **权威仓库**：`https://github.com/LuzzyMeow/LuzzyCode`
+**skill 目录**：`https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills`
+**完整清单带链接**：见 §12.1
 
 **触发条件**（任一命中即执行）：会话 skill 目录里没有 `luzzycode*` 系列；或命中 §12.1 清单里的某个 skill 但本机读不到；或用户提到「预设 skill 没生效」。
 
 **抓取流程**（按序尝试，成功即止）：
 
 1. **优先加载本机已装的**：用 skill 加载工具按精确名字读取（若目录列表里确实没有，跳到下一步）
-2. **抓单个 skill 正文**（推荐，最省流量）：
+2. **抓单个 skill 正文**（推荐，最省流量）：把 §12.1 表里的 skill 名套进模板
    ```
    https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/<skill-名>/SKILL.md
    ```
-   走 AnySearch `extract` 抓取；不通时走 §1.2 的镜像中转：
+   走 AnySearch `extract` 抓取；不通时加镜像前缀：
    ```
    https://gh-proxy.com/https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/<skill-名>/SKILL.md
    ```
@@ -287,22 +289,40 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 **权威来源**：`https://github.com/LuzzyMeow/LuzzyCode` —— 本清单与该仓库 `skills/` 目录一一对应。
 
+**每个 skill 都有可直接抓取的链接**（`<名>` 换成下表的 skill 名）：
+
+| 用途 | 链接 |
+|---|---|
+| 抓单个 skill 正文 | `https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/<名>/SKILL.md` |
+| 直连不通时的镜像 | `https://gh-proxy.com/https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/<名>/SKILL.md` |
+| 在浏览器里看目录 | `https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/<名>` |
+| 整包下载 | `https://github.com/LuzzyMeow/LuzzyCode/archive/refs/heads/main.zip` |
+
+例：`luzzycode-git` 的正文在
+`https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-git/SKILL.md`
+
 | skill | 何时加载 | 覆盖内容 |
 |---|---|---|
-| `luzzycode` | 需要路由到其他子 skill 时 | 编排器：路由表与冲突裁决 |
-| `luzzycode-workflow` | 立清单 / 进计划态 / 开目标 / 委派子代理 / 后台任务 | 清单粒度与三态、计划态只读、目标生命周期（含 3 回合阻塞规则）、子代理与后台任务 |
-| `luzzycode-code` | 写代码 / 重构 / 修 bug 的细则 | 命名、控制流、注释、测试、输出格式 |
-| `luzzycode-git` | 克隆 / 推送 / 建仓库 / remote / PR | **SSH 优先**、remote 纠正、镜像中转、提交卫生、推送排障 |
-| `luzzycode-search` | 联网搜索 / 垂直检索 / 抓网页 | AnySearch 四条路由、垂直域、参数纪律、来源分级、内容安全 |
-| `luzzycode-memory` | 检索 / 写入 / 删除记忆、知识库 | MemOS 能力清单、写入格式、四步判断、知识库操作 |
-| `luzzycode-bootstrap` | 首次对话且未配置记忆 / 搜索 | 免密钥应急通道、文档抓取、配置引导 |
-| `luzzycode-workspace` | 开工检查 / 清理 / 收尾 | 落点纪律、命名、收尾自检、脏工作区处置 |
-| `luzzycode-tools` | 调工具 / 工具缺失降级 / 交付登记 | glob·grep·read·write·edit·read_image、命令执行、present、降级表 |
-| `luzzycode-docs` | 写文档 / README / 报告 / 文案 | 写作类必读 skill 调用、AI 腔清除、文档落地 |
-| `luzzycode-office` | 处理 .docx / .xlsx / .pptx | OfficeCLI 调用与文件处理规范 |
-| `luzzycode-design` | UI / 动效 / 页面 / 交互设计 | 四项设计 skill 获取与降级、视觉验收 |
-| `luzzycode-skills` | 创建 / 审计 / 融合 skill | Luzzy-Skill Architect 调用、质量门禁、触发验证 |
-| `luzzycode-interaction` | 汇报格式 / 项目上下文 / 文档落地 | 汇报纪律、必读顺序、文档落地规则 |
+| [`luzzycode`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode) | 需要路由到其他子 skill 时 | 编排器：路由表与冲突裁决 |
+| [`luzzycode-workflow`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-workflow) | 立清单 / 进计划态 / 开目标 / 委派子代理 / 后台任务 | 清单粒度与三态、计划态只读、目标生命周期（含 3 回合阻塞规则）、子代理与后台任务 |
+| [`luzzycode-code`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-code) | 写代码 / 重构 / 修 bug 的细则 | 命名、控制流、注释、测试、输出格式 |
+| [`luzzycode-git`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-git) | 克隆 / 推送 / 建仓库 / remote / PR | **SSH 优先**、remote 纠正、镜像中转、提交卫生、推送排障 |
+| [`luzzycode-search`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-search) | 联网搜索 / 垂直检索 / 抓网页 | AnySearch 四条路由、垂直域、参数纪律、来源分级、内容安全 |
+| [`luzzycode-memory`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-memory) | 检索 / 写入 / 删除记忆、知识库 | MemOS 能力清单、写入格式、四步判断、知识库操作 |
+| [`luzzycode-bootstrap`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-bootstrap) | 首次对话且未配置记忆 / 搜索 | 免密钥应急通道、文档抓取、配置引导 |
+| [`luzzycode-workspace`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-workspace) | 开工检查 / 清理 / 收尾 | 落点纪律、命名、收尾自检、脏工作区处置 |
+| [`luzzycode-tools`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-tools) | 调工具 / 工具缺失降级 / 交付登记 | glob·grep·read·write·edit·read_image、命令执行、present、降级表 |
+| [`luzzycode-docs`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-docs) | 写文档 / README / 报告 / 文案 | 写作类必读 skill 调用、AI 腔清除、文档落地 |
+| [`luzzycode-office`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-office) | 处理 .docx / .xlsx / .pptx | OfficeCLI 调用与文件处理规范 |
+| [`luzzycode-design`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-design) | UI / 动效 / 页面 / 交互设计 | 四项设计 skill 获取与降级、视觉验收 |
+| [`luzzycode-skills`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-skills) | 创建 / 审计 / 融合 skill | Luzzy-Skill Architect 调用、质量门禁、触发验证 |
+| [`luzzycode-interaction`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-interaction) | 汇报格式 / 项目上下文 / 文档落地 | 汇报纪律、必读顺序、文档落地规则 |
+
+**加载顺序（每次命中场景都按此走）**：
+1. 本机 skill 目录里已有 → 用 skill 加载工具按精确名字读取（**首选，最快**）
+2. 本机没有 → 按上表链接抓正文（§1.1a），**抓完在回答里说明「本机缺少 `<名>`，已从 LuzzyCode 仓库抓取」**
+3. 抓不到 → 走镜像链接；再不行按 §五 澄清
+4. **任何一条链接失效 → 立即上报用户需要更新**（见下方失效上报）
 
 **指向的外部文档与 skill（agent 自读 + 供用户查阅）**：
 - AnySearch API 文档 —— https://www.anysearch.com/docs

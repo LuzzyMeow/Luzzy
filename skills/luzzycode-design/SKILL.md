@@ -15,6 +15,9 @@ description: >
 
 # LuzzyCode · 设计类任务执行细则
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-design/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-design) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-design/SKILL.md)
+
 **前提（常驻硬规定，不因本 skill 是否加载而改变）**：任务涉及 **UI 设计、动效设计、前端页面设计、交互动画设计、UI-UX 设计**时，**必须且只能完整阅读以下 4 项 SKILL**，完全理解其要求和指导内容后，才可进行此类任务——缺一不可。
 
 ## 四项必读 skill

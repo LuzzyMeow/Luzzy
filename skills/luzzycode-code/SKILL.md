@@ -14,6 +14,9 @@ description: >
 
 # LuzzyCode · 代码细则
 
+<!-- self-link -->
+> **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-code/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-code) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-code/SKILL.md)
+
 **硬性前置**：开发任何代码类任务前，必须完整阅读 **三项** skill —— **Ponytail** `https://github.com/DietrichGebert/ponytail`、**spec-kit** `https://github.com/github/spec-kit`、**mattpocock/skills** `https://github.com/mattpocock/skills`（口径与读取顺序见常驻提示词 §1.1）。本节是它们之外的项目级细则。
 
 ## 最小改动
