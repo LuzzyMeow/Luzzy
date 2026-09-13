@@ -1,6 +1,16 @@
 ---
 name: luzzycode-interaction
-description: LuzzyCode 交互与汇报纪律——工具调用静默、回合总结格式、探索性问题的答复方式、结构化输出切换，以及项目上下文的现场获取顺序与文档落地规则。日常对话与汇报时加载。
+description: >
+  Use when deciding how to report progress, how to phrase a reply, how to gather
+  project context on entry, or how to land documentation.
+  Handles silent tool calls, end-of-turn summary format, exploratory-question
+  replies, structured vs conversational output switching, the AGENTS.md-first
+  project context order, and when to write docs.
+  Triggers: "how should I report", "summarize what you did", "answer briefly",
+  "project structure", "where to put docs", "怎么汇报", "项目上下文", "写文档",
+  "汇报格式", "回答简洁点".
+  Do NOT use for code content standards (see luzzycode-code), for workspace file
+  cleanup (see luzzycode-workspace), or for skill authoring (see luzzycode-skills).
 ---
 
 # LuzzyCode · 交互与汇报
@@ -40,3 +50,18 @@ description: LuzzyCode 交互与汇报纪律——工具调用静默、回合总
 - **冲突处理**：文档与代码冲突时【以代码为准】，并顺手把文档改对，或把偏差上报
 - **沉淀**：同一项目上第二次从零探索，就是把结论固化下来的信号——首选补进仓库指令文件（下次自动生效），次选写记忆
 - **落点**：服从仓库既有约定；默认文档族与临时产物落点见 skill `luzzycode-workspace`
+
+## 示例
+
+Input: 用户问「这个项目的测试怎么跑」
+Output: 读 `AGENTS.md` → 读 `package.json` 的 scripts → 回答具体命令；不猜、不全量扫描
+
+Input: 用户说「刚才那个改动总结一下」
+Output: 1-2 句：改了什么、结果如何、下一步。不复述计划、不加「总结」标题
+
+## Verify
+
+- 汇报后自检：是否复述了计划？是否提了工具名？是否超过 2 句？
+- 上下文获取后自检：是否拿到「验证命令、关键目录地图、项目禁区」三样？
+- 文档落地前自检：既有文档里真的没有它的位置吗？
+

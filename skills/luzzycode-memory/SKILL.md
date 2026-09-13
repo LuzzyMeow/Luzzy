@@ -1,6 +1,16 @@
 ---
 name: luzzycode-memory
-description: LuzzyCode 记忆系统细则（MemOS）——能力清单、知识库操作、删除与反馈流程、写入格式。需要检索、写入、删除记忆或操作知识库时加载。
+description: >
+  Use when retrieving, writing, deleting, or giving feedback on cross-session
+  memory, or when operating on a knowledge base.
+  Handles memory retrieval timing, write-worthiness judgment, environment
+  annotation format, the four-step memory safety check, knowledge base document
+  operations, and deletion plus feedback flow.
+  Triggers: "remember this", "what do you know about me", "last time we",
+  "forget that", "knowledge base", "记忆", "记一下", "上次说的", "删除记忆", "知识库".
+  Do NOT use for web search or page fetching (see luzzycode-search), for general
+  note-taking inside a repository, or for documenting decisions in project files
+  (see luzzycode-interaction).
 ---
 
 # LuzzyCode · 记忆系统细则
@@ -43,3 +53,18 @@ description: LuzzyCode 记忆系统细则（MemOS）——能力清单、知识�
 - ② **归属检查**：记忆说的是用户本人还是第三方？第三方的属性【严禁安到用户头上】
 - ③ **相关性**：与当前话题直接相关才用，仅关键词撞车就忽略
 - ④ **新鲜度**：与用户当前意图冲突的旧记忆，以当前对话为准
+
+## 示例
+
+Input: 用户说「上次我们定的那个技术栈是什么」
+Output: 检索记忆（query 用「LuzzyRP 技术栈」，不用日期）→ 命中则自然带出「我记得是 Kotlin + Compose」→ 过四步判断确认非第三方属性
+
+Input: 用户说「把关于旧项目的记忆删掉」
+Output: 先检索定位 ID → `delete_memory` 一次传全部 ID → 调 `add_feedback` 记录「用户要求删除旧项目相关记忆」（不写 ID 与技术细节）
+
+## Verify
+
+- 检索后：四步判断是否逐条过？（来源 / 归属 / 相关性 / 新鲜度）
+- 写入后：末尾是否有环境标注？查不到时是否标了「未知环境」而非编造？
+- 删除后：是否调用 `add_feedback` 记录了用户意图？
+

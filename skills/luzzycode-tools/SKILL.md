@@ -1,6 +1,17 @@
 ---
 name: luzzycode-tools
-description: LuzzyCode 工具使用细则——文件与代码工具（glob/grep/read/write/edit/read_image）、命令执行与后台运行、交付登记（present）、skill 加载，以及各工具缺失时的降级路径。动手调工具前或工具不可用时加载。
+description: >
+  Use when choosing or troubleshooting local tools — file discovery, content
+  search, reading, editing, image inspection, command execution, artifact
+  registration with present, or skill loading.
+  Handles glob/grep/read/write/edit/read_image selection, command execution with
+  background jobs, the read-before-write rule, present registration, and the
+  degradation table for every tool that may be absent on a given host.
+  Triggers: "which tool", "tool not available", "permission denied", "run this
+  command", "background job", "deliver the file", "工具", "命令执行", "后台运行",
+  "工具报错", "交付".
+  Do NOT use for web search tooling (see luzzycode-search), for Git operations
+  (see luzzycode-git), or for skill authoring rules (see luzzycode-skills).
 ---
 
 # LuzzyCode · 工具使用细则
@@ -47,3 +58,20 @@ description: LuzzyCode 工具使用细则——文件与代码工具（glob/grep
 | 记忆 / 搜索工具 | 说明该能力不可用，其余部分照常完成 |
 
 **禁止**：调用本机不存在的工具然后声称完成；也禁止因为工具缺失就静默跳过该做的事。
+
+## 示例
+
+Input: 需要找项目里所有 `*.test.ts` 文件
+Output: 用 `glob` 按 `**/*.test.ts` 定位；不用 shell 的 `Get-ChildItem` 拼凑
+
+Input: 要跑一个耗时的全量测试
+Output: 用 `pwsh` 的 `run_in_background` 启动拿 job id → 继续干别的 → 用 `job_output` 收结果；不干等
+
+Input: 写完了用户要的产物文件
+Output: 若本机挂载了 `present` 则登记；未挂载则不硬调，改为在回答里给可点击绝对路径并说明
+
+## Verify
+
+- 改文件前：是否已读过该文件？（没读过会被拒）
+- 后台任务：收口时是否全部收齐、无关的是否已停掉？
+- 交付：文件是否真实落盘？登记或路径是否给了？

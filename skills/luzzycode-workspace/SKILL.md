@@ -1,6 +1,16 @@
 ---
 name: luzzycode-workspace
-description: LuzzyCode 工作区整理规范——开工前检查、临时产物落点、文件命名纪律、收尾自检清单、脏工作区处置与清理授权边界。开工前或收尾清理工作区时加载。
+description: >
+  Use when starting a task in a repository, cleaning up temporary artifacts, or
+  closing out a session's workspace.
+  Handles pre-work git status triage, temp artifact destinations, file naming
+  discipline, the end-of-task cleanup checklist, dirty-workspace handling, and
+  the authorization boundary for deletion.
+  Triggers: "workspace is messy", "clean up", "git status", "leftover files",
+  "temp files", "工作区", "清理", "临时文件", "收尾", "工作区乱了".
+  Do NOT use for Git commit or push operations (see luzzycode-git), for deciding
+  document content (see luzzycode-interaction), or for code style (see
+  luzzycode-code).
 ---
 
 # LuzzyCode · 工作区整理规范
@@ -52,3 +62,18 @@ description: LuzzyCode 工作区整理规范——开工前检查、临时产物
 - 【优先追加，不新开】：能在既有文档里续写就续写；确需新开前，先确认既有文档里没有它的位置
 - 默认文档族（仓库无约定时才用）：`PLAN-<范围>.md`、`RESEARCH-<主题>.md`、`STATUS-<范围>.md`、`WORKLOG.md`、`archive/`；调研类文档带来源与置信度
 - 与「边界三档」的分工：那里禁的是「未经要求的成品文档」，本节管的是「后续工作必需的过程留痕」
+
+## 示例
+
+Input: 跑完测试，工作区多了 `coverage/` 和 `test_copy/`
+Output: `coverage/` 是可重建构建产物 → 删除并补进 `.gitignore`；`test_copy/` 是本轮试验目录 → 删除。工作区回到开工前状态
+
+Input: 接手时 `git status` 显示 5 个来源不明的文件
+Output: 不擅自清理 → 告知「当前工作区有 5 个疑似遗留文件」并列出 → 问用户是否清理
+
+## Verify
+
+- 收尾自检五项是否逐条过？（中间物 / git status / gitignore / 空目录 / 不比开工前更乱）
+- 清理动作是否只涉及本轮自己创建的产物？
+- 可能有用的是否移入 `archive/` 而非直接删？
+

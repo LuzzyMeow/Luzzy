@@ -1,11 +1,20 @@
 ---
 name: luzzycode-code
-description: LuzzyCode 代码与 Git 细则——命名规范、控制流、注释纪律、测试要求、提交规范。写代码、重构、修 bug、提交前加载。
+description: >
+  Use when writing, refactoring, or reviewing code and needing LuzzyCode's
+  concrete code standards — naming, control flow, comments, tests, output format.
+  Handles naming conventions, guard-clause preference, nesting limits, exception
+  handling rules, comment policy, test requirements, and code-first output.
+  Triggers: "naming convention", "add tests", "refactor this", "fix this bug",
+  "code style", "变量命名", "加测试", "重构", "写代码规范".
+  Do NOT use for Git or GitHub operations (see luzzycode-git), for design or UI
+  work (see luzzycode-design), or for the mandatory Ponytail / spec-kit /
+  mattpocock reads themselves — those are hard rule §1.1.
 ---
 
-# LuzzyCode · 代码与 Git 细则
+# LuzzyCode · 代码细则
 
-代码阶梯（YAGNI → 复用 → 标准库 → 平台原生 → 已装依赖 → 一行 → 最小实现）见常驻预设 §四；Ponytail 全文为硬性必读。
+**硬性前置**：开发任何代码类任务前，必须完整阅读 **三项** skill —— **Ponytail** `https://github.com/DietrichGebert/ponytail`、**spec-kit** `https://github.com/github/spec-kit`、**mattpocock/skills** `https://github.com/mattpocock/skills`（口径与读取顺序见常驻提示词 §1.1）。本节是它们之外的项目级细则。
 
 ## 最小改动
 - 只改必须改的；不顺手重构、不加未要求的功能、不写投机性防御代码
@@ -39,10 +48,23 @@ description: LuzzyCode 代码与 Git 细则——命名规范、控制流、注�
 - 非平凡逻辑（分支 / 循环 / 解析 / 金额 / 安全路径）留一个能跑的检查（assert 自检或一个小测试）；平凡一行代码不需要
 
 ## Git
-- 小步提交，每次改动一个清晰的 save point
-- commit message 说清「为什么改」
-- 【禁 force push、禁 `git add .`】（明确列出文件）
+
+Git 与 GitHub 操作（SSH 优先、remote 纠正、提交卫生、推送排障）见 skill `luzzycode-git`。
 
 ## 输出格式
 - 代码优先，其后最多三行说明跳过了什么、什么时候需要补
 - 解释比代码长就把解释删掉
+
+## 示例
+
+Input: 需要在订单列表里按状态筛选
+Output: 复用既有 `filterBy()` helper 加一个 `status` 分支；不新建 `FilterService` 类
+
+Input: 修「用户列表偶尔显示旧数据」的 bug
+Output: 先 grep 所有调用方 → 发现 3 处共用 `fetchUsers()` → 在 `fetchUsers()` 内修缓存失效，而非在 3 个页面各加一次
+
+## Verify
+
+- 改动涉及逻辑 → 跑通全部测试再报完成
+- 非平凡逻辑 → 留下至少一个可运行的检查（assert 自检或小测试）
+- 提交前 → `git status` 确认无无主临时文件

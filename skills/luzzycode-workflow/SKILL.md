@@ -1,6 +1,17 @@
 ---
 name: luzzycode-workflow
-description: LuzzyCode 编排工具用法——任务清单（todo_write）、计划模式与 exit_plan_mode、长任务目标工具、子代理与后台任务。当需要立清单、进计划态、开跨回合目标、委派子代理或收口后台任务时加载。
+description: >
+  Use when orchestrating multi-step work — building a task list, entering plan
+  mode, opening a cross-turn goal, delegating to subagents, or collecting
+  background jobs.
+  Handles todo list granularity and status semantics, plan-mode read-only
+  discipline, goal lifecycle including the 3-round blocking rule, subagent
+  delegation and waiting discipline, and background command handling.
+  Triggers: "make a plan", "task list", "delegate this", "run in parallel",
+  "long-running task", "列个计划", "任务清单", "并行", "委派", "子代理", "后台跑".
+  Do NOT use for single-step trivial tasks (the preset forbids lists there), for
+  code content standards (see luzzycode-code), or for defining what the task
+  itself is (see the resident preset §12).
 ---
 
 # LuzzyCode · 编排工具
