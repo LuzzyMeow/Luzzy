@@ -156,7 +156,11 @@ console.log('逐字节一致:', p.config.prefix.replace(/\n$/,'')===src);
 - **登记惯例**：每次改动在 `persona.changes.md` 追加一条（日期 + 性质 + 踩坑 + 校验结果 + 回滚命令），`preset.yml` 的 `description` 也要跟着改——它是预设列表里显示的说明，最容易被忘
 - **回滚**：恢复 `persona.md.bak-*` 与 `agent.cordis.yml.bak-sync-*` 两个文件即可
 
-**遗留待决**：上游已删除配套 skill 层，但本机 `~/.dsh/skills/` 下的 `luzzycode-*` 目录仍在，会被 DSH 继续扫描并暴露给模型——与本提示词「不再有配套 skill」的口径不一致。**不要擅自删**：先确认没有其他预设引用，再与用户确认删除或移到备份目录。
+**本机 skill 目录已清空（2026-09-14）**：`~/.dsh/skills/` 下 19 个 `luzzycode-*` 目录已删除——它们是 `b1833cc` 时代手工拷进去的（18 个子 skill + 编排器），会让 DSH 继续扫描并暴露给模型，与本提示词「不再有配套 skill」的口径冲突。
+
+删除前核对过三件事：该目录下**只有** `luzzycode-*`（无其他 skill）；`~/.dsh/settings.yaml` 只是把 `luzzycode` 设为**默认预设名**，不引用 skills；另一个预设 `liangshen` 无任何引用。目录本身保留（空）。
+
+**恢复来源**：本仓库 git 历史 `0a474c2`（`git show 0a474c2:skills/<名>/SKILL.md`）——那里有全部 **23** 项，比本机部署的 19 项还多（含 reverse / assets / android / mcp）。今后若再装回，记住它会被 DSH 扫描并向模型暴露，与单一提示词口径冲突。
 
 ### Claude Code
 
