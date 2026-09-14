@@ -22,7 +22,7 @@
 | **文档编写 / 写作 / 文案创作** | **stop-slop** `https://github.com/hardikpandya/stop-slop`<br>**avoid-ai-writing** `https://github.com/conorbronsdon/avoid-ai-writing` | 全部 |
 | **HTML / 网页开发** | **Anthropic 官方 skills** `https://github.com/anthropics/skills`<br>**Frontend Design Toolkit** `https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit`<br>**Superpowers** `https://github.com/obra/superpowers` | 全部；官方仓库取 `web-artifacts-builder` 与 `webapp-testing` 两项 |
 | **Windows 系统修复 / 优化** | **WinUtil** `https://github.com/ChrisTitusTech/winutil`<br>**Win11Debloat** `https://github.com/Raphire/Win11Debloat`<br>**Sophia Script** `https://github.com/farag2/Sophia-Script-for-Windows` | 按需求择一（见下方 Windows 口径）；**先读安全红线再动手** |
-| **项目规划 / 需求拆解** | **spec-kit** `https://github.com/github/spec-kit`<br>**OpenSpec** `https://github.com/Fission-AI/OpenSpec`<br>**Get Shit Done** `https://github.com/gsd-build/get-shit-done`<br>**planning-with-files** `https://github.com/OthmanAdi/planning-with-files` | 按需求择一（见下方规划口径） |
+| **项目规划 / 需求拆解** | **spec-kit** `https://github.com/github/spec-kit`<br>**OpenSpec** `https://github.com/Fission-AI/OpenSpec`<br>**GSD Core** `https://github.com/open-gsd/gsd-core`<br>**planning-with-files** `https://github.com/OthmanAdi/planning-with-files` | 按需求择一（见下方规划口径） |
 | **代码审查** | **Agent Skills（含 code-review-and-quality）** `https://github.com/addyosmani/agent-skills`<br>**Open Code Review** `https://github.com/alibaba/open-code-review`<br>**sanyuan-skills** `https://github.com/sanyuan0704/sanyuan-skills`<br>**Shippie** `https://github.com/mattzcarey/shippie` | 按需求择一（见下方审查口径）；与 Ponytail 的 `-review` 配合使用 |
 | **Skill 开发 / 编写 / 管理** | **Luzzy-Skill Architect** `https://github.com/LuzzyMeow/Luzzy-Skill-Architect` | 全部 |
 
@@ -50,7 +50,7 @@
   |---|---|
   | **Anthropic 官方 skills**（176k★） | 取 `web-artifacts-builder`（生成 HTML 产物）与 `webapp-testing`（真浏览器测试本地页面）——**这两个是硬需求，必读** |
   | **Frontend Design Toolkit**（1.1k★） | 70+ 前端工具的索引；找"该用哪个工具/库"时查它 |
-  | **Superpowers**（285k★） | 通用研发方法论框架，写代码的完整流程参考 |
+  | **Superpowers**（286k★） | 通用研发方法论框架，写代码的完整流程参考 |
 
   **注意**：视觉设计风格走「设计类」那 4 项；本节管的是**页面能不能跑、能不能测、结构对不对**。
 
@@ -59,7 +59,7 @@
   | skill | 定位 | 何时选它 |
   |---|---|---|
   | **WinUtil**（62.5k★） | 安装软件 + 去臃肿 + 排障 + 管更新，一个入口 | 通用维护与全新装机；有 `Standard` / `Minimal` / `Advanced` 预设 |
-  | **Win11Debloat**（56.8k★） | 轻量 PowerShell 脚本，移除预装应用、关遥测 | 只想**精准去臃肿**，不要大改 |
+  | **Win11Debloat**（57.1k★） | 轻量 PowerShell 脚本，移除预装应用、关遥测 | 只想**精准去臃肿**，不要大改 |
   | **Sophia Script**（9.7k★） | 150+ 函数的精细调优模块 | 要做**细粒度系统配置**，且能承受复杂度 |
 
   **Windows 安全红线（高于一切，先读再动手）**：
@@ -76,8 +76,8 @@
   |---|---|---|
   | **spec-kit**（136k★） | GitHub 官方规格驱动开发工具包 | 正式项目，要从规格走到实现，且用 GitHub 流程 |
   | **OpenSpec**（68k★） | 轻量规格层，改动以 delta 形式跟踪 | 已有仓库要加规格层，或做增量变更 |
-  | **Get Shit Done**（64.5k★） | 元提示 + 上下文工程，抗上下文腐化 | 长任务、多阶段，担心上下文退化 |
-  | **planning-with-files**（26.8k★） | 把计划落到 `task_plan.md` / `findings.md` / `progress.md` | 要**可恢复**的计划——崩溃或 `/clear` 后能接着干 |
+  | **GSD Core**（9.4k★） | 元提示 + 上下文工程，抗上下文腐化 | 长任务、多阶段，担心上下文退化 |
+  | **planning-with-files**（26.9k★） | 把计划落到 `task_plan.md` / `findings.md` / `progress.md` | 要**可恢复**的计划——崩溃或 `/clear` 后能接着干 |
 
   **与 §三 的分工**：本节管**跨会话的项目级规划**；当前会话这一段的执行进度用任务清单（§三「编排类工具克制」）。
 
@@ -85,8 +85,8 @@
 
   | skill | 定位 | 何时选它 |
   |---|---|---|
-  | **Agent Skills**（93k★） | 生产级工程技能包；`code-review-and-quality` 按五个维度审（正确性 / 可读性 / 架构 / 安全 / 性能） | 默认选它，覆盖面最广 |
-  | **Open Code Review**（22.3k★） | 阿里内部打磨的 CLI，确定性流水线 + LLM Agent，行级评论 | 要**接入 CI** 或做大规模自动审查 |
+  | **Agent Skills**（94k★） | 生产级工程技能包；`code-review-and-quality` 按五个维度审（正确性 / 可读性 / 架构 / 安全 / 性能） | 默认选它，覆盖面最广 |
+  | **Open Code Review**（23.5k★） | 阿里内部打磨的 CLI，确定性流水线 + LLM Agent，行级评论 | 要**接入 CI** 或做大规模自动审查 |
   | **sanyuan-skills**（3.9k★） | 专家级审查：SOLID、安全、性能、错误处理、边界条件 | 要**深度**审一个改动，不追求覆盖面 |
   | **Shippie**（2.5k★） | 可扩展的审查 + QA agent，能跑在 CI 里 | 要**可配置**的审查流程 |
 
@@ -214,8 +214,8 @@
 
 ```bash
 # 1) 拿 Skill 包（含四种运行时脚本：Python / Node / PowerShell / Bash）
-curl -L -o anysearch-skill.zip https://github.com/anysearch-skill/anysearch-skill/archive/refs/heads/main.zip
-#    直连不通就用镜像：https://gh-proxy.com/https://github.com/anysearch-skill/anysearch-skill/archive/refs/heads/main.zip
+curl -L -o anysearch-skill.zip https://github.com/anysearch-ai/anysearch-skill/archive/refs/heads/main.zip
+#    直连不通就用镜像：https://gh-proxy.com/https://github.com/anysearch-ai/anysearch-skill/archive/refs/heads/main.zip
 unzip anysearch-skill.zip
 
 # 2) 自检（任选一个已装运行时）
@@ -383,11 +383,15 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 - **表达不清**（说了但含糊、缺关键参数、可作两种以上解读）→ **先澄清再动手**（§五），【绝不猜着做】
 - 澄清收敛后立即推进，不反复确认；用户说「你看着办」就自行决定并写明假设，保留修改空间
 
-### 12.1 配套 skill 清单（常驻索引 · 按需加载）
+### 12.1 配套 skill 索引（常驻索引 · 按需加载）
 
-**权威来源**：`https://github.com/LuzzyMeow/LuzzyCode` —— 本清单与该仓库 `skills/` 目录一一对应。
+**权威来源**：`https://github.com/LuzzyMeow/LuzzyCode` —— 与该仓库 `skills/` 目录一一对应。
 
-**每个 skill 都有可直接抓取的链接**（`<名>` 换成下表的 skill 名）：
+**本层【不放逐个 skill 的清单】**——「哪个场景加载哪个 skill」的完整路由表在 skill `luzzycode` 的正文里（18 个子 skill 逐条对应）。放两处会漂移，也白付常驻预算。
+
+**目录里有什么**（只有名字，加载时机见 `luzzycode`）：`luzzycode`（编排器）｜`workflow`、`planning`、`interaction`｜`code`、`review`、`git`、`tools`、`workspace`、`docs`、`office`、`ppt`、`webdev`｜`search`、`memory`、`bootstrap`、`design`、`windows`、`skills`（均带 `luzzycode-` 前缀）。
+
+**每个 skill 都有可直接抓取的链接**（`<名>` 换成 skill 名）：
 
 | 用途 | 链接 |
 |---|---|
@@ -396,36 +400,13 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 | 在浏览器里看目录 | `https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/<名>` |
 | 整包下载 | `https://github.com/LuzzyMeow/LuzzyCode/archive/refs/heads/main.zip` |
 
-例：`luzzycode-git` 的正文在
-`https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-git/SKILL.md`
-
-| skill | 何时加载 | 覆盖内容 |
-|---|---|---|
-| [`luzzycode`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode) | 需要路由到其他子 skill 时 | 编排器：路由表与冲突裁决 |
-| [`luzzycode-workflow`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-workflow) | 立清单 / 进计划态 / 开目标 / 委派子代理 / 后台任务 | 清单粒度与三态、计划态只读、目标生命周期（含 3 回合阻塞规则）、子代理与后台任务 |
-| [`luzzycode-code`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-code) | 写代码 / 重构 / 修 bug 的细则 | 命名、控制流、注释、测试、输出格式 |
-| [`luzzycode-git`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-git) | 克隆 / 推送 / 建仓库 / remote / PR | **SSH 优先**、remote 纠正、镜像中转、提交卫生、推送排障 |
-| [`luzzycode-search`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-search) | 联网搜索 / 垂直检索 / 抓网页 | AnySearch 四条路由、垂直域、参数纪律、来源分级、内容安全 |
-| [`luzzycode-memory`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-memory) | 检索 / 写入 / 删除记忆、知识库 | MemOS 能力清单、写入格式、四步判断、知识库操作 |
-| [`luzzycode-bootstrap`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-bootstrap) | 首次对话且未配置记忆 / 搜索 | 免密钥应急通道、文档抓取、配置引导 |
-| [`luzzycode-workspace`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-workspace) | 开工检查 / 清理 / 收尾 | 落点纪律、命名、收尾自检、脏工作区处置 |
-| [`luzzycode-tools`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-tools) | 调工具 / 工具缺失降级 / 交付登记 | glob·grep·read·write·edit·read_image、命令执行、present、降级表 |
-| [`luzzycode-docs`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-docs) | 写文档 / README / 报告 / 文案 | 写作类必读 skill 调用、AI 腔清除、文档落地 |
-| [`luzzycode-office`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-office) | 处理 .docx / .xlsx / .pptx | OfficeCLI 调用与文件处理规范 |
-| [`luzzycode-ppt`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-ppt) | 做 PPT / 演示文稿 / 幻灯片 | 三家 PPT skill 的选择、整仓安装与验收 |
-| [`luzzycode-webdev`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-webdev) | HTML 页面 / 网页应用 / HTML 产物 | 官方 skills 调用、浏览器实测、可访问性 |
-| [`luzzycode-windows`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-windows) | Windows 修复 / 优化 / 去臃肿 | 三家工具选择、**还原点与改动确认红线** |
-| [`luzzycode-planning`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-planning) | 项目规划 / 需求拆解 / 写方案 | 四家规划工具选择、与会话清单的分工 |
-| [`luzzycode-review`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-review) | 代码审查 / 评审 PR | 四家审查工具选择、与 Ponytail 的分工 |
-| [`luzzycode-design`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-design) | UI / 动效 / 页面 / 交互设计 | 四项设计 skill 获取与降级、视觉验收 |
-| [`luzzycode-skills`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-skills) | 创建 / 审计 / 融合 skill | Luzzy-Skill Architect 调用、质量门禁、触发验证 |
-| [`luzzycode-interaction`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-interaction) | 汇报格式 / 项目上下文 / 文档落地 | 汇报纪律、必读顺序、文档落地规则 |
-
 **加载顺序（每次命中场景都按此走）**：
 1. 本机 skill 目录里已有 → 用 skill 加载工具按精确名字读取（**首选，最快**）
 2. 本机没有 → 按上表链接抓正文（§1.1a），**抓完在回答里说明「本机缺少 `<名>`，已从 LuzzyCode 仓库抓取」**
 3. 抓不到 → 走镜像链接；再不行按 §五 澄清
 4. **任何一条链接失效 → 立即上报用户需要更新**（见下方失效上报）
+
+**本机完全没有 `luzzycode*` 系列时**：先抓 `luzzycode` 的正文拿到路由表，再按路由表取当前场景需要的子 skill——§1.1a 的链接模板对任何名字都成立。
 
 **指向的外部文档与 skill（agent 自读 + 供用户查阅）**：
 - AnySearch API 文档 —— https://www.anysearch.com/docs

@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-19-1f6feb?style=flat-square)](skills/)
-[![Resident](https://img.shields.io/badge/resident-12.9k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
+[![Resident](https://img.shields.io/badge/resident-11.9k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
 [![Convention](https://img.shields.io/badge/format-agentskills.io-0969da?style=flat-square)](https://agentskills.io/specification)
 
 ## 30 秒上手
@@ -57,10 +57,17 @@ LuzzyCode/
 │   ├── luzzycode-tools/          工具选择与降级路径
 │   ├── luzzycode-docs/           写作规则与 AI 腔清除
 │   ├── luzzycode-office/         .docx / .xlsx / .pptx
+│   ├── luzzycode-ppt/            归藏·大狮·HTML PPT Studio 选择与验收
+│   ├── luzzycode-webdev/         HTML 页面与浏览器实测
 │   ├── luzzycode-design/         四项设计 skill 与视觉验收
+│   ├── luzzycode-planning/       四家规划工具选择
+│   ├── luzzycode-review/         四家审查工具选择
+│   ├── luzzycode-windows/        Windows 修复与安全红线
 │   ├── luzzycode-skills/         skill 工程
 │   ├── luzzycode-workspace/      落点纪律与收尾自检
 │   └── luzzycode-interaction/    汇报格式与项目上下文
+├── scripts/
+│   └── check-skills.py           质量门禁校验脚本
 ├── README.md
 ├── LICENSE
 └── .gitattributes
@@ -83,7 +90,7 @@ LuzzyCode/
 | 写作 / 文案 | [stop-slop](https://github.com/hardikpandya/stop-slop) · [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) |
 | HTML / 网页开发 | [anthropics/skills](https://github.com/anthropics/skills) · [Frontend Design Toolkit](https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit) · [Superpowers](https://github.com/obra/superpowers) |
 | Windows 修复 / 优化 | [WinUtil](https://github.com/ChrisTitusTech/winutil) · [Win11Debloat](https://github.com/Raphire/Win11Debloat) · [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) |
-| 项目规划 / 需求拆解 | [spec-kit](https://github.com/github/spec-kit) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) · [Get Shit Done](https://github.com/gsd-build/get-shit-done) · [planning-with-files](https://github.com/OthmanAdi/planning-with-files) |
+| 项目规划 / 需求拆解 | [spec-kit](https://github.com/github/spec-kit) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) · [GSD Core](https://github.com/open-gsd/gsd-core) · [planning-with-files](https://github.com/OthmanAdi/planning-with-files) |
 | 代码审查 | [Agent Skills](https://github.com/addyosmani/agent-skills) · [Open Code Review](https://github.com/alibaba/open-code-review) · [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) · [Shippie](https://github.com/mattzcarey/shippie) |
 | skill 开发 / 管理 | [Luzzy-Skill Architect](https://github.com/LuzzyMeow/Luzzy-Skill-Architect) |
 
@@ -100,7 +107,7 @@ git remote set-url origin git@github.com:<owner>/<repo>.git
 git remote -v     # 两行都应以 git@github.com: 开头
 ```
 
-国内网络受限时逐级降级。下面两个代理经实测筛选（同时测了 8 个，其余 6 个已不可用）：
+国内网络受限时逐级降级。下面两个代理经实测筛选（同时测了 7 个，其余 5 个已不可用）：
 
 ```bash
 # 代理前缀，可用于 clone / raw / archive
@@ -125,7 +132,7 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 |---|---|---|
 | `luzzycode` | 需要路由到子 skill | 路由表、冲突裁决 |
 | `luzzycode-workflow` | 立清单 / 进计划态 / 开目标 / 委派子代理 | 清单三态语义、计划态只读、目标生命周期（含 3 回合阻塞规则）、后台任务 |
-| `luzzycode-planning` | 立项 / 拆需求 / 写方案 | spec-kit·OpenSpec·Get Shit Done·planning-with-files 四家选择、与会话清单的分工 |
+| `luzzycode-planning` | 立项 / 拆需求 / 写方案 | spec-kit·OpenSpec·GSD Core·planning-with-files 四家选择、与会话清单的分工 |
 | `luzzycode-interaction` | 汇报 / 获取项目上下文 | 汇报格式、AGENTS.md 优先的阅读顺序、文档落地 |
 
 </details>
@@ -161,7 +168,7 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 
 </details>
 
-十九个 skill 相互独立。常驻提示词 §12.1 有完整索引，删掉某个 skill 时同步删掉索引里那一行即可。
+十九个 skill 相互独立。完整的「场景 → skill」路由表在 `luzzycode` 的正文里，常驻提示词 §12.1 只留名字清单与抓取链接模板——同一份清单不放两处，免得漂移也免得白付常驻预算。增删 skill 时同步三处：`skills/` 目录、`luzzycode` 的路由表、常驻 §12.1 的名字清单。
 
 ## 零配置启动
 
@@ -170,7 +177,7 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 ```bash
 # 取 skill 包（含 Python / Node / PowerShell / Bash 四套脚本）
 curl -L -o anysearch-skill.zip \
-  https://github.com/anysearch-skill/anysearch-skill/archive/refs/heads/main.zip
+  https://github.com/anysearch-ai/anysearch-skill/archive/refs/heads/main.zip
 unzip anysearch-skill.zip
 
 # 自检，任选已装的运行时
@@ -196,12 +203,14 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 层 | 内容 | 行数 | 实测 token |
 |---|---|---|---|
-| 常驻 | `prompt/LuzzyCode.md` | 447 | 12,862 |
-| 按需 | 19 个 skill 合计 | 1,684 | 29,328 |
+| 常驻 | `prompt/LuzzyCode.md` | 428 | 11,894 |
+| 按需 | 19 个 skill 正文 | 1,476 | 27,869 |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git`，约 18k token。纯闲聊只付常驻的 12.9k。
+「按需」只算 skill 的**正文**——每个 skill 的 frontmatter（`description` 等）是常驻 skill 目录的一部分，每轮都在上下文里，19 个合计约 3.9k token，属常驻开销。
+
+典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git` 三个 skill 的正文，约 17.7k token。纯闲聊只付常驻的 11.9k。
 
 skill 的加载靠 description 触发。每个 description 都写了「何时用」和「不要用」，避免误激活。
 
@@ -226,6 +235,19 @@ https://gh-proxy.com/https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/
 ```
 
 Agent 也会定期对比本机 skill 目录与本仓库内容，发现差异会告诉你变了什么。它不会自动覆盖你的本地预设，改不改由你决定。
+
+## 质量门禁
+
+改完 skill 跑一遍校验，它检查 `luzzycode-skills` 里写明的门禁条目，外加仓库级一致性：
+
+```bash
+python scripts/check-skills.py            # 失败返回 1
+python scripts/check-skills.py --verbose  # 逐项打印通过情况
+```
+
+查这些：`name` 与目录名一致且 kebab-case、`description` 含负面触发词且不泄漏步骤、正文 ≤500 行且无第二人称、至少 2 组 Input→Output、有 `Verify` 段、无 emoji 与装饰分隔线；仓库级查计数是否与目录一致、提示词引用的 skill 名是否存在、编排器路由表是否覆盖全部子 skill、抓取链接模板是否仍指向本仓库。
+
+只用标准库，不依赖 PyYAML。门禁脚本自身也守着一条纪律：**写了就必须能跑**——上一版的门禁是纯文字清单，从没被执行过，于是 19 个 skill 全部违反其中的「无装饰性格式」而无人发现。
 
 ## 许可
 
