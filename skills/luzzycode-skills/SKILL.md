@@ -81,30 +81,48 @@ Architect 定义了 skill 的生命周期协议与质量门禁（PPER 四阶段�
 - [ ] 正文 ≤ 500 行
 - [ ] 含至少 2 组 Input → Output 示例
 - [ ] 含 `Verify:` 验证步骤
-- [ ] 无装饰性格式（emoji、分隔线、装饰性引用块）
+- [ ] 无装饰性格式（emoji、分隔线、装饰性引用块；self-link 定位块除外）
 - [ ] 通过 DSH 解析器校验（frontmatter + kebab-case 命名）
+- [ ] 在本仓库内改动时，`python scripts/check-skills.py` 退出码为 0
 
 ### 触发验证
 
-用 Architect 自带脚本做 L1 触发测试：
+触发测试脚本在 **Luzzy-Skill Architect 仓库**里（不在本仓库）：`scripts/validate-trigger.py`。
 
 ```bash
-python scripts/validate-trigger.py <skill-dir>
+# 先拿到 Architect 仓库（本机有就用本机的）
+git clone git@github.com:LuzzyMeow/Luzzy-Skill-Architect.git
+python Luzzy-Skill-Architect/scripts/validate-trigger.py <skill-dir>
 ```
 
 - 激活率 < 80% → 回改 description，补关键词或同义词
 - 误激活 → 补负面触发词
 - 漏激活 → 补同义词与触发短语
 
+**本仓库自身的门禁校验**（结构与一致性，不测触发）：
+
+```bash
+python scripts/check-skills.py          # 失败返回 1
+python scripts/check-skills.py --verbose
+```
+
 ## 示例
 
 Input: 「帮我写一个处理 PDF 的 skill」
-Output: 先读 Luzzy-Skill Architect → 走 Phase 1 六问（任务、触发词、类型、是否需要 scripts/references、是否属于 skill family、完成标准）→ 确认 profile card → Phase 2 设计目录树 → Phase 3 按触发优先写 description → Phase 4 跑 validate-trigger.py → 报告激活率
+Output: 先读 Luzzy-Skill Architect → 走 Phase 1 六问（任务、触发词、类型、是否需要 scripts/references、是否属于 skill family、完成标准）→ 确认 profile card → Phase 2 设计目录树 → Phase 3 按触发优先写 description → Phase 4 跑 Architect 的 `validate-trigger.py` → 报告激活率
 
 Input: 「这个 skill 老是误触发，帮我看看」
-Output: 读 Architect 的 anti-patterns → 判定为 AP-5（缺负面触发词）→ 在 description 补 `Do NOT use for ...` → 重跑 validate-trigger.py 对比激活率
+Output: 读 Architect 的 anti-patterns → 判定为 AP-5（缺负面触发词）→ 在 description 补 `Do NOT use for ...` → 重跑 Architect 的 `validate-trigger.py` 对比激活率
 
 ## 边界
 
 - 本 skill 只管 **skill 本身的工程质量**；具体技能内容（如前端设计怎么做）由对应 skill 负责
 - 涉及本仓库的 Git 操作 → 走 `luzzycode-git`
+
+## Verify
+
+- 动手前：Luzzy-Skill Architect 的正文读到了吗？（只看到仓库简介不算）
+- `name` 与目录名一致、kebab-case、description 含负面触发词、正文 ≤500 行——四项门禁过了吗？
+- 在本仓库（LuzzyCode）里改 skill 时，跑过 `python scripts/check-skills.py` 吗？退出码是不是 0？
+- 触发验证：description 的关键词能覆盖用户真实说法吗？漏激活补同义词，误激活补负面触发词
+- 改完 skill，同步了常驻提示词 §12.1 的名字清单与 `luzzycode` 的路由表吗？
