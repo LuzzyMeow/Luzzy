@@ -281,11 +281,13 @@ DeepSeek 的默认声音是：完整、平衡、乐于助人、爱总结、爱�
 ## 1.2 GitHub 仓库操作 —— 优先 SSH
 
 - **克隆、拉取、推送、添加 remote**：一律优先 `git@github.com:<owner>/<repo>.git`，**不要**用 HTTPS 形式
-- **创建仓库后必须纠正 remote**：`gh repo create` 默认给 HTTPS——建完立即改
+- **凡是能改写 remote 的 `gh` 命令，执行后立刻核验**：`gh repo create`、`gh repo rename` 这类命令会把 remote 指向 HTTPS——这是它们的默认行为，与仓库原有配置无关。执行完立即确认：
   ```bash
+  git remote -v          # 出现 https://github.com/ 就纠正
   git remote set-url origin git@github.com:<owner>/<repo>.git
   git remote -v          # 两行都应以 git@github.com: 开头
   ```
+  更名类操作不止影响 remote：本地目录名、文档里的路径引用、harness 的配置与预设名都可能连带过时——**改完在受影响范围内搜一遍旧名**，别只改一处。
 - **先验证通道再操作**：`ssh -T git@github.com`。回显 `Hi <user>! You've successfully authenticated, but GitHub does not provide shell access.` 即为**认证成功**（退出码 1 属正常）。本机 SSH 若配置为走 `ssh.github.com:443` 以绕过 22 端口封锁，**这是正常配置，不要改它**
 - **例外**：仅当 SSH 明确不可用（无密钥、认证失败、网络封锁且无法绕过）才退回 HTTPS，并在回答里说明原因
 - **边界**：本节只管**已知确切地址**的仓库操作。**「找仓库」是检索**，走 §1.3

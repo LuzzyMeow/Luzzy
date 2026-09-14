@@ -47,6 +47,25 @@ Luzzy/
 
 **改动时要守的一条**：规则只有一个事实源。如果某条规则在提示词里出现两次，删掉一份，改成引用（`见 §N`）；如果某条规则同时出现在提示词和某个 skill 里，**规则留在提示词，skill 里删掉**。
 
+### 更名类操作（改仓库名 / 文件名 / 目录名）
+
+更名不是改一处就完事——名字散落在很多地方，漏掉任何一处都会留下死链或加载失败。**执行顺序**：
+
+1. **先改权威处**：仓库名（`gh repo rename`）、主文件（`prompt/Luzzy.md`）
+2. **立刻核验 remote**：`gh repo create` / `gh repo rename` 这类命令会把 remote 改成 HTTPS——执行后跑 `git remote -v`，出现 `https://` 就按 §1.2 纠正回 SSH
+3. **在受影响范围内全量搜旧名**，逐个判定「该改」还是「该留」：
+
+   | 该改 | 该留 |
+   |---|---|
+   | 文档正文、路径引用、安装命令 | **历史会话缓存**（`~/.dsh/storages/`）、变更登记里的历史记录 |
+   | harness 配置、预设名与目录名 | 有意保留的演进说明（如「早先版本是……」） |
+   | 仓库描述、topics、README 徽章链接 | 第三方 skill 自身的历史文件（如各技能的 `README.md` 说明其来源） |
+
+4. **harness 侧同步**（本机 DSH 为例，其他 harness 见第七节）：预设目录名、`preset.yml` 的 `name` 与 `description`、`settings.yaml` 的 `agent-presets.default`、`agent.cordis.yml` 里的注释——四者都要跟。改完跑一遍第六节的 DSH 同步与回验流程。
+5. **回归核对**：按第四节整表过一遍，重点是交叉引用、清单指向、README 数字。
+
+> **`preset.yml` 的 description 是最容易漂移的一处**——它不在任何自动校验范围内，描述会长期停留在旧架构。改提示词时顺手看一眼它是否还说得对。
+
 ## 四、改完怎么核对
 
 没有全仓库的自动门禁，改完按这张表人工过一遍。每项都给了「怎么快速验」：
@@ -148,7 +167,7 @@ ZCode 插件可同时打包 skills、commands、MCP server。官方插件源为 
 
 **本机预设的部署链路（同步本提示词到 DSH 时的实测经验）**
 
-DSH 的 agent 预设放在 `~/.dsh/.agent-presets/<预设名>/`（本仓库对应 `luzzycode`）。提示词不是直接读文件，而是被**机械嵌入** YAML：
+DSH 的 agent 预设放在 `~/.dsh/.agent-presets/<预设名>/`（本仓库对应 `luzzy`）。提示词不是直接读文件，而是被**机械嵌入** YAML：
 
 ```
 persona.md  --(node sync-persona.mjs)-->  agent.cordis.yml 的 config.prefix: |- 块
@@ -159,7 +178,7 @@ persona.md  --(node sync-persona.mjs)-->  agent.cordis.yml 的 config.prefix: |-
 
 1. **先备份 `persona.md`**（同步脚本只备份 YAML，不备份 persona 正本），命名沿用 `persona.md.bak-<原因>-<时间戳>`
 2. **覆盖 `persona.md`**，内容与仓库 `prompt/Luzzy.md` **逐字节一致**
-3. `cd ~/.dsh/.agent-presets/luzzycode && node sync-persona.mjs`
+3. `cd ~/.dsh/.agent-presets/luzzy && node sync-persona.mjs`
 4. **复核**：脚本会自行解析回验 + 逐字节比对 + 顶层条目数校验，任一不过自动回滚；稳妥起见再独立跑一次解析比对
 
 **四条硬约束（踩过坑，别复发）**：
@@ -177,7 +196,7 @@ persona.md  --(node sync-persona.mjs)-->  agent.cordis.yml 的 config.prefix: |-
 **验证命令**（脚本之外独立复核一遍，确认解析出的文本与源文件一致）：
 
 ```bash
-cd ~/.dsh/.agent-presets/luzzycode && node -e "
+cd ~/.dsh/.agent-presets/luzzy && node -e "
 const fs=require('fs'), yaml=require('/Users/<你>/.dsh/profiles/desktop/node_modules/js-yaml');
 const T=new yaml.Type('tag:yaml.org,2002:js',{kind:'scalar',construct:d=>d,resolve:()=>true});
 const p=yaml.load(fs.readFileSync('agent.cordis.yml','utf8'),{schema:yaml.DEFAULT_SCHEMA.extend([T])}).find(e=>e.id==='persona');
