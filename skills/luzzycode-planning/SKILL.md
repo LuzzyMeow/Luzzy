@@ -4,7 +4,7 @@ description: >
   Use when planning a project before coding, decomposing requirements into tasks,
   writing a technical approach, or setting up persistent plans that survive
   context loss.
-  Handles selection among spec-kit, OpenSpec, Get Shit Done, and
+  Handles selection among spec-kit, OpenSpec, GSD Core, and
   planning-with-files, plus the boundary against the in-session task list.
   Triggers: "plan this project", "break down requirements", "write a spec",
   "technical plan", "roadmap", "项目规划", "需求拆解", "写方案", "排期", "立项".
@@ -28,12 +28,22 @@ metadata:
 |---|---|---|---|
 | [spec-kit](https://github.com/github/spec-kit) | 136k | GitHub 官方规格驱动开发工具包 | 正式项目，从规格走到实现，走 GitHub 流程 |
 | [OpenSpec](https://github.com/Fission-AI/OpenSpec) | 68k | 轻量规格层，改动以 delta 跟踪 | 已有仓库要加规格层，或做增量变更 |
-| [Get Shit Done](https://github.com/gsd-build/get-shit-done) | 64.5k | 元提示 + 上下文工程，抗上下文腐化 | 长任务、多阶段，担心上下文退化 |
-| [planning-with-files](https://github.com/OthmanAdi/planning-with-files) | 26.8k | 计划落盘到 `task_plan.md` / `findings.md` / `progress.md` | 要**可恢复**的计划 |
+| [GSD Core](https://github.com/open-gsd/gsd-core) | 9.4k | 元提示 + 上下文工程，抗上下文腐化 | 长任务、多阶段，担心上下文退化 |
+| [planning-with-files](https://github.com/OthmanAdi/planning-with-files) | 26.9k | 计划落盘到 `task_plan.md` / `findings.md` / `progress.md` | 要**可恢复**的计划 |
 
-## 与 §三 任务清单的分工（最常混淆的一处）
+**读取顺序**：本机 skill 目录已有就用加载工具按精确名字读 → 没有就抓仓库 `SKILL.md` 正文（注意子目录路径，不在仓库根）→ 主域不通走镜像（常驻 §1.2）→ **全部失败 → 立即上报失效链接**，然后按下表降级继续，不要卡在「读不到就不干活」。
 
-| | 项目规划（本 skill） | 任务清单（`luzzycode-workflow`） |
+| 读不到时 | 改用 |
+|---|---|
+| spec-kit | 本 skill「规划质量要求」五条 + 仓库既有 `docs/` 约定，产出 `PLAN-<范围>.md` |
+| OpenSpec | 同上，改动以「现状 → 目标」两段式记录 |
+| GSD Core | 走 `planning-with-files` 的落盘方案 |
+| planning-with-files | `PLAN-<范围>.md` + `WORKLOG.md`，每轮从盘上恢复 |
+| **四家全部读不到** | 用本 skill 的「规划质量要求」独立完成，并在交付时说明「未读到外部规划 skill 正文」 |
+
+## 与任务清单的分工（最常混淆的一处）
+
+| | 项目规划（本 skill） | 任务清单（skill `luzzycode-workflow`） |
 |---|---|---|
 | 管什么 | 项目级：目标、范围、阶段、交付物 | 会话级：当前这一段的执行进度 |
 | 存活多久 | 跨会话，落盘到文档 | 当前会话，整表重写 |
@@ -63,7 +73,7 @@ Input: 「我要做一个记账 App，帮我规划一下」
 Output: 先澄清（平台？单机还是多端？谁用？）→ 读 spec-kit 或 planning-with-files → 写目标 / 不做什么 / 阶段划分 / 每阶段验收标准 / 风险 → 落盘到 `PLAN-记账App.md`
 
 Input: 「这个需求帮我拆成任务」
-Output: 先判是项目级还是会话级——项目级走本 skill 的规划工具；只服务当前会话就走 §三 任务清单
+Output: 先判是项目级还是会话级——项目级走本 skill 的规划工具；只服务当前会话就去 skill `luzzycode-workflow` 立任务清单
 
 Input: 长任务跑到一半上下文被压缩了
 Output: 读 `planning-with-files` → 把计划、发现、进度落盘 → 之后每轮从盘上恢复，不靠上下文记忆

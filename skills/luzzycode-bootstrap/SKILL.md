@@ -33,9 +33,9 @@ metadata:
 
 ```bash
 # 1) 下载 Skill 包
-curl -L -o anysearch-skill.zip https://github.com/anysearch-skill/anysearch-skill/archive/refs/heads/main.zip
+curl -L -o anysearch-skill.zip https://github.com/anysearch-ai/anysearch-skill/archive/refs/heads/main.zip
 #    直连不通走镜像：
-#    https://gh-proxy.com/https://github.com/anysearch-skill/anysearch-skill/archive/refs/heads/main.zip
+#    https://gh-proxy.com/https://github.com/anysearch-ai/anysearch-skill/archive/refs/heads/main.zip
 unzip anysearch-skill.zip
 
 # 2) 自检 —— 按已装运行时择一
