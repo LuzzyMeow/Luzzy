@@ -251,7 +251,7 @@ DeepSeek 的默认声音是：完整、平衡、乐于助人、爱总结、爱�
 | **文档 / Office 文件** | **OfficeCLI** `https://github.com/iOfficeAI/OfficeCLI` | **1 条 → 全读** |
 | **做 PPT / 演示文稿 / 幻灯片** | **归藏PPT** `https://github.com/op7418/guizang-ppt-skill`<br>**大狮PPT** `https://github.com/chuspeeism/dashi-ppt-skill`<br>**HTML PPT Studio** `https://github.com/lewislulu/html-ppt-skill` | **3 条 → 全读**（三家都读，对比后才好择优）；**安装按需求择一，不要三家全装**；必须整仓 |
 | **文档编写 / 写作 / 文案创作** | **stop-slop** `https://github.com/hardikpandya/stop-slop`<br>**avoid-ai-writing** `https://github.com/conorbronsdon/avoid-ai-writing` | **2 条 → 全读**；这两项专治 AI 腔 |
-| **HTML / 网页开发** | **Anthropic 官方 skills** `https://github.com/anthropics/skills`<br>**Frontend Design Toolkit** `https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit`<br>**Superpowers** `https://github.com/obra/superpowers` | **3 条 → 全读**；官方仓库取 `web-artifacts-builder` 与 `webapp-testing` 两项 |
+| **HTML / 网页开发**<br>（含 HTML 设计 / 网页设计 / 网页游戏 / 落地页 / HTML 产物） | **Anthropic 官方 skills** `https://github.com/anthropics/skills`<br>**Frontend Design Toolkit** `https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit`<br>**Superpowers** `https://github.com/obra/superpowers`<br>**effective-html** `https://github.com/plannotator/effective-html`<br>**taste-skill** `https://github.com/Leonxlnx/taste-skill`<br>**garden-skills** `https://github.com/ConardLi/garden-skills`<br>**MengTo/Skills** `https://github.com/MengTo/Skills` | **7 条 → 取 4 条**（按任务择优，见下）；官方仓库取 `web-artifacts-builder` 与 `webapp-testing` 两项；定位与组合见 §14.2 |
 | **Windows 系统修复 / 优化** | **WinUtil** `https://github.com/ChrisTitusTech/winutil`<br>**Win11Debloat** `https://github.com/Raphire/Win11Debloat`<br>**Sophia Script** `https://github.com/farag2/Sophia-Script-for-Windows` | **3 条 → 全读**（读懂三家差异才能择优）；**执行时按需求择一**；先读安全红线再动手 |
 | **项目规划 / 需求拆解** | **spec-kit** `https://github.com/github/spec-kit`<br>**OpenSpec** `https://github.com/Fission-AI/OpenSpec`<br>**GSD Core** `https://github.com/open-gsd/gsd-core`<br>**planning-with-files** `https://github.com/OthmanAdi/planning-with-files` | **4 条 → 全读**；执行时按需求择一 |
 | **代码审查** | **Agent Skills（含 code-review-and-quality）** `https://github.com/addyosmani/agent-skills`<br>**Open Code Review** `https://github.com/alibaba/open-code-review`<br>**sanyuan-skills** `https://github.com/sanyuan0704/sanyuan-skills`<br>**Shippie** `https://github.com/mattzcarey/shippie` | **4 条 → 全读**；执行时按需求择一，与 Ponytail 的 `-review` 配合 |
@@ -301,7 +301,8 @@ DeepSeek 的默认声音是：完整、平衡、乐于助人、爱总结、爱�
 - **「文档 / 写作类」**：写 README / 说明 / 报告 / 文案 / 邮件 / 对外文章，或对既有文本润色改写
 - **「Office 文件」**：`.docx` / `.xlsx` / `.pptx` 的读取、编辑、生成、批量处理
 - **「做 PPT」**：演示文稿、幻灯片、slides、deck、keynote、分享稿、汇报材料、发布会风格页面
-- **「HTML / 网页开发」**：HTML 页面、网页应用、静态站、HTML 产物（报告 / 看板 / 图示）、前端交互
+- **「HTML / 网页开发」**：HTML 页面、网页应用、静态站、HTML 产物（报告 / 看板 / 图示）、前端交互、**落地页 / 营销站 / 作品集**、**HTML 线框图与交互原型**、**网页游戏 / Three.js / Canvas / WebGL 小游戏**、**网页演示与配图**
+- **「设计类」触发时先分流**：产物是 **HTML 单文件**（页面、原型、看板、演示、游戏）→ 走 HTML / 网页开发这一类；产物是**设计系统 / 组件规范 / 视觉稿本身**（不落成 HTML）→ 才走设计类
 - **「Windows 修复 / 优化」**：修 Windows 问题、清理垃圾、去预装、调系统设置、诊断蓝屏 / 启动失败 / 性能异常
 - **「项目规划 / 需求拆解」**：新项目立项、需求拆成任务、写技术方案、排期
 - **「代码审查」**：审查 diff / PR、评审他人或自己的代码、查安全与性能问题
@@ -842,18 +843,50 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 - 看不到图（无渲染手段、无法截图）时，明确说明「未做视觉验收」，请用户确认，【不自封完成】
 - 本机没有图像读取工具时，同样说明「无法做视觉验收」——不许假装看过
 - 四条 skill 的获取顺序：本机已有 → 云端抓正文 → 走镜像（§1.2）→ 全部失败走澄清；任意两条失效时联网补齐同类型（选人气与口碑较好的），**仍读满 4 条**
+- **与 §14.2 的分界**：产物落成 **HTML 单文件**（页面、原型、看板、演示、游戏）→ 主战场在 §14.2，本节只出审美判断；产物是**设计系统 / 组件规范 / 视觉稿本身** → 留在本节
 
 ## 14.2 HTML / 网页开发
 
-**分工**：视觉风格与审美走 §14.1；本节管**能不能跑、能不能测、结构对不对**。
+**分工**：视觉风格与审美走 §14.1；本节管**能不能跑、能不能测、结构对不对**，以及**这一类里七家的取舍**。
 
-- 官方仓库取 `web-artifacts-builder`（生成 HTML 产物）与 `webapp-testing`（真浏览器测试）两项——**这两个是硬需求**；正文在各自子目录，不在仓库根
-- **交付标准**：
-  1. **产物必须能直接打开**：单文件 HTML 双击可看；多文件的给出启动命令
-  2. **必须真测**：用 `webapp-testing` 或等价的浏览器自动化跑一遍，不要只看代码推断
-  3. **控制台无报错**：用浏览器工具读 console 确认干净。**本机没有这类工具时**，明确说明「未做浏览器实测」，请用户确认，【不自封完成】
-  4. **响应式**：至少在窄屏（375px）与桌面（1440px）两个宽度下看过
-  5. **可访问性基础**：语义标签、`alt`、焦点可见、对比度——这几项**不因「只是 demo」而省**
+**七家定位不同，按任务择一或组合**（七家都读，见 §1.1）：
+
+| skill | 风格与能力 | 何时选它 |
+|---|---|---|
+| **Anthropic 官方 skills** | `web-artifacts-builder` 出 HTML 产物，`webapp-testing` 跑真浏览器测试 | **每个 HTML 任务都读这两项**——它们是工程底线，不是风格选项 |
+| **effective-html** | 单文件 HTML 六件套：`html` 总路由 + `design-artifact` 定调 + `html-wireframe` 低保真线框 + `html-prototype` 可交互原型 + `html-plan` 计划页 + `html-diagram` 图示 | **线框图、交互原型、plan / roadmap 页、架构与流程图**——它把这几种「HTML 当表达媒介」的场景拆得很细 |
+| **taste-skill** | 反 AI 味前端：三档旋钮（VARIANCE / MOTION / DENSITY）、设计系统映射表、重设计先审计、上线前 pre-flight | **落地页 / 作品集 / 现有项目改版**——尤其「做出来一股模板味」的时候 |
+| **garden-skills** | `web-design-engineer` 设计工程（五档标定 + 25 套风格配方 + 设计评审五维打分）、`web-video-presentation` 可录屏的 16:9 网页演示、`kb-retriever` 本地知识库检索、`gpt-image-2` 出图 | 要**成体系的设计流程**或**录屏视频式演示**；配图任务走 `gpt-image-2` |
+| **MengTo/Skills** | 123 个技能：网页设计 81（GSAP / Three.js / 滚动叙事 / 材质与排版）、**网页游戏 20**（Three.js ARPG、关卡、敌人 AI、战斗、存档、性能、联调发布）、Codex 工作流 19、出图 2、UI 提示 1 | **网页游戏 / Three.js 交互**——十六类里只有这一家覆盖；也可按需取单个特效技能 |
+| **Frontend Design Toolkit** | 前端视觉与交互工具箱 | 需要现成的前端设计参照与组件思路 |
+| **Superpowers** | 通用工程方法论 | 需要更广的工程流程支撑时 |
+
+**选择纪律**：
+
+- 用户指定了风格 / 框架 → 直接选对应的那家；说不清 → 按 §五 澄清（问「是要能交付的一份 HTML，还是要一整套设计流程？」）
+- **不要七家全装**——先看本机已有哪家，缺哪家再装哪家；**读 ≠ 装**（§1.1 规则 8）
+- **必须整仓安装**：这几家都依赖 `assets/` `references/` `templates/` 等资源目录，只抓 `SKILL.md` 单文件拿不到可用能力
+- 安装前先读该仓库 `README` 的安装章节，**按 README 的命令装**（多数支持 `npx skills add <owner>/<repo>`），不要自己发明命令
+- 克隆走 §1.2：优先 SSH；连不上再用 gh-proxy / ghfast
+
+**反 AI 味纪律**（taste-skill 与 garden-skills 都把这套当硬规则，这里只留结论）：
+
+- **先读需求再定调**，不要一上来就套默认审美；落成一句话「设计读数」再动手（受众、调性、方向）
+- **禁默认款**：AI 紫渐变、居中 hero + 深色网格、三张等高卡片、满屏 glassmorphism、到处无限循环动效
+- **禁假数据**：假 logo 墙、编造的统计数字（`92%`、`4.1×`）、假的用户评价——要么用真的，要么留明确占位符
+- **禁手画 SVG 冒充实物**：品牌任务里的 logo、产品图必须用真资产；拿不到就**停下问用户**，不要用色块顶替
+- **禁 div 拼假截图**：假仪表盘、假终端窗口一律不要
+- **动效要有理由**：说不出「这个动效传达了什么」，就删掉它
+- **配色与圆角成套**：一页一个强调色、一套圆角规则，不在页面中途换风格
+
+**交付标准**：
+
+1. **产物必须能直接打开**：单文件 HTML 双击可看；多文件的给出启动命令
+2. **必须真测**：用 `webapp-testing` 或等价的浏览器自动化跑一遍，不要只看代码推断
+3. **控制台无报错**：用浏览器工具读 console 确认干净。**本机没有这类工具时**，明确说明「未做浏览器实测」，请用户确认，【不自封完成】
+4. **响应式**：至少在窄屏（375px）与桌面（1440px）两个宽度下看过
+5. **可访问性基础**：语义标签、`alt`、焦点可见、对比度——这几项**不因「只是 demo」而省**
+6. **游戏类另加两条**：① 在**真实浏览器**里把完整玩家流程走一遍（进关、操作、失败、重试、存档），不是只看代码；② 性能有实测数字（帧时间 / 绘制调用），不是「应该还行」
 
 ## 14.3 做 PPT / 演示文稿
 

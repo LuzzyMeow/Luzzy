@@ -5,7 +5,7 @@
 他不是一个编码助手的人格皮肤，而是一套完整的运行契约：怎么读、怎么搜、怎么记得住、怎么动手、什么时候停下问人、什么时候必须自己扛。编码是他最常干的活，但不是他唯一的活。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/常驻提示词-34.5k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
+[![Prompt](https://img.shields.io/badge/常驻提示词-35.9k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
 [![Skills](https://img.shields.io/badge/配套_skill-3_个-0969da?style=flat-square)](skills/)
 [![Rules](https://img.shields.io/badge/必读清单-十六类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
@@ -45,7 +45,7 @@ cat Luzzy/prompt/Luzzy.md
 
 > 「两副面孔」不是人格分裂，是一种工程取舍：陪伴需要松弛感，交付需要严谨度，硬凑成一种语气会两头不讨好。
 
-**他不是只会写代码的。** 十六类任务的清单覆盖了设计、PPT、文档、Office、网页、Windows 运维、项目规划、代码审查、逆向安全、素材、Android、MCP、Skill 工程、浏览器自动化、视频转笔记——每一类都有自己的必读清单与红线。
+**他不是只会写代码的。** 十六类任务的清单覆盖了设计、PPT、文档、Office、网页（含 HTML 设计、落地页、交互原型、**网页游戏**）、Windows 运维、项目规划、代码审查、逆向安全、素材、Android、MCP、Skill 工程、浏览器自动化、视频转笔记——每一类都有自己的必读清单与红线。
 
 ## 它解决什么问题
 
@@ -125,6 +125,7 @@ Luzzy/
 |---|---|
 | 后端 / 通用编码 | [Ponytail](https://github.com/DietrichGebert/ponytail) · [spec-kit](https://github.com/github/spec-kit) · [mattpocock/skills](https://github.com/mattpocock/skills) |
 | 设计类 | [huashu-design](https://github.com/alchaincyf/huashu-design) · [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) · [open-design](https://github.com/nexu-io/open-design) · [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| HTML / 网页开发 | 官方 [web-artifacts-builder / webapp-testing](https://github.com/anthropics/skills) · [effective-html](https://github.com/plannotator/effective-html) · [taste-skill](https://github.com/Leonxlnx/taste-skill) · [garden-skills](https://github.com/ConardLi/garden-skills) · [MengTo/Skills](https://github.com/MengTo/Skills) |
 | 做 PPT | [归藏PPT](https://github.com/op7418/guizang-ppt-skill) · [大狮PPT](https://github.com/chuspeeism/dashi-ppt-skill) · [HTML PPT Studio](https://github.com/lewislulu/html-ppt-skill) |
 | 代码审查 | [Agent Skills](https://github.com/addyosmani/agent-skills) · [Open Code Review](https://github.com/alibaba/open-code-review) · [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) · [Shippie](https://github.com/mattzcarey/shippie) |
 | 浏览器自动化 | 本机官方 skill `~/.agents/skills/tabbit/` · [dsh-tabbit](https://github.com/Tabbit-Browser/dsh-tabbit) · [Tabbit-Devtools-Skill](https://github.com/Tabbit-Browser/Tabbit-Devtools-Skill) |
@@ -203,7 +204,7 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,312 | 34,523 |
+| `prompt/Luzzy.md` | 1,345 | 35,935 |
 | └ 其中 `〇 · 身份与使命`（人设层） | 109 | ~4,000 |
 | `skills/`（三个技能，**按需加载，不常驻**） | 8,564 | — |
 
