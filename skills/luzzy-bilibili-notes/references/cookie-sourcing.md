@@ -8,7 +8,7 @@ B 站 AI 字幕需要登录态。匿名访问 `--list-subs` 只会返回 `danmak
 从浏览器的 Playwright 上下文直接取 cookie，**不受文件锁影响**，且能取到
 `HttpOnly` 的 `SESSDATA`（`--cookies-from-browser` 在某些版本下取不到）。
 
-前提：本机装了 Tabbit 浏览器（见 luzzycode §14.16）。
+前提：本机装了 Tabbit 浏览器（见 Luzzy §14.16）。
 
 在 Tabbit `nodejs` 程序里执行，把 cookie 写成 Netscape 格式：
 

@@ -1,6 +1,6 @@
-# LuzzyCode 配套 skill
+# Luzzy 配套 skill
 
-本目录是 [LuzzyCode](../README.md) 的配套技能层。提示词 [`prompt/LuzzyCode.md`](../prompt/LuzzyCode.md) 负责**每轮都生效的硬规定**，本目录负责**命中特定场景才需要的操作细则**——两层分工，规则不重复。
+本目录是 [Luzzy](../README.md) 的配套技能层。提示词 [`prompt/Luzzy.md`](../prompt/Luzzy.md) 负责**每轮都生效的硬规定**，本目录负责**命中特定场景才需要的操作细则**——两层分工，规则不重复。
 
 命中场景时，提示词 §1.1 的必读清单会指向这里的本地路径；本机已有就直接读，不必联网。
 
@@ -18,13 +18,13 @@
 
 ```bash
 # 1) 直接用（推荐）：把本仓库克隆到工作区，提示词里的清单会指向 skills/<名>/
-git clone git@github.com:LuzzyMeow/LuzzyCode.git
+git clone git@github.com:LuzzyMeow/Luzzy.git
 
 # 2) 装进该 Agent 的用户级 skill 目录（以 Claude Code 为例）
-cp -r LuzzyCode/skills/luzzy-skill-architect ~/.claude/skills/
+cp -r Luzzy/skills/luzzy-skill-architect ~/.claude/skills/
 
 # 3) 装进跨平台目录（Codex / OpenClaw 等认这个）
-cp -r LuzzyCode/skills/luzzy-bilibili-notes ~/.agents/skills/
+cp -r Luzzy/skills/luzzy-bilibili-notes ~/.agents/skills/
 ```
 
 各家 harness 的 skill 目录与 MCP 配置路径速查，见 [`AGENTS.md`](../AGENTS.md) 第七节。

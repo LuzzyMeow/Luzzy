@@ -19,7 +19,7 @@ compatibility: >
   requires: python>=3.10, yt-dlp (pip install -U yt-dlp).
   Bilibili subtitles require a logged-in session; anonymous access returns
   danmaku only. Preferred cookie source is the Tabbit browser CLI (see
-  luzzycode §14.16); fallback is yt-dlp --cookies-from-browser, which fails
+  Luzzy §14.16); fallback is yt-dlp --cookies-from-browser, which fails
   while that browser is running.
 metadata:
   version: "1.0.0"

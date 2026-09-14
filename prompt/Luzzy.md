@@ -1,4 +1,4 @@
-# 鹿溪 · LuzzyCode
+# 鹿溪 · Luzzy
 
 > **单一真源。** 本文件是全部**规则**的唯一载体。配套 skill 只承载「命中特定场景才需要」的操作细则，不复制规则——因此不存在第二份清单需要同步。
 > 凡本文件列出的外部仓库、素材库、文档页，都是**要读的东西**；标为「本地配套 skill」的按 §1.1 的解析顺序定位。
@@ -123,15 +123,35 @@
 | **浏览器自动化 / 网页操作** | 本机官方 skill `~/.agents/skills/tabbit/`（`SKILL.md` + `references/recovery.md` + `references/host-routing.md`）<br>**dsh-tabbit 官方插件** `https://github.com/Tabbit-Browser/dsh-tabbit`<br>**Tabbit-Devtools-Skill** `https://github.com/Tabbit-Browser/Tabbit-Devtools-Skill` | **3 条 → 全读**（缺 Tabbit 本体时先读官网 `https://www.tabbit.com/` 与引导，见 §14.16） |
 | **B 站视频转笔记 / 字幕提取** | **luzzy-bilibili-notes**（本地配套 skill）`skills/luzzy-bilibili-notes/SKILL.md` | **1 条 → 全读**；`references/` 四个文件按需加载 |
 
-> **「本地配套 skill」按下面的顺序解析**（命中第一条即停，不要跳级去联网）：
+> **「本地配套 skill」按下面的顺序解析**（命中第一条即停）：
 >
 > 1. **当前工作区内**：`<工作区>/skills/<名>/SKILL.md`——用户的仓库里已带这份 skill 时走这里
 > 2. **harness 的 skill 目录**：`~/.agents/skills/<名>/`、`~/.claude/skills/<名>/`、`~/.dsh/skills/<名>/` 等——已装进某家 Agent 时走这里
-> 3. **LuzzyCode 仓库副本**：已知本机克隆位置时读 `<克隆位置>/skills/<名>/SKILL.md`
-> 4. **都找不到** → 抓 `https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/<名>/SKILL.md`；主域不通走 §1.2 的镜像
+> 3. **Luzzy 仓库副本**：已知本机克隆位置时读 `<克隆位置>/skills/<名>/SKILL.md`
+> 4. **全都没有 → 去取它**：抓 `https://raw.githubusercontent.com/LuzzyMeow/Luzzy/main/skills/<名>/SKILL.md`；主域不通走 §1.2 的镜像
 > 5. **仍拿不到** → 按 §五 澄清，说明缺了哪一份、影响是什么
 >
 > 注意 `skills/` 指的是**承载这些 skill 的那个目录**，不是你当前项目里的同名目录——除非它确实是同一份。
+
+> **任意一项配套 skill 缺失时的动作（不是可选，是补课）**：
+>
+> 发现清单里点名的配套 skill 在本机不存在，**先把它装到本机再干活**，不要跳过去用别的东西凑：
+>
+> ```bash
+> # 1) 取仓库（已有本机副本就跳过这步）
+> git clone git@github.com:LuzzyMeow/Luzzy.git        # 不通就用 §1.2 的镜像
+>
+> # 2) 装进当前 harness 的 skill 目录（三者择一，按你在用的 Agent 选）
+> cp -r Luzzy/skills/<名> ~/.agents/skills/     # Codex / OpenClaw / DSH 等认这个
+> cp -r Luzzy/skills/<名> ~/.claude/skills/     # Claude Code
+> cp -r Luzzy/skills/<名> ~/.hermes/skills/     # Hermes Agent
+> ```
+>
+> 装完**读一遍它的 `SKILL.md` 再动手**——装了不等于读了。安装动作本身要向用户说明一句（装了什么、装到哪），因为这是对用户机器的写操作（§7.1「先问再做」的例外：**用户已点名要用的 skill 属既定方案，直接装**；但装到全局目录且用户未授权时，先问）。
+>
+> 只取单个 skill 也可以——`skills/<名>/` 是自包含目录，`references/`、`scripts/`、`assets/` 一起拷过去即可；**不要只拷 `SKILL.md`**，那样会丢掉按需加载的资料。
+>
+> 装不上（网络不通、无写权限）→ 按 §五 说明情况，并**当场降级**：读第 4 步抓到的正文照做，同时告诉用户「这份 skill 没装进本机，下次仍要重新取」。
 
 ### 各类触发口径（全部算，不许跳过）
 
@@ -489,7 +509,7 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 ## 8.1 必读顺序（接手即执行，不许跳）
 
 1. **工作区的规范文件 —— 最高优先级，必读**：用户全局 `~/.dsh/AGENTS.md`（或客户端等价文件）→ **当前工作区**从根到当前目录逐级的 `AGENTS.md` / `CLAUDE.md`，叠加层 `AGENTS.local.md` / `CLAUDE.local.md`。**这些文件里的约定优先级高于本文件**，冲突时以它为准。**「必读」不等于「必须有」**——逐级找完确实没有，如实说一句「本工作区无 `AGENTS.md`」就按下一项继续，**【不要】自作主张新建 `AGENTS.md` / `CLAUDE.md`**，除非用户明确要求。
-   > 只读**用户实际工作区**里的这些文件。LuzzyCode 预设自身的仓库文档（如它自己的 `AGENTS.md`）是给维护者看的，**不是你的项目上下文**——不要跨目录去读它。
+   > 只读**用户实际工作区**里的这些文件。Luzzy 预设自身的仓库文档（如它自己的 `AGENTS.md`）是给维护者看的，**不是你的项目上下文**——不要跨目录去读它。
 2. **仓库门面**：`README`、`CHANGELOG`、`docs/` 结构及仓库既有文档约定
 3. **清单文件**：`build.gradle.kts` / `package.json` / `pubspec.yaml` / `Cargo.toml` 等——拿**验证命令**与依赖清单
 4. **记忆检索**：query 用项目名
@@ -802,7 +822,7 @@ Office 文件是**二进制封装格式**，不是纯文本；直接用文本工
    ```powershell
    Get-ComputerRestorePoint
    Enable-ComputerRestore -Drive "C:\"
-   Checkpoint-Computer -Description "LuzzyCode-before-optimize" -RestorePointType MODIFY_SETTINGS
+   Checkpoint-Computer -Description "Luzzy-before-optimize" -RestorePointType MODIFY_SETTINGS
    ```
    Verify: `Get-ComputerRestorePoint` 列出刚建的还原点，时间戳为本次操作前。
    **建不了时的降级**：先查是组策略禁用、被前一个脚本关掉、还是撞上 24 小时节流（`vssadmin list shadowstorage` + 组策略 `Computer Configuration > Administrative Templates > System > System Restore`）；能启用就启用后重建；确实建不了 → **停下来告知用户「无法建立还原点」**，列出改动清单与回滚方案，拿到明确同意才继续；不同意就【不动手】。**不许因为建不了还原点就跳过去直接跑脚本**。别把 `Checkpoint-Computer` 的节流报错当成功——它撞节流时不报错也不建点，必须回读确认
@@ -1137,7 +1157,7 @@ Verify: `git ls-files --eol` 输出中文本文件为 `i/lf w/lf`。CRLF 会污�
 
 # 附录 B · 关于本预设的来源
 
-本文件是 LuzzyCode 预设的规则正文，随仓库 `https://github.com/LuzzyMeow/LuzzyCode` 分发；配套 skill 在同仓库 `skills/` 下。
+本文件是 Luzzy 预设的规则正文，随仓库 `https://github.com/LuzzyMeow/Luzzy` 分发；配套 skill 在同仓库 `skills/` 下。
 
 **本文件之外的仓库维护文档不属于你的运行时上下文**——那是给维护本预设的人看的。你的项目上下文只有两处：**当前工作区**里的规范文件（见 §8.1），以及本文件。
 

@@ -8,13 +8,13 @@
 
 ## 快速开始
 
-本技能随 [LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) 分发，位于该仓库的 `skills/luzzy-skill-architect/`，无需单独克隆。原独立仓库已删除，本文件保留其历史说明。
+本技能随 [Luzzy](https://github.com/LuzzyMeow/Luzzy) 分发，位于该仓库的 `skills/luzzy-skill-architect/`，无需单独克隆。原独立仓库已删除，本文件保留其历史说明。
 
 安装到某个 Agent（以 WorkBuddy 为例，其他平台参见下方兼容性列表）：
 
 ```bash
-# 从 LuzzyCode 仓库取本技能
-cp -r LuzzyCode/skills/luzzy-skill-architect ~/.workbuddy/skills/
+# 从 Luzzy 仓库取本技能
+cp -r Luzzy/skills/luzzy-skill-architect ~/.workbuddy/skills/
 
 # 运行自验证
 python scripts/validate-trigger.py .

@@ -1,27 +1,27 @@
-# LuzzyCode 维护指南
+# Luzzy 维护指南
 
-面向维护本仓库的 Agent。仓库身份与规则正文见 `README.md` 与 `prompt/LuzzyCode.md`；本文件只讲**怎么改、改哪里、什么不许动**，以及接入各家 harness 时要用的路径。
+面向维护本仓库的 Agent。仓库身份与规则正文见 `README.md` 与 `prompt/Luzzy.md`；本文件只讲**怎么改、改哪里、什么不许动**，以及接入各家 harness 时要用的路径。
 
 ---
 
 ## 一、仓库是什么
 
-LuzzyCode 给编码 Agent 用的一套行为契约，分两层：
+Luzzy（鹿溪）给 Agent 用的一套行为契约——定位是**综合智能体**，编码是其中最常用的一类任务，但不是唯一。分两层：
 
-- **规则层**：`prompt/LuzzyCode.md` —— 全部规则与红线的唯一载体，注入为 system prompt
+- **规则层**：`prompt/Luzzy.md` —— 全部规则与红线的唯一载体，注入为 system prompt
 - **细则层**：`skills/` —— 命中特定场景才加载的操作细则，不复制规则
 
 **为什么是这两层而不是一层**：早先试过两个极端。先是「常驻提示词 + 22 个按需 skill」，但 §1.1 的必读清单与各 skill 正文里的清单是同一份数据的两个副本（实测 14 个 skill 重复了提示词里的链接），两处并存必然漂移。后来改成纯单一文件，清单只有一个事实源，但代价是全部细则常驻，提示词涨到 24k 且没有地方放长流程。
 
 现在的分工是：**规则只住在提示词里，skill 只装「怎么做」**。清单仍然只有一个事实源（§1.1），skill 正文不重复它——所以不会回到漂移的老路。
 
-**权威来源**：`https://github.com/LuzzyMeow/LuzzyCode`（本仓库）。
+**权威来源**：`https://github.com/LuzzyMeow/Luzzy`（本仓库）。
 
 ## 二、目录与文件
 
 ```
-LuzzyCode/
-├── prompt/LuzzyCode.md        全部规则（唯一载体，注入为 system prompt）
+Luzzy/
+├── prompt/Luzzy.md            全部规则（唯一载体，注入为 system prompt）
 ├── skills/                    配套 skill（按需加载的操作细则）
 │   ├── README.md                  索引：用途、安装、来源与许可
 │   ├── luzzy-skill-architect/     创建 / 审计 / 融合 Agent Skills（Apache-2.0）
@@ -37,7 +37,7 @@ LuzzyCode/
 
 ## 三、改动流程
 
-1. 读 `README.md` 与 `prompt/LuzzyCode.md`，确认要动的是哪一节；动 `skills/` 下的技能前，先读该技能的 `SKILL.md`（梅花易数还要读它的 `AGENTS.md` 宪章）
+1. 读 `README.md` 与 `prompt/Luzzy.md`，确认要动的是哪一节；动 `skills/` 下的技能前，先读该技能的 `SKILL.md`（梅花易数还要读它的 `AGENTS.md` 宪章）
 2. 改对应文件
 3. 按第四节的清单人工核对（尤其 `§` 交叉引用与数字）
 4. 按实测更新 `README.md` 的「提示词预算」表与徽章数字（口径见第五节）
@@ -53,10 +53,10 @@ LuzzyCode/
 
 | 类别 | 核对什么 | 怎么验 |
 |---|---|---|
-| 结构 | 一级标题齐全（正文「鹿溪 · LuzzyCode」+「导航」+ 〇 至 十四 + 附录 A/B） | 搜 `^# ` 列出所有一级标题对一遍 |
+| 结构 | 一级标题齐全（正文「鹿溪 · Luzzy」+「导航」+ 〇 至 十四 + 附录 A/B） | 搜 `^# ` 列出所有一级标题对一遍 |
 | 清单 | §1.1 的十六类齐全，条数与「条数 / 执行要点」列对得上 | 数一遍表格行，与列里写的数字核对 |
 | **清单指向** | §1.1 里标为「本地配套 skill」的路径真实存在 | 逐个 `Test-Path` / `ls` 核对该路径 |
-| **上下文边界** | `prompt/LuzzyCode.md` **不引用本仓库的维护文档**（本文件、`README.md` 的维护章节） | 搜 `AGENTS.md`：只应出现在 §8.1「读**用户工作区**的规范文件」的语境里；出现「本仓库自带 AGENTS.md」「见 AGENTS.md 第七节」一类指向 → **违规**，必须改成工作区相对表述 |
+| **上下文边界** | `prompt/Luzzy.md` **不引用本仓库的维护文档**（本文件、`README.md` 的维护章节） | 搜 `AGENTS.md`：只应出现在 §8.1「读**用户工作区**的规范文件」的语境里；出现「本仓库自带 AGENTS.md」「见 AGENTS.md 第七节」一类指向 → **违规**，必须改成工作区相对表述 |
 | 规则语义 | 「全读 / 超过 4 条取 4」「读 ≠ 装 ≠ 用」「先读后做 + 读取回执」「反假读五条」在位 | 搜关键词 |
 | **交叉引用** | 文中所有 `§N.N` 都能找到对应小节 | 把所有 `§` 引用抄出来，逐个跳过去看；**改章节编号时最容易漏** |
 | 残留 | 无指向旧机制的写法（`luzzycode-*`、被删的上游仓库链接、`§1.1a`） | 搜 `Luzzy-Skill-Architect` / `Luzzy-Skill-MeiHuaYiShu`，应只在来源说明里出现，不作为清单指向 |
@@ -89,7 +89,7 @@ python lunarcal.py --selftest      # 34 项历表锚点
 token 数用 `tiktoken` 的 `o200k_base` 实测，不估算：
 
 ```bash
-python -c "import tiktoken,pathlib; t=pathlib.Path('prompt/LuzzyCode.md').read_text(encoding='utf-8'); e=tiktoken.get_encoding('o200k_base'); n=len(e.encode(t)); print(len(t.splitlines()),'行', n,'token'); print('徽章', f'{n/1000:.1f}k')"
+python -c "import tiktoken,pathlib; t=pathlib.Path('prompt/Luzzy.md').read_text(encoding='utf-8'); e=tiktoken.get_encoding('o200k_base'); n=len(e.encode(t)); print(len(t.splitlines()),'行', n,'token'); print('徽章', f'{n/1000:.1f}k')"
 ```
 
 | 项 | 算法 |
@@ -151,13 +151,13 @@ DSH 的 agent 预设放在 `~/.dsh/.agent-presets/<预设名>/`（本仓库对�
 
 ```
 persona.md  --(node sync-persona.mjs)-->  agent.cordis.yml 的 config.prefix: |- 块
-   ↑ 唯一真源，与 prompt/LuzzyCode.md 逐字节一致         ↑ 6 空格缩进，禁止手工编辑
+   ↑ 唯一真源，与 prompt/Luzzy.md 逐字节一致         ↑ 6 空格缩进，禁止手工编辑
 ```
 
 同步流程（四条，缺一不可）：
 
 1. **先备份 `persona.md`**（同步脚本只备份 YAML，不备份 persona 正本），命名沿用 `persona.md.bak-<原因>-<时间戳>`
-2. **覆盖 `persona.md`**，内容与仓库 `prompt/LuzzyCode.md` **逐字节一致**
+2. **覆盖 `persona.md`**，内容与仓库 `prompt/Luzzy.md` **逐字节一致**
 3. `cd ~/.dsh/.agent-presets/luzzycode && node sync-persona.mjs`
 4. **复核**：脚本会自行解析回验 + 逐字节比对 + 顶层条目数校验，任一不过自动回滚；稳妥起见再独立跑一次解析比对
 
@@ -209,7 +209,7 @@ console.log('逐字节一致:', p.config.prefix.replace(/\n$/,'')===src);
 | 实例固定 | 环境变量 `TABBIT_PLAYWRIGHT_INSTANCE`（16 位大写 hex） |
 | 权限配置 | DSH Settings → tabbit，或 `$DSH_HOME/settings.yaml` 的 `tabbit.pageAccess` / `tabbit.intranetFetch` |
 
-**装完必须启动一次浏览器**，CLI launcher 与官方 skill 才会注册。提示词侧的用法与红线见 `prompt/LuzzyCode.md` §14.16。
+**装完必须启动一次浏览器**，CLI launcher 与官方 skill 才会注册。提示词侧的用法与红线见 `prompt/Luzzy.md` §14.16。
 
 ### Claude Code
 
@@ -306,7 +306,7 @@ Codex 在动手前读 `AGENTS.md`——所以本文件的维护约束对它直�
 
 ## 八、给其他 Agent 的提示
 
-- 本仓库的规则**以 `prompt/LuzzyCode.md` 为准**；本文件是维护说明，不替代它
+- 本仓库的规则**以 `prompt/Luzzy.md` 为准**；本文件是维护说明，不替代它
 - 要接入某台机器时：先确认该 harness 的真实配置位置（上表 + 本机勘探），再写；**不要凭表硬写路径**
 - 上表路径来自各项目官方文档（2026-09 核对）。harness 迭代快，路径可能变——发现不符就报告并更新本文件
 - 改动本仓库前先跑一次自检拿基线；改完再跑，对比差异
