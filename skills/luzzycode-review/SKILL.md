@@ -30,10 +30,12 @@ metadata:
 
 | skill | 星数 | 定位 | 何时选它 |
 |---|---|---|---|
-| [Agent Skills](https://github.com/addyosmani/agent-skills) | 93k | `code-review-and-quality`：按正确性 / 可读性 / 架构 / 安全 / 性能五维审 | **默认选它**，覆盖面最广 |
-| [Open Code Review](https://github.com/alibaba/open-code-review) | 22.3k | 确定性流水线 + LLM Agent，行级评论，可接 CI | 大规模自动审查、接 CI |
+| [Agent Skills](https://github.com/addyosmani/agent-skills) | 94k | `skills/code-review-and-quality/`：按正确性 / 可读性 / 架构 / 安全 / 性能五维审 | **默认选它**，覆盖面最广 |
+| [Open Code Review](https://github.com/alibaba/open-code-review) | 23.5k | 确定性流水线 + LLM Agent，行级评论，可接 CI | 大规模自动审查、接 CI |
 | [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) | 3.9k | 专家级：SOLID、安全、性能、错误处理、边界条件 | 要**深度**审一个改动 |
 | [Shippie](https://github.com/mattzcarey/shippie) | 2.5k | 可扩展的审查 + QA agent，GitHub Action | 要可配置的 CI 审查流程 |
+
+**读取顺序**：本机 skill 目录已有就用加载工具按精确名字读 → 没有就抓仓库 `SKILL.md` 正文（注意子目录路径，不在仓库根）→ 主域不通走镜像（常驻 §1.2）→ 全部失败**【立即上报失效链接】**，再按 `luzzycode-tools` 的降级路径继续。
 
 ## 与 Ponytail 的分工
 
@@ -53,7 +55,7 @@ metadata:
 4. **不重写实现**：审查给意见，不顺手把整个文件改掉——除非用户要求直接修
 5. **不评审既有风格偏好**：仓库已有的命名与结构约定不推翻（常驻提示词 §七「跟随项目现有约定」）
 6. **安全项零容忍**：硬编码凭据、注入、越权、日志泄漏——发现即标为阻塞
-7. **测试缺失要点名**：逻辑改动没带测试，属阻塞项
+7. **测试缺失要点名**：**非平凡逻辑**改动（分支 / 循环 / 解析 / 金额 / 安全路径）没带测试，属阻塞项；平凡改动不在此列（口径与 `luzzycode-code` 一致）
 
 ## 输出格式
 

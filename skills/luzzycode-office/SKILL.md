@@ -9,7 +9,8 @@ description: >
   "generate a report doc", "docx", "xlsx", "pptx", "Office 文件", "表格",
   "幻灯片", "文档批处理".
   Do NOT use for Markdown or plain-text documents (see luzzycode-docs), for PDF
-  handling unless OfficeCLI covers it, or for reading source code.
+  files (read OfficeCLI first, then route by its capability list), or for reading
+  source code.
 metadata:
   version: "1.0.0"
   author: "LuzzyMeow"
@@ -30,7 +31,7 @@ metadata:
 **触发口径（全部算）**：Word / Excel / PowerPoint 文件的读取、编辑、生成、批量处理、格式转换、内容提取、模板填充。
 
 **读取顺序**：
-1. 先用 skill 加载工具按精确名称从会话 skill 目录读取（首选）
+1. 先用 skill 加载工具按精确名称从会话 skill 目录读取（首选）——预期名字 `officecli`；目录里没有这个名字即视为本机没装
 2. 目录里没有 → 从上述仓库读取 `SKILL.md` 正文
 3. 都不行 → AnySearch 抓取 / §1.2 镜像中转
 4. **全部失败 → 立即上报用户该指向失效**，再按下方兜底

@@ -26,6 +26,8 @@ metadata:
 
 用户说「做 PPT」「演示文稿」「幻灯片」「slides」「deck」「keynote」「分享稿」「汇报材料」「发布会风格页面」，**全部算**做 PPT，动手前必须完整读下表所选那一家的正文（口径见常驻提示词 §1.1）。
 
+**读取顺序**：本机 skill 目录已有就用加载工具按精确名字读 → 没有就整仓安装并读 `SKILL.md` 正文 → 主域不通走镜像（常驻 §1.2）→ **全部失败【立即上报失效链接】**，再按 §五 澄清，确认用户是否接受用模型自身能力直接产出 HTML 版。
+
 | skill | 星数 | 风格与能力 | 何时选它 |
 |---|---|---|---|
 | [归藏PPT](https://github.com/op7418/guizang-ppt-skill) | 26.2k | 横向翻页**单文件 HTML**；两套视觉系统（电子杂志×电子墨水 / 瑞士国际主义）；WebGL 背景、演讲者模式、观众屏同步、讲稿备注、多平台封面 | 要**设计感强**的演讲/发布会风格，或明确说「杂志风」「瑞士风」 |
@@ -50,7 +52,7 @@ metadata:
 | 大狮PPT | **在 `skills/dashi-ppt/` 子目录**，不在仓库根 | `npx dashi-ppt-skill@latest`（国内加 `--registry=https://registry.npmmirror.com`） | 需 **Node.js 20+**；导出 PPTX/PDF 需本机有 Chrome / Chromium / Edge |
 | HTML PPT Studio | 仓库根 `SKILL.md` | `npx skills add https://github.com/lewislulu/html-ppt-skill` | 运行时需要 `SKILL.md` `assets/` `templates/` `references/` `scripts/`；`docs/` 约 4.6MB，离线副本可删 |
 
-离线或装不上时的兜底：**skill 就是一个含 `SKILL.md` 的目录**，直接 `git clone` 后把整个目录拷进 agent 扫描的 skills 目录即可（`~/.dsh/skills/`）。拷完用文件工具确认 `SKILL.md` 在位。
+离线或装不上时的兜底：**skill 就是一个含 `SKILL.md` 的目录**，`git clone` 后把**含正文的那一层**拷进 agent 扫描的 skills 目录（`~/.dsh/skills/`）——归藏与 HTML PPT Studio 的正文在仓库根，直接拷仓库；**大狮的正文在 `skills/dashi-ppt/` 子目录**，要拷的是那一层，拷完目标目录下必须能直接看到 `SKILL.md`。拷完用文件工具确认 `SKILL.md` 在位；**确认失败就别硬用**，退回 `npx` 安装命令，或向用户说明这一家装不上、改用另外两家。
 
 ## 交付标准
 
