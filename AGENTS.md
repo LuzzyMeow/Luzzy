@@ -6,9 +6,14 @@
 
 ## 一、仓库是什么
 
-LuzzyCode 给编码 Agent 用的一套行为契约，**全部装在一个文件里**：`prompt/LuzzyCode.md`。
+LuzzyCode 给编码 Agent 用的一套行为契约，分两层：
 
-早先版本是「常驻提示词 + 22 个按需加载的 skill」，但 §1.1 的必读清单与各 skill 正文里的清单是同一份数据的两个副本（实测 14 个 skill 重复了提示词里的链接），两处并存必然漂移。现已改为单一文件，清单只有一个事实源。
+- **规则层**：`prompt/LuzzyCode.md` —— 全部规则与红线的唯一载体，注入为 system prompt
+- **细则层**：`skills/` —— 命中特定场景才加载的操作细则，不复制规则
+
+**为什么是这两层而不是一层**：早先试过两个极端。先是「常驻提示词 + 22 个按需 skill」，但 §1.1 的必读清单与各 skill 正文里的清单是同一份数据的两个副本（实测 14 个 skill 重复了提示词里的链接），两处并存必然漂移。后来改成纯单一文件，清单只有一个事实源，但代价是全部细则常驻，提示词涨到 24k 且没有地方放长流程。
+
+现在的分工是：**规则只住在提示词里，skill 只装「怎么做」**。清单仍然只有一个事实源（§1.1），skill 正文不重复它——所以不会回到漂移的老路。
 
 **权威来源**：`https://github.com/LuzzyMeow/LuzzyCode`（本仓库）。
 
@@ -17,41 +22,65 @@ LuzzyCode 给编码 Agent 用的一套行为契约，**全部装在一个文件�
 ```
 LuzzyCode/
 ├── prompt/LuzzyCode.md        全部规则（唯一载体，注入为 system prompt）
+├── skills/                    配套 skill（按需加载的操作细则）
+│   ├── README.md                  索引：用途、安装、来源与许可
+│   ├── luzzy-skill-architect/     创建 / 审计 / 融合 Agent Skills（Apache-2.0）
+│   ├── luzzy-skill-meihuayishu/   梅花易数技能家族（MIT，自带维护宪章 AGENTS.md）
+│   └── luzzy-bilibili-notes/      B 站视频转结构化笔记（MIT）
 ├── AGENTS.md                  本文件
 ├── README.md                  门面文档
 ├── LICENSE
 └── .gitattributes
 ```
 
-**没有** `package.json` / `pyproject.toml` 之类的清单文件，也**没有构建与门禁脚本**——本仓库不是软件项目，是一份提示词文本。所有校验靠人工核对（第四节）。
+**没有** `package.json` / `pyproject.toml` 之类的清单文件，也**没有构建脚本**——本仓库不是软件项目，是提示词加一组 skill 文本。但 `skills/` 里**有可执行校验**（Python，仅用标准库）：改动对应技能时必须跑通，见第四节。
 
 ## 三、改动流程
 
-1. 读 `README.md` 与 `prompt/LuzzyCode.md`，确认要动的是哪一节
-2. 改 `prompt/LuzzyCode.md`
+1. 读 `README.md` 与 `prompt/LuzzyCode.md`，确认要动的是哪一节；动 `skills/` 下的技能前，先读该技能的 `SKILL.md`（梅花易数还要读它的 `AGENTS.md` 宪章）
+2. 改对应文件
 3. 按第四节的清单人工核对（尤其 `§` 交叉引用与数字）
 4. 按实测更新 `README.md` 的「提示词预算」表与徽章数字（口径见第五节）
 5. 推送走 SSH：`git remote -v` 两行都应是 `git@github.com:` 开头
 
-改完最容易出的两类错是**交叉引用悬空**（改了章节编号没改引用）与 **README 数字漂移**（改了提示词没重测）——第四节给了对应的核对方法。
+改完最容易出的三类错是**交叉引用悬空**（改了章节编号没改引用）、**README 数字漂移**（改了提示词没重测）、**清单与 skill 路径不一致**（改了目录名没改 §1.1）——第四节给了对应的核对方法。
 
-**改动时要守的一条**：规则只有一个事实源。如果某条规则在文件里出现两次，删掉一份，改成引用（`见 §N`）——这正是本次重构要解决的问题。
+**改动时要守的一条**：规则只有一个事实源。如果某条规则在提示词里出现两次，删掉一份，改成引用（`见 §N`）；如果某条规则同时出现在提示词和某个 skill 里，**规则留在提示词，skill 里删掉**。
 
 ## 四、改完怎么核对
 
-没有自动门禁，改完按这张表人工过一遍。每项都给了「怎么快速验」：
+没有全仓库的自动门禁，改完按这张表人工过一遍。每项都给了「怎么快速验」：
 
 | 类别 | 核对什么 | 怎么验 |
 |---|---|---|
-| 结构 | 十七个章节标题齐全（〇 至 十四、附录 A/B） | 搜 `^# ` 列出所有一级标题对一遍 |
-| 清单 | §1.1 的十四类齐全，条数与「条数 / 执行要点」列对得上 | 数一遍表格行，与列里写的数字核对 |
-| 规则语义 | 「全读 / 超过 4 条取 4」「读 ≠ 装 ≠ 用」「唯一载体」三条在位 | 搜关键词 |
+| 结构 | 一级标题齐全（正文「鹿溪 · LuzzyCode」+「导航」+ 〇 至 十四 + 附录 A/B） | 搜 `^# ` 列出所有一级标题对一遍 |
+| 清单 | §1.1 的十六类齐全，条数与「条数 / 执行要点」列对得上 | 数一遍表格行，与列里写的数字核对 |
+| **清单指向** | §1.1 里标为「本地配套 skill」的路径真实存在 | 逐个 `Test-Path` / `ls` 核对该路径 |
+| **上下文边界** | `prompt/LuzzyCode.md` **不引用本仓库的维护文档**（本文件、`README.md` 的维护章节） | 搜 `AGENTS.md`：只应出现在 §8.1「读**用户工作区**的规范文件」的语境里；出现「本仓库自带 AGENTS.md」「见 AGENTS.md 第七节」一类指向 → **违规**，必须改成工作区相对表述 |
+| 规则语义 | 「全读 / 超过 4 条取 4」「读 ≠ 装 ≠ 用」「先读后做 + 读取回执」「反假读五条」在位 | 搜关键词 |
 | **交叉引用** | 文中所有 `§N.N` 都能找到对应小节 | 把所有 `§` 引用抄出来，逐个跳过去看；**改章节编号时最容易漏** |
-| 残留 | 无指向旧机制的写法（`luzzycode-*`、`skills/`、skill 加载、`§1.1a`） | 搜这些关键词，应无命中 |
+| 残留 | 无指向旧机制的写法（`luzzycode-*`、被删的上游仓库链接、`§1.1a`） | 搜 `Luzzy-Skill-Architect` / `Luzzy-Skill-MeiHuaYiShu`，应只在来源说明里出现，不作为清单指向 |
 | 格式 | 无装饰性 emoji（✅ ⚠ 🚫 三档标记、✗ ✓ 正反例标记豁免）、无裸露分隔线 | 目视 + 搜 `^---$` |
 | **模板语法** | 正文里没有**双花括号变量语法**（连续两个左花括号后接变量名）——DSH 会把 persona 里的它当 prompt 变量引用解析，变量名须匹配 `[a-z][a-z0-9_]*`；**全大写形式**会让预设直接报错 | 已由 `sync-persona.mjs` 自动校验并拒绝（部署前会失败）；手工自查时搜「连续两个左花括号」。占位符统一用 `${...}` |
-| 安全 | 无硬编码密钥形态 | 搜 `sk-` / `ghp_` / `Bearer` |
+| 安全 | 无硬编码密钥形态 | 搜 `sk-` / `ghp_` / `Bearer`（文档里的占位符写法不算） |
+| **skill 校验** | 三个技能各自通过校验 | `validate-trigger.py`（architect、bilibili）；梅花易数跑三条回归命令（见下） |
 | **数字** | README 的行数、token、徽章等于实测值 | 第五节命令重测，**每次必做** |
+
+**skills 的校验命令**（改动对应技能后必跑）：
+
+```bash
+# 触发词校验（两个技能通用）
+python skills/luzzy-skill-architect/scripts/validate-trigger.py skills/luzzy-bilibili-notes
+python skills/luzzy-skill-architect/scripts/validate-trigger.py skills/luzzy-skill-architect
+
+# 梅花易数的回归门槛（三条全过，缺一不可——其 AGENTS.md 的 R5 强制要求）
+cd skills/luzzy-skill-meihuayishu
+python evals/integrity_check.py    # 结构完整性 + 版本四处一致
+python evals/run.py                # 16 组回归用例（含五个原书占例）
+python lunarcal.py --selftest      # 34 项历表锚点
+```
+
+> 梅花的 `integrity_check.py` 把 `README.md` 与 `.gitignore` 列为必备文件——**不要改名或删除它们**，否则回归失败。
 
 **代价要认**：早先的门禁是纯文字清单，从没被执行过，于是 22 个 skill 全部违反其中的「无装饰性格式」而无人发现。现在回到人工核对，风险最高的是**数字漂移**——所以第五节把它列为每次必做，其余各项靠交付前过一遍。
 
@@ -160,11 +189,27 @@ console.log('逐字节一致:', p.config.prefix.replace(/\n$/,'')===src);
 - **登记惯例**：每次改动在 `persona.changes.md` 追加一条（日期 + 性质 + 踩坑 + 校验结果 + 回滚命令），`preset.yml` 的 `description` 也要跟着改——它是预设列表里显示的说明，最容易被忘
 - **回滚**：恢复 `persona.md.bak-*` 与 `agent.cordis.yml.bak-sync-*` 两个文件即可
 
-**本机 skill 目录已清空（2026-09-14）**：`~/.dsh/skills/` 下 19 个 `luzzycode-*` 目录已删除——它们是 `b1833cc` 时代手工拷进去的（18 个子 skill + 编排器），会让 DSH 继续扫描并暴露给模型，与本提示词「不再有配套 skill」的口径冲突。
+**本机 skill 目录的处置（2026-09-14 清空，2026-09-15 部分恢复）**：`~/.dsh/skills/` 下 19 个 `luzzycode-*` 目录曾在 `b1833cc` 时代手工拷入（18 个子 skill + 编排器），已于 2026-09-14 删除——它们的清单与提示词重复，会让 DSH 继续扫描并暴露给模型。
 
-删除前核对过三件事：该目录下**只有** `luzzycode-*`（无其他 skill）；`~/.dsh/settings.yaml` 只是把 `luzzycode` 设为**默认预设名**，不引用 skills；另一个预设 `liangshen` 无任何引用。目录本身保留（空）。
+**恢复时的注意**：本仓库现有 `skills/` 下三个技能，装进任何 harness 的 skill 目录（含 `~/.dsh/skills/`）都会被扫描并常驻在模型可见的技能列表里。**这是有意的**——它们只在命中场景时被读正文，列表里的 description 开销可接受。但它们**不得**被塞进 persona；`sync-persona.mjs` 只嵌 `persona.md`，与 skills 无关。
 
-**恢复来源**：本仓库 git 历史 `0a474c2`（`git show 0a474c2:skills/<名>/SKILL.md`）——那里有全部 **23** 项，比本机部署的 19 项还多（含 reverse / assets / android / mcp）。今后若再装回，记住它会被 DSH 扫描并向模型暴露，与单一提示词口径冲突。
+**恢复来源**：若要找回更早期的 `luzzycode-*` 版本，见本仓库 git 历史 `0a474c2`（`git show 0a474c2:skills/<名>/SKILL.md`）——那里有全部 **23** 项，比本机部署的 19 项还多（含 reverse / assets / android / mcp）。
+
+### Tabbit（浏览器自动化）
+
+**官方入口**：国内官网 —— https://www.tabbit.com/ ；下载页 —— https://www.tabbit.com/download ；国际官网 —— https://www.tabbit.ai ；GitHub 组织 —— https://github.com/Tabbit-Browser
+
+| 项 | 路径 / 命令 |
+|---|---|
+| 官方 skill（权威正文） | `~/.agents/skills/tabbit/`（随浏览器 Runtime 同步；含 `references/recovery.md`、`references/host-routing.md`） |
+| CLI launcher（Windows） | `& "$env:LOCALAPPDATA\Tabbit\LocalAgent\bin\tabbit-cli.exe"` |
+| CLI launcher（macOS / Linux） | `"$HOME/.local/bin/tabbit-cli"` |
+| DSH 插件 | `dsh plugin --profile web add dsh-tabbit`（提供 `tabbit_browser` 工具与 `/tabbit-info` 命令） |
+| DevTools / CDP skill | https://github.com/Tabbit-Browser/Tabbit-Devtools-Skill |
+| 实例固定 | 环境变量 `TABBIT_PLAYWRIGHT_INSTANCE`（16 位大写 hex） |
+| 权限配置 | DSH Settings → tabbit，或 `$DSH_HOME/settings.yaml` 的 `tabbit.pageAccess` / `tabbit.intranetFetch` |
+
+**装完必须启动一次浏览器**，CLI launcher 与官方 skill 才会注册。提示词侧的用法与红线见 `prompt/LuzzyCode.md` §14.16。
 
 ### Claude Code
 

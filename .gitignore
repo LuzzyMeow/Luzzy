@@ -24,3 +24,11 @@ build/
 *.key
 *.pem
 credentials.*
+*cookies*
+*credential*
+*token.txt
+
+# 浏览器 / 抓取类临时产物
+*.har
+bili_output*
+parsed.txt

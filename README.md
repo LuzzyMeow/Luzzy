@@ -1,22 +1,22 @@
 # LuzzyCode
 
-鹿溪（Coding 模式）：给编码 Agent 用的一套行为契约，**全部装在一个提示词文件里**。
+鹿溪（Coding 模式）：给编码 Agent 用的一套行为契约。**规则装在一个提示词文件里，操作细则装在同仓库的配套 skill 里。**
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/prompt-24.4k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
-[![Single file](https://img.shields.io/badge/架构-单一提示词-0969da?style=flat-square)](prompt/LuzzyCode.md)
+[![Prompt](https://img.shields.io/badge/prompt-28.1k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
+[![Skills](https://img.shields.io/badge/配套_skill-3_个-0969da?style=flat-square)](skills/)
+[![Rules](https://img.shields.io/badge/规则-十六类必读清单-1f883d?style=flat-square)](prompt/LuzzyCode.md)
 
 ## 30 秒上手
 
 ```bash
-# 1. 取仓库
 git clone git@github.com:LuzzyMeow/LuzzyCode.git
 
-# 2. 把提示词注入为 system prompt
+# 注入为 system prompt
 cat LuzzyCode/prompt/LuzzyCode.md
 ```
 
-一份文件，没有第二步。不需要装 skill，不需要同步第二份清单。
+一份提示词，加上 `skills/` 里按需加载的细则。不需要同步第二份清单——规则只有一处。
 
 ## 它解决什么问题
 
@@ -24,65 +24,76 @@ Agent 的提示词越写越长，规则越多越不遵守。
 
 一份超过万 token 的常驻提示词塞进两百多条规则，模型会在中段开始丢指令。首因效应让后半段的约束先失效，于是出现「一半照做一半没做」的结果：搜索走了一个工具、抓取走了另一个，看起来合规，实际上违反了规则。
 
-这个仓库的做法是：**把规则按「什么时候需要」重新编排，写成一份自洽的单一提示词**，并给必读清单配一条可执行的阅读规则。
+这个仓库的两条对策：
 
-## 设计
+1. **规则按「什么时候需要」重新编排**，写成一份自洽的提示词，并给必读清单配一条可执行的阅读规则
+2. **把「必须读」变成可核对的动作**——命中清单要停手、读完、落一份读取回执才动手（见下）
 
-| 决定 | 理由 |
-|---|---|
-| **单一文件** | 规则只有一份，不存在两处清单漂移；维护改一处即可 |
-| **按关注点分节** | 硬规定 → 工作循环 → 工具 → 纪律 → 编排 → 汇报 → 领域细则，顺着用的人的思路排 |
-| **必读清单带折减规则** | 14 类任务各有一张清单；4 条及以内全读，超过 4 条取 4 条——既强制又不失控 |
-| **领域细节内联** | 每类任务的执行纪律、红线、失败路径直接写在对应小节里，不再另开文件 |
-
-**为什么不用配套 skill**：早先版本把细则拆成 22 个按需加载的 skill，但 §1.1 的必读清单与各 skill 正文里的清单是同一份数据的两个副本——实测有 14 个 skill 重复了提示词里的链接。两处并存必然漂移，于是改为单一文件，清单只有一个事实源。
-
-## 仓库结构
+## 目录
 
 ```
 LuzzyCode/
 ├── prompt/
-│   └── LuzzyCode.md        全部规则，注入为 system prompt
-├── AGENTS.md               维护指南 + 九家 harness 路径速查
+│   └── LuzzyCode.md          全部规则，注入为 system prompt
+├── skills/                   配套 skill：按需加载的操作细则
+│   ├── luzzy-skill-architect/    创建 / 审计 / 融合 Agent Skills 的元框架
+│   ├── luzzy-skill-meihuayishu/  梅花易数技能家族（零依赖引擎 + 原文内置）
+│   └── luzzy-bilibili-notes/     B 站视频转结构化笔记
+├── AGENTS.md                 维护指南 + 九家 harness 路径速查
 ├── README.md
-├── LICENSE
-└── .gitattributes
+└── LICENSE
 ```
 
-目录编排：`〇` 身份 → `一` 硬规定 → `二` 工作循环 → `三` 工具 → `四` 代码纪律 → `五` 澄清 → `六` 安全红线 → `七` 边界与工作区 → `八` 文档阅读 → `九` 记忆 → `十` 编排工具 → `十一` 汇报 → `十二` 交付与纠错 → `十三` 本次任务 → `十四` 领域细则（14.1–14.15）→ 附录 A 固化链接 · 附录 B 维护。
+## 规则怎么组织
+
+提示词按「用的人的思路」分节，另有三个入口块：
+
+| 块 | 内容 | 给谁看 |
+|---|---|---|
+| **导航** | 三条最高优先级铁律 + 「我要…去哪」速查表 | 开场定位 |
+| **§1.1 必读清单** | 十六类任务的清单、阅读规则、读取回执、反假读条款 | 每个任务起手 |
+| **§14 领域细则** | 十六个领域的执行纪律、红线、失败路径 | 读完清单之后 |
+
+分节顺序：`〇` 身份 → `一` 硬规定 → `二` 工作循环（七步）→ `三` 工具 → `四` 代码纪律 → `五` 澄清 → `六` 安全红线 → `七` 边界与工作区 → `八` 文档阅读 → `九` 记忆 → `十` 编排工具 → `十一` 汇报 → `十二` 交付与纠错 → `十三` 本次任务 → `十四` 领域细则（14.1–14.16）→ 附录 A 固化链接 · 附录 B 维护。
 
 ## 三条硬规定
 
-### 一、必读清单 —— 命中即触发
+### 一、必读清单 —— 先读后做
 
-十四类任务各有清单，**读完正文才算通过**：看仓库首页、目录列表或 README 摘要都不算。
+十六类任务各有清单。**命中即触发**：识别到关键词 → 停手读完 → 落回执 → 才动手。
 
-**统一阅读规则**（适用于**所有清单的子项**，不是个别类目）：**4 条及以内 → 全部读完**；**超过 4 条 → 完整读其中任意 4 条**，按相关性择优。子项**不止 skill**——素材库、组件库、官方文档页、任何有具体指向的链接，全部按同一口径计入。
+```text
+必读清单命中：<类目名>
+├─ 已读：<子项> — <来源：本机路径 / 抓取的 URL>
+├─ 已读：<子项> — <来源>
+└─ 折减：<是否折减 + 理由>
+```
 
-**「读」与「装 / 用」是两件事**：清单要求读全部（利于对比择优），执行时仍按各类要点择一或组合——比如 PPT 三家都要读，但不要三家全装。
+**未读就动手，结果一律无效。** 回执让「有没有读」从主观声称变成可核对的事实。
 
-| 任务类型 | 必读 |
+阅读规则的三条要点：
+
+- **4 条及以内 → 全读**；**超过 4 条 → 取其中任意 4 条**（按相关性择优）
+- **读到正文才算**：看首页、简介、目录列表、README 摘要**都不算**
+- **先本机后云端**：本机已有就直接读，标为「本地配套 skill」的读 `skills/` 下的路径
+
+还有**反假读条款**，把模型最常犯的五种「假读」逐条封死：只读门面、凭记忆代读、挑一条就读、同名顶替、读完不落回执——外加一种「读了不照做」。
+
+| 任务类型 | 必读（完整十六类见 [§1.1](prompt/LuzzyCode.md)） |
 |---|---|
 | 后端 / 通用编码 | [Ponytail](https://github.com/DietrichGebert/ponytail) · [spec-kit](https://github.com/github/spec-kit) · [mattpocock/skills](https://github.com/mattpocock/skills) |
 | 设计类 | [huashu-design](https://github.com/alchaincyf/huashu-design) · [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) · [open-design](https://github.com/nexu-io/open-design) · [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
-| 文档 / Office | [OfficeCLI](https://github.com/iOfficeAI/OfficeCLI) |
 | 做 PPT | [归藏PPT](https://github.com/op7418/guizang-ppt-skill) · [大狮PPT](https://github.com/chuspeeism/dashi-ppt-skill) · [HTML PPT Studio](https://github.com/lewislulu/html-ppt-skill) |
-| 写作 / 文案 | [stop-slop](https://github.com/hardikpandya/stop-slop) · [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) |
-| HTML / 网页开发 | [anthropics/skills](https://github.com/anthropics/skills) · [Frontend Design Toolkit](https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit) · [Superpowers](https://github.com/obra/superpowers) |
-| Windows 修复 / 优化 | [WinUtil](https://github.com/ChrisTitusTech/winutil) · [Win11Debloat](https://github.com/Raphire/Win11Debloat) · [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) |
-| 项目规划 / 需求拆解 | [spec-kit](https://github.com/github/spec-kit) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) · [GSD Core](https://github.com/open-gsd/gsd-core) · [planning-with-files](https://github.com/OthmanAdi/planning-with-files) |
 | 代码审查 | [Agent Skills](https://github.com/addyosmani/agent-skills) · [Open Code Review](https://github.com/alibaba/open-code-review) · [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) · [Shippie](https://github.com/mattzcarey/shippie) |
-| 逆向 / 授权渗透 / 安全研究 | [reverse-skill](https://github.com/zhaoxuya520/reverse-skill)（路由包，按其入口协议读） |
-| 素材 / 图标 / 组件库 | [Lobe UI](https://github.com/lobehub/lobe-ui) · [Lobe Icons](https://github.com/lobehub/lobe-icons) · [Lobe Icons agent 接入页](https://lobehub.com/icons/skill.md) · [Game Icon Pack](https://github.com/Nieobie/game-icon-pack) |
-| Android 开发 / 模拟器 | ZCode 插件市场的 `android-emulator` · [Android 开发者文档](https://developer.android.com/develop) · [ADB](https://developer.android.com/tools/adb) · [Compose](https://developer.android.com/compose) · [Gradle 构建](https://developer.android.com/build) · 插件自带正文 |
-| MCP 开发 / 接入 / 维护 | [规范与 SDK 选型](https://modelcontextprotocol.io/docs/2026-07-28/sdk) · [连接本地服务器](https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers) · [TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk) · [Python SDK](https://github.com/modelcontextprotocol/python-sdk) · [参考服务器](https://github.com/modelcontextprotocol/servers) · [协议仓库](https://github.com/modelcontextprotocol/modelcontextprotocol) |
-| skill 开发 / 管理 | [Luzzy-Skill Architect](https://github.com/LuzzyMeow/Luzzy-Skill-Architect) |
+| **浏览器自动化** | 本机官方 skill `~/.agents/skills/tabbit/` · [dsh-tabbit](https://github.com/Tabbit-Browser/dsh-tabbit) · [Tabbit-Devtools-Skill](https://github.com/Tabbit-Browser/Tabbit-Devtools-Skill) |
+| **Skill 工程** | 本地配套 skill [`skills/luzzy-skill-architect/`](skills/luzzy-skill-architect/) |
+| **B 站视频转笔记** | 本地配套 skill [`skills/luzzy-bilibili-notes/`](skills/luzzy-bilibili-notes/) |
 
 三类任务的硬性前置值得单独点出：
 
 - **逆向 / 安全**：只对自有资产、明确授权的目标、本地样本与 CTF 靶场；其 `precedent-*` 与「服从性」文件**不得**绕过安全红线
-- **Android**：必须先在 ZCode 内、从插件市场装官方插件 `android-emulator`——它的 MCP 服务器由 ZCode 插件宿主拉起，不在 ZCode 内就没有这套工具
-- **MCP**：第三方 MCP 服务器能读本机文件、发网络请求、执行命令——**先审后装**，最小权限
+- **Android**：必须先在 ZCode 内、从插件市场装官方插件 `android-emulator`——它的 MCP 服务器由 ZCode 插件宿主拉起
+- **浏览器自动化**：优先用 Tabbit（`https://www.tabbit.com/`）；没装就引导安装或改用同类型方案（见 §14.16）
 
 任一链接失效，Agent 会立即告诉你哪一条需要更新，然后按降级规则继续干活。
 
@@ -95,25 +106,38 @@ git remote set-url origin git@github.com:<owner>/<repo>.git
 git remote -v     # 两行都应以 git@github.com: 开头
 ```
 
-国内网络受限时逐级降级。下面两个代理经实测筛选（同时测了 7 个，其余 5 个已不可用）：
-
-```bash
-# 代理前缀，可用于 clone / raw / archive
-https://gh-proxy.com/https://github.com/<owner>/<repo>.git
-https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
-```
-
-再不通就改用 AnySearch 抓单个文件，最后兜底走 Gitee 导入。代理站能看到请求的 URL，只用于公开仓库读取。
+国内网络受限时逐级降级（gh-proxy → ghfast → AnySearch 抓单文件 → Gitee 导入）。代理经实测筛选，**用前先探一次**。
 
 ### 三、联网检索走 AnySearch
 
-资料搜索、批量并行、垂直域定义、网页抓取，四条路由全部走 AnySearch。
+判据不看工具名，看动作性质：**「这个动作的目的，是找到我手里还没有地址的东西吗？」** 是 → 检索，只走 AnySearch。
 
-用内置搜索做资料搜索、只在抓取时用 AnySearch，这种半程合规视为违规。内置工具仅作回退，且要在回答里说明。
+用内置搜索做资料搜索、只在抓取时用 AnySearch，这种**半程合规视为违规**。内置工具仅作回退，且要在回答里说明。
+
+## 配套 skill
+
+`skills/` 里的技能是**操作细则**，不是规则的副本——规则只住在提示词里，因此不存在两处漂移。命中场景时提示词会指向它们；本机已有就直接读，不必联网。
+
+| 技能 | 用途 | 许可 |
+|---|---|---|
+| [`luzzy-skill-architect/`](skills/luzzy-skill-architect/) | 创建、审计、诊断、融合 Agent Skills：PPER 协议 + 五阶段生命周期 + L0–L5 成熟度 + 七设计模式 + 十反模式库 | Apache-2.0 |
+| [`luzzy-skill-meihuayishu/`](skills/luzzy-skill-meihuayishu/) | 梅花易数技能家族：零依赖起卦引擎 + 《周易》《梅花易数》原文内置 + 原书占例回归 16/16 | MIT |
+| [`luzzy-bilibili-notes/`](skills/luzzy-bilibili-notes/) | B 站视频转结构化笔记：取字幕、解析 SRT、重组章节、标注识别错误与存疑项 | MIT |
+
+安装到某个 Agent 的 skill 目录：
+
+```bash
+cp -r LuzzyCode/skills/luzzy-skill-architect ~/.claude/skills/    # Claude Code
+cp -r LuzzyCode/skills/luzzy-bilibili-notes  ~/.agents/skills/    # Codex / OpenClaw 等
+```
+
+各家 harness 的 skill 目录与 MCP 配置路径速查见 [`AGENTS.md`](AGENTS.md) 第七节。
+
+> **`luzzy-skill-meihuayishu/` 自带维护宪章** [`AGENTS.md`](skills/luzzy-skill-meihuayishu/AGENTS.md)：十条红线（经典文本不可改写、计算一律走引擎、回归门槛不可放宽）与四类变更流程。改它之前必须先读，并跑通三条回归命令（见 [`skills/README.md`](skills/README.md)）。
 
 ## 零配置启动
 
-本机没挂 MemOS 和 AnySearch 时，不必先去申请 Key。AnySearch 的匿名通道能完成检索与抓取，配额低但够用：
+本机没挂 MemOS 和 AnySearch 时，不必先去申请 Key。AnySearch 的匿名通道能完成检索与抓取：
 
 ```bash
 # 取 skill 包（含 Python / Node / PowerShell / Bash 四套脚本）
@@ -121,15 +145,8 @@ curl -L -o anysearch-skill.zip \
   https://github.com/anysearch-ai/anysearch-skill/archive/refs/heads/main.zip
 unzip anysearch-skill.zip
 
-# 自检，任选已装的运行时
-python <skill_dir>/scripts/anysearch_cli.py doc
-node   <skill_dir>/scripts/anysearch_cli.js doc
-
-# 搜索
 python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 ```
-
-不带 `Authorization` 头就走匿名模式。带上无效 Key 会返回 401 或 403，网关不会静默降级。
 
 走通之后，提示词 §1.5 会让 Agent 抓取官方文档自读，再一次性给你两项 Key 的配置步骤：
 
@@ -144,13 +161,14 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/LuzzyCode.md` | 965 | 24,353 |
+| `prompt/LuzzyCode.md` | 1,143 | 28,120 |
+| `skills/`（三个技能，**按需加载，不常驻**） | 8,564 | — |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-**这个数字是单一文件的代价，也是它的全部成本**：无论做什么任务，都只付这一份。早先的两层版本是常驻 14.8k + 按需 38.5k，只有命中场景才付后者；现在是全量常驻。换来的是清单只有一个事实源、不存在两处漂移、维护改一处。
+**常驻成本只有那 28k**：配套 skill 只在命中场景时才读，平时不占上下文。早先的两层版本是常驻 14.8k + 按需 38.5k；现在是提示词涨到 28k、按需层收敛到 8.5k——换来的是规则只有一个事实源，清单不再漂移。
 
-`AGENTS.md`（维护指南与九家 harness 路径表）267 行、约 5.4k token，**只在维护本仓库或查 harness 路径时读**，不必注入 system prompt。
+`AGENTS.md`（维护指南与九家 harness 路径表）只在维护本仓库或查 harness 路径时读，不必注入 system prompt。
 
 ## 兼容性
 
@@ -161,7 +179,7 @@ token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按
 ## 更新与维护
 
 ```bash
-# 抓单个文件即可，本仓库只有一份规则
+# 抓单个文件即可
 https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/prompt/LuzzyCode.md
 
 # 不通时加代理前缀
@@ -172,26 +190,26 @@ Agent 也会定期对比本机副本与本仓库内容，发现差异会告诉�
 
 ## 改完怎么自查
 
-没有配套的门禁脚本——这个仓库就是一份文本，改完靠人工核对。`AGENTS.md` 第四节有同样的清单：
+没有配套的门禁脚本——这个仓库就是文本，改完靠人工核对。`AGENTS.md` 第四节有同样的清单：
 
 | 核对什么 | 怎么验 |
 |---|---|
-| 十七个章节标题齐全 | 搜 `^# ` 列出所有一级标题对一遍 |
-| §1.1 十四类清单齐全，条数与「条数 / 执行要点」列一致 | 数表格行 |
+| 十四个正文章节 + 导航 + 附录 A/B 齐全 | 搜 `^# ` 列出所有一级标题对一遍 |
+| §1.1 十六类清单齐全，条数与「条数 / 执行要点」列一致 | 数表格行 |
 | 所有 `§` 交叉引用都能找到对应小节 | 抄出所有 `§` 引用逐个跳过去；**改章节编号时最容易漏** |
-| 无残留旧机制写法（`luzzycode-*`、`skills/`、skill 加载） | 搜关键词，应无命中 |
-| 无装饰性 emoji、无裸露分隔线、无硬编码密钥 | 目视 + 搜 `^---$` / `sk-` / `Bearer`（三档标记 ✅⚠🚫 与正反例标记 ✗✓ 是内容，不算装饰） |
+| 无残留旧机制写法（`luzzycode-*`、旧 skill 加载方式） | 搜关键词 |
+| 无装饰性 emoji、无裸露分隔线、无硬编码密钥 | 目视 + 搜 `^---$` / `sk-`；三档标记 ✅⚠🚫 与正反例标记 ✗✓ 是内容，不算装饰 |
+| **提示词里没有双花括号变量语法** | DSH 会把 persona 里的它当 prompt 变量解析，**全大写形式会让预设加载失败**；占位符统一用 `${...}` |
+| 三个配套 skill 通过各自校验 | `validate-trigger.py`（architect / bilibili）与梅花易数三条回归命令 |
 | **README 的行数与 token 等于实测值** | 跑下面的命令重测 |
 
 ```bash
-# 重测体量，写回「提示词预算」表与徽章
+# 重测提示词体量，写回「提示词预算」表与徽章
 python -c "import tiktoken,pathlib; t=pathlib.Path('prompt/LuzzyCode.md').read_text(encoding='utf-8'); e=tiktoken.get_encoding('o200k_base'); n=len(e.encode(t)); print(len(t.splitlines()),'行', n,'token', f'{n/1000:.1f}k')"
 ```
 
 结构调整类的问题肉眼可见，**数字漂移是唯一看不出来的**——改了提示词没重测，README 就会开始说谎，所以这一项每次必做。
 
-> 早先版本有过一个自动门禁脚本，后来连同配套 skill 一起去掉了：仓库只剩一份文本，为它维护一套校验脚本不划算。代价是数字漂移不再被自动拦截，靠上面这条命令兜住。
-
 ## 许可
 
-[MIT](LICENSE)
+[MIT](LICENSE)。`skills/` 下各技能保留其自身许可（Apache-2.0 / MIT），见 [`skills/README.md`](skills/README.md)。
