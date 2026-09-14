@@ -22,7 +22,9 @@ metadata:
 <!-- self-link -->
 > **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-planning/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-planning) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-planning/SKILL.md)
 
-## 硬性前置：先读所选规划 skill 的正文
+## 硬性前置：四家全部读完，再择一执行
+
+按常驻 §1.1 的阅读规则，本类 **4 条 → 全部读完**（4 条 ≤4，不折减）——读懂四家差异才谈得上择优；**执行时按需求择一**，不是四家都用。
 
 | skill | 星数 | 定位 | 何时选它 |
 |---|---|---|---|
@@ -80,7 +82,7 @@ Output: 读 `planning-with-files` → 把计划、发现、进度落盘 → 之�
 
 ## Verify
 
-- 动手前：所选规划 skill 的正文读到了吗？
+- 动手前：四家规划 skill 的正文**都**读到了吗？（4 条 ≤4，不折减）
 - 计划里写了「不做什么」吗？
 - 每个阶段有可验收的产出吗？
 - 依赖与顺序标了吗？风险与假设写了吗？

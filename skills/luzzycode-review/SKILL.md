@@ -26,7 +26,9 @@ metadata:
 <!-- self-link -->
 > **所属体系**：[LuzzyCode](https://github.com/LuzzyMeow/LuzzyCode) · 本 skill 正文 `skills/luzzycode-review/SKILL.md` · [仓库内路径](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-review) · [raw 直链](https://raw.githubusercontent.com/LuzzyMeow/LuzzyCode/main/skills/luzzycode-review/SKILL.md)
 
-## 硬性前置：先读所选审查 skill 的正文
+## 硬性前置：四家全部读完，再择一执行
+
+按常驻 §1.1 的阅读规则，本类 **4 条 → 全部读完**（4 条 ≤4，不折减）——读懂四家差异才谈得上择优；**执行时按需求择一或组合**。
 
 | skill | 星数 | 定位 | 何时选它 |
 |---|---|---|---|
@@ -85,7 +87,7 @@ Output: 先确认审什么范围（本次改动 / 整个文件 / 整个仓库）
 
 ## Verify
 
-- 动手前：所选审查 skill 的正文读到了吗？
+- 动手前：四家审查 skill 的正文**都**读到了吗？（4 条 ≤4，不折减）
 - 看过 diff 的完整上下文吗？
 - 输出分了级吗（阻塞 / 建议 / 已确认）？
 - 每条意见带行号与具体改法吗？

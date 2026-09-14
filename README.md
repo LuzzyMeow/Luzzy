@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-23-1f6feb?style=flat-square)](skills/)
-[![Resident](https://img.shields.io/badge/resident-14.3k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
+[![Resident](https://img.shields.io/badge/resident-14.8k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
 [![Convention](https://img.shields.io/badge/format-agentskills.io-0969da?style=flat-square)](https://agentskills.io/specification)
 
 ## 30 秒上手
@@ -86,7 +86,11 @@ LuzzyCode/
 
 十四类任务各有指定条目，读完正文才算通过。看仓库首页或目录列表不算。
 
-**数量折减规则**：一类里列出 **4 条及以内 → 全部读完**；**超过 4 条 → 完整读其中任意 4 条**，按相关性择优。适用范围不止 skill——skill 正文、素材库、组件库、官方文档页，以及任何有具体指向的链接，全部计入。
+**统一阅读规则**（适用于整份清单的**所有子项**，不是个别类目）：**4 条及以内 → 全部读完**；**超过 4 条 → 完整读其中任意 4 条**，按相关性择优。子项**不止 skill**——skill 正文、素材库、组件库、官方文档页、以及任何有具体指向的链接，全部按同一口径计入。**读的是正文**，只看首页、简介、目录列表不算读过。
+
+**「读」与「装 / 用」是两件事**：清单要求读全部（利于对比择优），执行时仍按各类要点择一或组合——比如 PPT 三家都要读，但不要三家全装。
+
+**单一事实源**：常驻提示词 §1.1 的表是必读清单的唯一事实源，本表是它的镜像；各 `luzzycode-*` skill 正文里的清单是投影，不一致时以 §1.1 为准。**分层分工**：内部 skill 管「选哪家、怎么装、红线、降级、边界」，外部清单是真正要读的方法论正文。
 
 | 任务类型 | 必读 |
 |---|---|
@@ -228,14 +232,14 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 层 | 内容 | 行数 | 实测 token |
 |---|---|---|---|
-| 常驻 | `prompt/LuzzyCode.md` | 453 | 14,290 |
-| 按需 | 23 个 skill 正文 | 2,022 | 38,216 |
+| 常驻 | `prompt/LuzzyCode.md` | 473 | 14,846 |
+| 按需 | 23 个 skill 正文 | 2,026 | 38,517 |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
 「按需」只算 skill 的**正文**——每个 skill 的 frontmatter（`description` 等）是常驻 skill 目录的一部分，每轮都在上下文里，23 个合计约 4.9k token，属常驻开销。
 
-典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git` 三个 skill 的正文，约 20.1k token。单类任务加载常驻加对应 skill：逆向约 17.0k、素材约 16.2k、Android 约 17.2k、MCP 约 16.7k。纯闲聊只付常驻的 14.3k。
+典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git` 三个 skill 的正文，约 20.7k token。单类任务加载常驻加对应 skill：逆向约 17.6k、素材约 16.9k、Android 约 17.8k、MCP 约 17.3k。纯闲聊只付常驻的 14.8k。
 
 `AGENTS.md`（维护指南与 harness 路径表）252 行、约 3.7k token，**只在维护本仓库或查 harness 路径时读**，不进常驻。
 
