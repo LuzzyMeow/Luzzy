@@ -49,6 +49,7 @@ LuzzyCode/
 | **交叉引用** | 文中所有 `§N.N` 都能找到对应小节 | 把所有 `§` 引用抄出来，逐个跳过去看；**改章节编号时最容易漏** |
 | 残留 | 无指向旧机制的写法（`luzzycode-*`、`skills/`、skill 加载、`§1.1a`） | 搜这些关键词，应无命中 |
 | 格式 | 无装饰性 emoji（✅ ⚠ 🚫 三档标记、✗ ✓ 正反例标记豁免）、无裸露分隔线 | 目视 + 搜 `^---$` |
+| **模板语法** | 正文里**没有 `{{...}}`**——DSH 会把 persona 里的它当 prompt 变量引用解析，变量名须匹配 `[a-z][a-z0-9_]*`，`{{PLACEHOLDER}}` 这种大写形式会让预设直接报错 | 搜 `{{`，应无命中；占位符统一用 `${...}` |
 | 安全 | 无硬编码密钥形态 | 搜 `sk-` / `ghp_` / `Bearer` |
 | **数字** | README 的行数、token、徽章等于实测值 | 第五节命令重测，**每次必做** |
 
@@ -139,6 +140,9 @@ persona.md  --(node sync-persona.mjs)-->  agent.cordis.yml 的 config.prefix: |-
 | **字段名必须是 `prefix`** | DSH 2.0.9+ 的 persona schema 要求必填 `prefix`；用旧的 `text` 会导致 preset 组装无限失败重试（host 日志刷 `ValidationError: $.prefix missing required value`） |
 | **禁止手改 YAML 标量** | 生成块由脚本产出并回验；手改会让下一次同步产生巨大且无法比对的 diff |
 | **顶层条目数不能变** | 脚本会校验（本机为 17 条），变了说明误伤了块外结构 |
+| **正文禁止 `{{...}}`** | DSH 把 persona 前缀里的 `{{...}}` 当 prompt 变量引用解析，变量名必须匹配 `[a-z][a-z0-9_]*`。大写形式（如 `{{PLACEHOLDER}}`）会让预设报 `malformed prompt variable reference`，**整个预设加载失败**。占位符统一写 `${...}` |
+
+**为什么会有这条**：2026-09-14 从「常驻提示词 + skill 层」合并为单一提示词时，`skills/luzzycode-skills/SKILL.md` 里的 `{{PLACEHOLDER}}` 被一并搬进了 persona。它原先只存在于 skill 文件里、从不进 persona，所以 DSH 的变量解析器碰不到；合并后 persona 加载直接失败。**教训**：合并/搬运文本进 persona 前，先扫一遍模板语法——skill 里安全的写法，进 persona 不一定安全。
 
 **验证命令**（脚本之外独立复核一遍，确认解析出的文本与源文件一致）：
 

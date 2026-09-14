@@ -3,7 +3,7 @@
 鹿溪（Coding 模式）：给编码 Agent 用的一套行为契约，**全部装在一个提示词文件里**。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/prompt-24.3k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
+[![Prompt](https://img.shields.io/badge/prompt-24.4k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
 [![Single file](https://img.shields.io/badge/架构-单一提示词-0969da?style=flat-square)](prompt/LuzzyCode.md)
 
 ## 30 秒上手
@@ -144,13 +144,13 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/LuzzyCode.md` | 965 | 24,344 |
+| `prompt/LuzzyCode.md` | 965 | 24,353 |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
 **这个数字是单一文件的代价，也是它的全部成本**：无论做什么任务，都只付这一份。早先的两层版本是常驻 14.8k + 按需 38.5k，只有命中场景才付后者；现在是全量常驻。换来的是清单只有一个事实源、不存在两处漂移、维护改一处。
 
-`AGENTS.md`（维护指南与九家 harness 路径表）263 行、约 4.9k token，**只在维护本仓库或查 harness 路径时读**，不必注入 system prompt。
+`AGENTS.md`（维护指南与九家 harness 路径表）267 行、约 5.2k token，**只在维护本仓库或查 harness 路径时读**，不必注入 system prompt。
 
 ## 兼容性
 
