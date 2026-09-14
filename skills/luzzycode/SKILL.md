@@ -4,11 +4,12 @@ description: >
   Use when operating under the LuzzyCode preset and needing the detailed rules
   behind one of its resident constraints, or when routing to the right
   LuzzyCode child skill.
-  Handles routing to nineteen child skills covering workflow orchestration,
+  Handles routing to twenty-two child skills covering workflow orchestration,
   project planning, code discipline, code review, Git operations, web search,
   memory, onboarding, tool usage, documentation, Office files, presentation
   decks, HTML web development, Windows system repair, design tasks, skill
-  engineering, workspace hygiene, reverse engineering, and interaction style.
+  engineering, workspace hygiene, reverse engineering, visual assets, Android
+  development, MCP integration, and interaction style.
   Triggers: "LuzzyCode", "鹿溪", "鹿溪喵", "which luzzy skill", "luzzycode rules",
   "preset details", "预设细则", "该查哪个 skill", "配套 skill".
   Do NOT use for general coding tasks with no LuzzyCode involvement — load the
@@ -26,7 +27,7 @@ metadata:
 
 # LuzzyCode · 编排器
 
-本 skill 是 LuzzyCode 预设的**路由入口**。常驻提示词 `prompt/LuzzyCode.md` 承载硬规定与核心纪律；细则分散在十九个子 skill 中，按场景加载。
+本 skill 是 LuzzyCode 预设的**路由入口**。常驻提示词 `prompt/LuzzyCode.md` 承载硬规定与核心纪律；细则分散在二十二个子 skill 中，按场景加载。
 
 **权威仓库**：https://github.com/LuzzyMeow/LuzzyCode
 **skill 目录**：https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills
@@ -65,6 +66,9 @@ metadata:
 | UI / 动效 / 页面 / 交互设计 | [`luzzycode-design`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-design) | 「做个界面」「加动效」「设计稿」 |
 | 创建 / 审计 / 融合 skill | [`luzzycode-skills`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-skills) | 「写个 skill」「审计技能」「合并技能」 |
 | 逆向 / 渗透测试 / 安全研究 | [`luzzycode-reverse`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-reverse) | 「逆向」「APK 改包」「JS 签名」「脱壳」「CTF」「渗透测试」「恶意样本」 |
+| 图标 / 品牌 logo / 组件库 / 游戏素材 | [`luzzycode-assets`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-assets) | 「找个图标」「AI logo」「组件库」「游戏图标」「素材许可」 |
+| Android 应用开发 / 模拟器 | [`luzzycode-android`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-android) | 「做个安卓应用」「跑模拟器」「adb」「装 APK」「Compose」 |
+| MCP 开发 / 接入 / 维护 | [`luzzycode-mcp`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-mcp) | 「写个 MCP」「配置 MCP」「工具不出现」「mcp.json」「stdio」 |
 | 汇报格式 / 项目上下文 / 文档落地 | [`luzzycode-interaction`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-interaction) | 「怎么汇报」「项目结构」「写文档」 |
 
 **路由规则**：

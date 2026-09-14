@@ -1,10 +1,10 @@
 # LuzzyCode
 
-鹿溪（Coding 模式）：给编码 Agent 用的一套行为契约，拆成常驻提示词与 20 个按需加载的 skill。
+鹿溪（Coding 模式）：给编码 Agent 用的一套行为契约，拆成常驻提示词与 23 个按需加载的 skill。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-20-1f6feb?style=flat-square)](skills/)
-[![Resident](https://img.shields.io/badge/resident-12.4k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
+[![Skills](https://img.shields.io/badge/skills-23-1f6feb?style=flat-square)](skills/)
+[![Resident](https://img.shields.io/badge/resident-14.3k_tokens-8250df?style=flat-square)](prompt/LuzzyCode.md)
 [![Convention](https://img.shields.io/badge/format-agentskills.io-0969da?style=flat-square)](https://agentskills.io/specification)
 
 ## 30 秒上手
@@ -65,10 +65,14 @@ LuzzyCode/
 │   ├── luzzycode-windows/        Windows 修复与安全红线
 │   ├── luzzycode-skills/         skill 工程
 │   ├── luzzycode-reverse/        逆向 / 授权渗透 / 安全研究
+│   ├── luzzycode-assets/         图标 / 品牌 logo / 组件库 / 游戏素材
+│   ├── luzzycode-android/        Android 开发与模拟器
+│   ├── luzzycode-mcp/            MCP 开发 / 接入 / 维护
 │   ├── luzzycode-workspace/      落点纪律与收尾自检
 │   └── luzzycode-interaction/    汇报格式与项目上下文
 ├── scripts/
 │   └── check-skills.py           质量门禁校验脚本
+├── AGENTS.md                     维护指南 + 九家 harness 路径速查
 ├── README.md
 ├── LICENSE
 └── .gitattributes
@@ -80,7 +84,9 @@ LuzzyCode/
 
 ### 一、必读 skill
 
-十一类任务各有指定 skill，读完正文才算通过。看仓库首页或目录列表不算。
+十四类任务各有指定条目，读完正文才算通过。看仓库首页或目录列表不算。
+
+**数量折减规则**：一类里列出 **4 条及以内 → 全部读完**；**超过 4 条 → 完整读其中任意 4 条**，按相关性择优。适用范围不止 skill——skill 正文、素材库、组件库、官方文档页，以及任何有具体指向的链接，全部计入。
 
 | 任务类型 | 必读 |
 |---|---|
@@ -93,12 +99,21 @@ LuzzyCode/
 | Windows 修复 / 优化 | [WinUtil](https://github.com/ChrisTitusTech/winutil) · [Win11Debloat](https://github.com/Raphire/Win11Debloat) · [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) |
 | 项目规划 / 需求拆解 | [spec-kit](https://github.com/github/spec-kit) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) · [GSD Core](https://github.com/open-gsd/gsd-core) · [planning-with-files](https://github.com/OthmanAdi/planning-with-files) |
 | 代码审查 | [Agent Skills](https://github.com/addyosmani/agent-skills) · [Open Code Review](https://github.com/alibaba/open-code-review) · [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) · [Shippie](https://github.com/mattzcarey/shippie) |
-| 逆向 / 授权渗透 / 安全研究 | [reverse-skill](https://github.com/zhaoxuya520/reverse-skill) |
+| 逆向 / 授权渗透 / 安全研究 | [reverse-skill](https://github.com/zhaoxuya520/reverse-skill)（按路由读，不必通读全部模块） |
+| 素材 / 图标 / 组件库 | [Lobe UI](https://github.com/lobehub/lobe-ui) · [Lobe Icons](https://github.com/lobehub/lobe-icons) · [Game Icon Pack](https://github.com/Nieobie/game-icon-pack) |
+| Android 开发 / 模拟器 | ZCode 官方插件 `android-emulator`（插件市场装） · [Android 开发者文档](https://developer.android.com/develop) · [ADB](https://developer.android.com/tools/adb) · [Compose](https://developer.android.com/compose) · [Gradle 构建](https://developer.android.com/build) |
+| MCP 开发 / 接入 / 维护 | [规范与 SDK 选型](https://modelcontextprotocol.io/docs/2026-07-28/sdk) · [连接本地服务器](https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers) · [TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk) · [Python SDK](https://github.com/modelcontextprotocol/python-sdk) · [参考服务器](https://github.com/modelcontextprotocol/servers) · [协议仓库](https://github.com/modelcontextprotocol/modelcontextprotocol) |
 | skill 开发 / 管理 | [Luzzy-Skill Architect](https://github.com/LuzzyMeow/Luzzy-Skill-Architect) |
 
 编码、设计、PPT、网页开发、Windows、规划、审查这几类都给了多家，按需求择一或组合，细则各在对应的 `luzzycode-*` skill 里。
 
 逆向这一类**只给一家**：reverse-skill 本身就是路由包（44 条路由规则、87 个 `SKILL.md`），**按路由读**——先读总控与路由表定 PRIMARY，再读该 PRIMARY 的正文，不必通读全部模块。它**必须整仓安装**，且 clone 后要先跑平台刷新脚本生成 `tool-index.md`，否则路由不可用。细则与五条纪律见 `luzzycode-reverse`。
+
+素材这一类是**素材不是 skill**：按需取用，但必须先读消费方式与许可条款。三条纪律：不 clone 大仓库（Lobe Icons 约 221MB）、品牌 logo 的商标边界（MIT 不覆盖 logo 商标权）、交付写明来源与许可。见 `luzzycode-assets`。
+
+Android 这一类有**硬性前置**：必须在 ZCode 内、且从插件市场装官方插件 `android-emulator`，MCP 服务器由 ZCode 插件宿主拉起，不在 ZCode 内就没有这套工具；模拟器本体用独立桌面窗口渲染。插件没装就澄清告知，不假装可用。见 `luzzycode-android`。
+
+MCP 这一类**超过 4 条**，按折减规则择优读满 4 条。四条纪律：传输默认 stdio、写完必须实测、密钥走环境变量引用、第三方 MCP 先审后装。见 `luzzycode-mcp`。
 
 任一链接失效，Agent 立刻告诉你哪一条需要更新，然后走降级规则继续干活。
 
@@ -127,7 +142,7 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 
 用内置搜索做资料搜索、只在抓取时用 AnySearch，这种半程合规视为违规。内置工具仅作回退，且要在回答里说明。
 
-## 二十个 skill
+## 二十三个 skill
 
 <details open>
 <summary><b>编排与流程</b></summary>
@@ -170,10 +185,15 @@ https://ghfast.top/https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 | `luzzycode-windows` | Windows 修复 / 优化 / 去臃肿 | WinUtil·Win11Debloat·Sophia Script 三家选择、还原点与改动确认红线 |
 | `luzzycode-skills` | 创建 / 审计 / 融合 skill | Architect 调用、质量门禁、触发验证 |
 | `luzzycode-reverse` | 逆向 / 渗透测试 / 安全研究 | reverse-skill 整仓部署、按路由读取、授权门、自举确认、只读边界 |
+| `luzzycode-assets` | 图标 / 品牌 logo / 组件库 / 游戏素材 | 三家素材选择、npm 与 CDN 消费、体积陷阱、许可与商标边界 |
+| `luzzycode-android` | Android 开发 / 模拟器 | ZCode 插件市场安装门、插件自读、preflight、构建安装、截图验收、ADB UI 自动化 |
+| `luzzycode-mcp` | MCP 开发 / 接入 / 维护 | 官方 SDK 与规范、传输选择、工具设计、客户端注入、跨 harness 路径、第三方供应链安全 |
 
 </details>
 
-二十个 skill 相互独立。完整的「场景 → skill」路由表在 `luzzycode` 的正文里，常驻提示词 §12.1 只留名字清单与抓取链接模板——同一份清单不放两处，免得漂移也免得白付常驻预算。增删 skill 时同步三处：`skills/` 目录、`luzzycode` 的路由表、常驻 §12.1 的名字清单。
+二十三个 skill 相互独立。完整的「场景 → skill」路由表在 `luzzycode` 的正文里，常驻提示词 §12.1 只留名字清单与抓取链接模板——同一份清单不放两处，免得漂移也免得白付常驻预算。增删 skill 时同步四处：`skills/` 目录、`luzzycode` 的路由表、常驻 §12.1 的名字清单、README 的计数与结构树。
+
+维护本仓库、或要查某家 harness 的 skill / MCP 路径时，读根目录的 [`AGENTS.md`](AGENTS.md)——它按 Hermes Agent、OpenClaw、ZCode、QwenPaw、DSH、Cherry Studio、OpenCode、Claude Code、Codex 九家列了路径速查表，每项附官方文档链接。
 
 ## 零配置启动
 
@@ -208,14 +228,16 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 层 | 内容 | 行数 | 实测 token |
 |---|---|---|---|
-| 常驻 | `prompt/LuzzyCode.md` | 430 | 12,357 |
-| 按需 | 20 个 skill 正文 | 1,610 | 30,733 |
+| 常驻 | `prompt/LuzzyCode.md` | 453 | 14,290 |
+| 按需 | 23 个 skill 正文 | 2,022 | 38,216 |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-「按需」只算 skill 的**正文**——每个 skill 的 frontmatter（`description` 等）是常驻 skill 目录的一部分，每轮都在上下文里，20 个合计约 4.2k token，属常驻开销。
+「按需」只算 skill 的**正文**——每个 skill 的 frontmatter（`description` 等）是常驻 skill 目录的一部分，每轮都在上下文里，23 个合计约 4.9k token，属常驻开销。
 
-典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git` 三个 skill 的正文，约 18.2k token。逆向类任务加载常驻加 `luzzycode-reverse`，约 15.1k。纯闲聊只付常驻的 12.4k。
+典型编码任务加载常驻加 `luzzycode-workflow`、`luzzycode-code`、`luzzycode-git` 三个 skill 的正文，约 20.1k token。单类任务加载常驻加对应 skill：逆向约 17.0k、素材约 16.2k、Android 约 17.2k、MCP 约 16.7k。纯闲聊只付常驻的 14.3k。
+
+`AGENTS.md`（维护指南与 harness 路径表）252 行、约 3.7k token，**只在维护本仓库或查 harness 路径时读**，不进常驻。
 
 skill 的加载靠 description 触发。每个 description 都写了「何时用」和「不要用」，避免误激活。
 
@@ -223,7 +245,7 @@ skill 的加载靠 description 触发。每个 description 都写了「何时用
 
 提示词与 Agent 无关，能直接当 system prompt 用。
 
-skill 走 agentskills.io 的 `SKILL.md` 规范，`name` 用 kebab-case，`description` 必填。DeepSeek Harness、Claude Code 以及符合该规范的宿主都能加载。二十个 skill 逐个过了 DSH 的解析器校验。
+skill 走 agentskills.io 的 `SKILL.md` 规范，`name` 用 kebab-case，`description` 必填。DeepSeek Harness、Claude Code 以及符合该规范的宿主都能加载。二十三个 skill 逐个过了 DSH 的解析器校验。
 
 提示词里出现的工具名（`todo_write`、`glob`、`present` 等）都当能力示例看。预设要求 Agent 先盘点本机真实工具再映射，缺失时走 `luzzycode-tools` 里的降级表。
 
