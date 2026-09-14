@@ -115,6 +115,49 @@ ZCode 插件可同时打包 skills、commands、MCP server。官方插件源为 
 
 **装之前先分辨包形态**：读 `package.json` 与入口文件，别按文件夹名字猜。
 
+**本机预设的部署链路（同步本提示词到 DSH 时的实测经验）**
+
+DSH 的 agent 预设放在 `~/.dsh/.agent-presets/<预设名>/`（本仓库对应 `luzzycode`）。提示词不是直接读文件，而是被**机械嵌入** YAML：
+
+```
+persona.md  --(node sync-persona.mjs)-->  agent.cordis.yml 的 config.prefix: |- 块
+   ↑ 唯一真源，与 prompt/LuzzyCode.md 逐字节一致         ↑ 6 空格缩进，禁止手工编辑
+```
+
+同步流程（四条，缺一不可）：
+
+1. **先备份 `persona.md`**（同步脚本只备份 YAML，不备份 persona 正本），命名沿用 `persona.md.bak-<原因>-<时间戳>`
+2. **覆盖 `persona.md`**，内容与仓库 `prompt/LuzzyCode.md` **逐字节一致**
+3. `cd ~/.dsh/.agent-presets/luzzycode && node sync-persona.mjs`
+4. **复核**：脚本会自行解析回验 + 逐字节比对 + 顶层条目数校验，任一不过自动回滚；稳妥起见再独立跑一次解析比对
+
+**四条硬约束（踩过坑，别复发）**：
+
+| 约束 | 原因 |
+|---|---|
+| **行尾必须 LF** | 从仓库复制来的文件在工作区可能是 CRLF（本仓库已实测发生过）。CRLF 会让回验在第 1 行就失败：`YAML 侧 "…" / 源文件 "…\r"`。复制后先规整 `\r\n` → `\n`，**不要指望 `.gitattributes` 在 checkout 时自动转换** |
+| **字段名必须是 `prefix`** | DSH 2.0.9+ 的 persona schema 要求必填 `prefix`；用旧的 `text` 会导致 preset 组装无限失败重试（host 日志刷 `ValidationError: $.prefix missing required value`） |
+| **禁止手改 YAML 标量** | 生成块由脚本产出并回验；手改会让下一次同步产生巨大且无法比对的 diff |
+| **顶层条目数不能变** | 脚本会校验（本机为 17 条），变了说明误伤了块外结构 |
+
+**验证命令**（脚本之外独立复核一遍，确认解析出的文本与源文件一致）：
+
+```bash
+cd ~/.dsh/.agent-presets/luzzycode && node -e "
+const fs=require('fs'), yaml=require('/Users/<你>/.dsh/profiles/desktop/node_modules/js-yaml');
+const T=new yaml.Type('tag:yaml.org,2002:js',{kind:'scalar',construct:d=>d,resolve:()=>true});
+const p=yaml.load(fs.readFileSync('agent.cordis.yml','utf8'),{schema:yaml.DEFAULT_SCHEMA.extend([T])}).find(e=>e.id==='persona');
+const src=fs.readFileSync('persona.md','utf8').replace(/\n+$/,'');
+console.log('逐字节一致:', p.config.prefix.replace(/\n$/,'')===src);
+"
+```
+
+- **生效时机**：改动只对**新会话**生效；进行中的会话上下文里仍是旧文本
+- **登记惯例**：每次改动在 `persona.changes.md` 追加一条（日期 + 性质 + 踩坑 + 校验结果 + 回滚命令），`preset.yml` 的 `description` 也要跟着改——它是预设列表里显示的说明，最容易被忘
+- **回滚**：恢复 `persona.md.bak-*` 与 `agent.cordis.yml.bak-sync-*` 两个文件即可
+
+**遗留待决**：上游已删除配套 skill 层，但本机 `~/.dsh/skills/` 下的 `luzzycode-*` 目录仍在，会被 DSH 继续扫描并暴露给模型——与本提示词「不再有配套 skill」的口径不一致。**不要擅自删**：先确认没有其他预设引用，再与用户确认删除或移到备份目录。
+
 ### Claude Code
 
 **官方文档**：Skills —— https://code.claude.com/docs/en/skills ；MCP 接入（本地 stdio / 远端 HTTP / SSE） —— https://code.claude.com/docs/en/claude_code_docs_map ；插件内 MCP 集成范例 —— https://github.com/anthropics/claude-plugins-official/blob/main/plugins/plugin-dev/skills/mcp-integration/SKILL.md
