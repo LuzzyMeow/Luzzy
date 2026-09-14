@@ -70,11 +70,11 @@ Expected: `Hi <username>! You've successfully authenticated, but GitHub does not
 
 SSH 与直连 GitHub 都不通时，**逐级降级**：
 
-| 手段 | 用法 | 实测 |
+| 手段 | 用法 | 实测状态 |
 |---|---|---|
-| **gh-proxy 代理** | clone：`git clone https://gh-proxy.com/https://github.com/<owner>/<repo>.git`<br>raw：`https://gh-proxy.com/https://raw.githubusercontent.com/<owner>/<repo>/<branch>/<path>`<br>archive：`https://gh-proxy.com/https://github.com/<owner>/<repo>/archive/refs/heads/main.zip` | ✅ clone 与 raw 均实测可用 |
-| **ghfast 代理** | 同上，域名换 `ghfast.top` | ✅ raw 实测可用；clone 可能超时 |
-| **AnySearch 抓取** | `extract` 抓 `raw.githubusercontent.com` 或 `github.com/.../blob/...` | ✅ 走 AnySearch 通道，不受 GitHub 连通性影响 |
+| **gh-proxy 代理** | clone：`git clone https://gh-proxy.com/https://github.com/<owner>/<repo>.git`<br>raw：`https://gh-proxy.com/https://raw.githubusercontent.com/<owner>/<repo>/<branch>/<path>`<br>archive：`https://gh-proxy.com/https://github.com/<owner>/<repo>/archive/refs/heads/main.zip` | clone 与 raw 均实测可用 |
+| **ghfast 代理** | 同上，域名换 `ghfast.top` | raw 实测可用；clone 可能超时 |
+| **AnySearch 抓取** | `extract` 抓 `raw.githubusercontent.com` 或 `github.com/.../blob/...` | 走 AnySearch 通道，不受 GitHub 连通性影响 |
 | **Gitee 导入** | Gitee「从 GitHub 导入仓库」建镜像后从 Gitee clone | 兜底，需用户账号 |
 
 **优先级**：SSH 直连 → gh-proxy → AnySearch 抓单文件 → Gitee 导入
@@ -95,7 +95,7 @@ Expected: `200`。非 200 就换下一个手段，并在回答里说明换了哪
 - **小步提交**，每次改动一个清晰的 save point
 - **明确列出文件**，【禁 `git add .`】——避免把临时产物、密钥、构建产物带进提交
 - commit message 说清「**为什么改**」，不只说改了什么
-- 【禁 `git push --force`】——除非用户明确要求且已说明风险
+- 【禁 `git push --force`】——常驻 §七 列为「绝不做」，**本 skill 不设例外**。历史需要重写时停下来向用户说明，由用户决定并自行执行
 - 提交前扫一遍敏感信息：API key、token、私钥、真实凭据一律不得入库；文档里的凭据使用 `${PLACEHOLDER}` 占位
 
 ## 换行符与跨平台
@@ -131,3 +131,12 @@ Output: `gh repo create` → `git remote set-url origin git@github.com:...` → 
 
 Input: 用户说「推送报错了」
 Output: 先看错误类型 → `Permission denied` 则探 SSH 通道 → 若通道正常则查远端分支状态 → 报告具体原因，不盲目 force push
+
+## Verify
+
+- 建仓库后：`git remote -v` 两行是否都以 `git@github.com:` 开头？
+- 推送前：改动文件是显式列出的，还是用了 `git add .`？
+- 提交前扫过敏感信息吗（API key / token / 私钥 / 真实凭据）？
+- 换行符：`git ls-files --eol` 里文本文件是否为 `i/lf w/lf`？
+- 有没有执行过 `git push --force`？（有就是违规——本 skill 不设例外）
+- 同一错误重试超过 3 次了吗？超了就该换路径或说明

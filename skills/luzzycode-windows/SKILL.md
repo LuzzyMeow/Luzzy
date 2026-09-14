@@ -28,7 +28,7 @@ metadata:
 | 工具 | 定位 | 何时选它 |
 |---|---|---|
 | [WinUtil](https://github.com/ChrisTitusTech/winutil)（62.5k★） | 安装软件 + 去臃肿 + 排障 + 管更新 | 通用维护、全新装机 |
-| [Win11Debloat](https://github.com/Raphire/Win11Debloat)（56.8k★） | 轻量 PowerShell，移除预装、关遥测 | 只需精准去臃肿 |
+| [Win11Debloat](https://github.com/Raphire/Win11Debloat)（57.1k★） | 轻量 PowerShell，移除预装、关遥测 | 只需精准去臃肿 |
 | [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)（9.7k★） | 150+ 函数精细调优 | 细粒度配置 |
 
 ## 安全红线（高于一切，不可协商）
@@ -44,12 +44,17 @@ metadata:
    Checkpoint-Computer -Description "LuzzyCode-before-optimize" -RestorePointType MODIFY_SETTINGS
    ```
    Verify: `Get-ComputerRestorePoint` 列出刚建的还原点，且时间戳为本次操作前。
+   **建不了时的降级**（系统保护被组策略禁用、被前一个脚本关掉、或 `Checkpoint-Computer` 撞上 24 小时节流）：
+   - 先试 `vssadmin list shadowstorage` 与组策略 `Computer Configuration > Administrative Templates > System > System Restore` 确认是被谁关的
+   - 能启用就启用后重建；确实建不了 → **停下来告知用户「无法建立还原点」**，列出改动清单与回滚方案，拿到用户明确同意后才继续；用户不同意就【不动手】
+   - **不许**因为「建不了还原点」就跳过去直接跑脚本
+   - 别把 `Checkpoint-Computer` 的节流报错当成成功——它撞节流时不报错也不建点，必须用 `Get-ComputerRestorePoint` 回读确认
 
 2. **复述改动再执行**：跑任何脚本前，把「将要改什么」列成清单给用户，拿到**明确确认**后才执行（常驻提示词 §六）。
 
 3. **禁止盲跑远程脚本**：不要直接 `irm https://... | iex`。先下载、读内容、确认无害，再执行。
 
-4. **分级执行**：涉及注册表、组策略、服务禁用的改动，**逐项确认**，不要一次全上。WinUtil 的 `Advanced` 预设**禁止**在用户生产机上直接跑。
+4. **分级执行**：涉及注册表、组策略、服务禁用的改动，**逐项确认**，不要一次全上。WinUtil 的 `Advanced` 预设**禁止**在用户的生产机 / 唯一工作机上直接跑——**先问用途**再定（常驻提示词 §1.1 Windows 口径）。
 
 5. **不叠脚本**：出问题用还原点回滚，**不要**再叠第二个优化脚本去修第一个的后果。
 
