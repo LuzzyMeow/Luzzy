@@ -1,0 +1,17 @@
+[
+  {"phrase": "create a new skill for database migrations", "should_activate": true},
+  {"phrase": "audit my deploy skill", "should_activate": true},
+  {"phrase": "design a skill for code review", "should_activate": true},
+  {"phrase": "improve my test-runner skill", "should_activate": true},
+  {"phrase": "review my SKILL.md for issues", "should_activate": true},
+  {"phrase": "check my skill quality and maturity level", "should_activate": true},
+  {"phrase": "merge code-review and test-runner into one skill", "should_activate": true},
+  {"phrase": "fuse these two skills together", "should_activate": true},
+  {"phrase": "what maturity level is my code-review skill", "should_activate": true},
+  {"phrase": "turn this long prompt into a skill", "should_activate": true},
+  {"phrase": "write a README for my project", "should_activate": false},
+  {"phrase": "generate a standalone Python script", "should_activate": false},
+  {"phrase": "help me write general documentation", "should_activate": false},
+  {"phrase": "create a CLAUDE.md for my team", "should_activate": false},
+  {"phrase": "what's the weather today", "should_activate": false}
+]

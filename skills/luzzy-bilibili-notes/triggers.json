@@ -1,0 +1,20 @@
+[
+  {"phrase": "把这个B站视频整理成笔记 https://www.bilibili.com/video/BV11q8J6CEZS", "should_activate": true},
+  {"phrase": "提取B站视频", "should_activate": true},
+  {"phrase": "B站视频转文档", "should_activate": true},
+  {"phrase": "帮我把这个视频转成文字", "should_activate": true},
+  {"phrase": "抓这个视频的字幕", "should_activate": true},
+  {"phrase": "帮我看看这个视频讲了什么", "should_activate": true},
+  {"phrase": "bilibili 视频 笔记", "should_activate": true},
+  {"phrase": "BV1xx411c7mD 这个视频讲了啥", "should_activate": true},
+  {"phrase": "提取 https://b23.tv/abcdefg 的内容", "should_activate": true},
+  {"phrase": "把这个视频的字幕整理成 markdown", "should_activate": true},
+  {"phrase": "帮我把B站全站的科技区视频评论都爬下来", "should_activate": false},
+  {"phrase": "下载这个B站视频的4K高清文件", "should_activate": false},
+  {"phrase": "绕过B站的WBI签名抓取数据", "should_activate": false},
+  {"phrase": "帮我下载这个充电专属视频", "should_activate": false},
+  {"phrase": "通过弹幕反查这些用户是谁", "should_activate": false},
+  {"phrase": "写一个视频播放器组件", "should_activate": false},
+  {"phrase": "给这个页面加一个内嵌视频", "should_activate": false},
+  {"phrase": "把这段 Markdown 渲染成 HTML", "should_activate": false}
+]

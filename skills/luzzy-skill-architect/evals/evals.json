@@ -1,0 +1,94 @@
+{
+  "skill": "luzzy-skill-architect",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "trigger-001",
+      "prompt": "Create a new skill for database migrations",
+      "expect_activation": true,
+      "assertions": [
+        {
+          "type": "content",
+          "check": "contains_section",
+          "value": "Phase 1"
+        },
+        {
+          "type": "content",
+          "check": "contains_section",
+          "value": "Phase 2"
+        }
+      ]
+    },
+    {
+      "id": "trigger-002",
+      "prompt": "Write a README for my project",
+      "expect_activation": false,
+      "assertions": []
+    },
+    {
+      "id": "trigger-003",
+      "prompt": "Audit my deploy skill for anti-patterns",
+      "expect_activation": true,
+      "assertions": [
+        {
+          "type": "content",
+          "check": "contains_section",
+          "value": "Anti-Patterns"
+        }
+      ]
+    },
+    {
+      "id": "trigger-004",
+      "prompt": "What maturity level is my code-review skill",
+      "expect_activation": true,
+      "assertions": [
+        {
+          "type": "content",
+          "check": "contains_section",
+          "value": "Maturity Model"
+        }
+      ]
+    },
+    {
+      "id": "trigger-005",
+      "prompt": "Fuse my code-review and test-runner skills",
+      "expect_activation": true,
+      "assertions": [
+        {
+          "type": "content",
+          "check": "contains_section",
+          "value": "Fusion Analysis"
+        }
+      ]
+    },
+    {
+      "id": "output-001",
+      "prompt": "Review my SKILL.md for quality issues",
+      "expect_activation": true,
+      "assertions": [
+        {
+          "type": "content",
+          "check": "contains",
+          "value": "description"
+        },
+        {
+          "type": "content",
+          "check": "not_contains",
+          "value": "AP-"
+        }
+      ]
+    },
+    {
+      "id": "output-002",
+      "prompt": "Help me design a skill structure for a deployment workflow",
+      "expect_activation": true,
+      "assertions": [
+        {
+          "type": "content",
+          "check": "contains_section",
+          "value": "Design Structure"
+        }
+      ]
+    }
+  ]
+}
