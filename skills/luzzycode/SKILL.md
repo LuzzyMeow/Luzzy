@@ -4,11 +4,11 @@ description: >
   Use when operating under the LuzzyCode preset and needing the detailed rules
   behind one of its resident constraints, or when routing to the right
   LuzzyCode child skill.
-  Handles routing to eighteen child skills covering workflow orchestration,
+  Handles routing to nineteen child skills covering workflow orchestration,
   project planning, code discipline, code review, Git operations, web search,
   memory, onboarding, tool usage, documentation, Office files, presentation
   decks, HTML web development, Windows system repair, design tasks, skill
-  engineering, workspace hygiene, and interaction style.
+  engineering, workspace hygiene, reverse engineering, and interaction style.
   Triggers: "LuzzyCode", "鹿溪", "鹿溪喵", "which luzzy skill", "luzzycode rules",
   "preset details", "预设细则", "该查哪个 skill", "配套 skill".
   Do NOT use for general coding tasks with no LuzzyCode involvement — load the
@@ -26,7 +26,7 @@ metadata:
 
 # LuzzyCode · 编排器
 
-本 skill 是 LuzzyCode 预设的**路由入口**。常驻提示词 `prompt/LuzzyCode.md` 承载硬规定与核心纪律；细则分散在十八个子 skill 中，按场景加载。
+本 skill 是 LuzzyCode 预设的**路由入口**。常驻提示词 `prompt/LuzzyCode.md` 承载硬规定与核心纪律；细则分散在十九个子 skill 中，按场景加载。
 
 **权威仓库**：https://github.com/LuzzyMeow/LuzzyCode
 **skill 目录**：https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills
@@ -64,6 +64,7 @@ metadata:
 | 首次对话、未配置记忆 / 搜索 | [`luzzycode-bootstrap`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-bootstrap) | 「怎么配置」「没有密钥」「首次使用」 |
 | UI / 动效 / 页面 / 交互设计 | [`luzzycode-design`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-design) | 「做个界面」「加动效」「设计稿」 |
 | 创建 / 审计 / 融合 skill | [`luzzycode-skills`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-skills) | 「写个 skill」「审计技能」「合并技能」 |
+| 逆向 / 渗透测试 / 安全研究 | [`luzzycode-reverse`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-reverse) | 「逆向」「APK 改包」「JS 签名」「脱壳」「CTF」「渗透测试」「恶意样本」 |
 | 汇报格式 / 项目上下文 / 文档落地 | [`luzzycode-interaction`](https://github.com/LuzzyMeow/LuzzyCode/tree/main/skills/luzzycode-interaction) | 「怎么汇报」「项目结构」「写文档」 |
 
 **路由规则**：

@@ -27,6 +27,13 @@ DECORATIVE = re.compile(r"[\u2600-\u27BF\u2B00-\u2BFF\uFE0F\uD83C-\uDBFF]")
 STAR_DATA = re.compile(r"[\d.]+k?★")
 HRULE = re.compile(r"^---\s*$", re.M)
 
+# 子 skill 计数在常驻提示词里写阿拉伯数字、在编排器里写中文数字，两处都要对得上。
+# 覆盖当前规模上下若干档；超出范围时该处退化为只查阿拉伯数字。
+CN_NUM = {
+    18: "十八", 19: "十九", 20: "二十", 21: "二十一",
+    22: "二十二", 23: "二十三", 24: "二十四", 25: "二十五",
+}
+
 
 class Report:
     def __init__(self, verbose: bool) -> None:
@@ -153,10 +160,28 @@ def check_repo(rep: Report) -> None:
         "仓库: 提示词含本仓库抓取链接模板",
     )
 
-    # 子 skill 计数声明与实际一致
+    # 子 skill 计数声明与实际一致。
+    # 两处口径不同：常驻提示词用阿拉伯数字（「N 个子 skill」），编排器用中文数字
+    # （「N个子 skill」）。原先只查提示词里的中文写法，而该写法实际在编排器里，
+    # 于是检查空转——编排器的计数漂移了也不会报。两处都查。
+    def declared_count(text: str, pattern: str) -> int | None:
+        m = re.search(pattern, text)
+        return int(m.group(1)) if m else None
+
+    p_num = declared_count(prompt, r"(\d+)\s*个子 skill")
     rep.check(
-        f"十八个子 skill" not in prompt or n_sub == 18,
-        f"仓库: 「十八个子 skill」与实际 {n_sub} 一致",
+        p_num is None or p_num == n_sub,
+        f"仓库: 提示词中子 skill 计数与实际 {n_sub} 一致（声明: {p_num if p_num is not None else '未找到'}）",
+    )
+
+    router_num = None
+    for value, word in CN_NUM.items():
+        if f"{word}个子 skill" in router:
+            router_num = value
+            break
+    rep.check(
+        router_num is None or router_num == n_sub,
+        f"仓库: 编排器中子 skill 计数与实际 {n_sub} 一致（声明: {router_num if router_num is not None else '未找到'}）",
     )
 
 
