@@ -16,6 +16,8 @@ desktop.ini
 node_modules/
 dist/
 build/
+__pycache__/
+*.pyc
 
 # 凭据：绝不允许入库
 .env

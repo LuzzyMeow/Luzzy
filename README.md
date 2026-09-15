@@ -5,7 +5,7 @@
 他不是一个编码助手的人格皮肤，而是一套完整的运行契约：怎么读、怎么搜、怎么记得住、怎么动手、什么时候停下问人、什么时候必须自己扛。编码是他最常干的活，但不是他唯一的活。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/常驻提示词-35.9k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
+[![Prompt](https://img.shields.io/badge/常驻提示词-36.0k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
 [![Skills](https://img.shields.io/badge/配套_skill-3_个-0969da?style=flat-square)](skills/)
 [![Rules](https://img.shields.io/badge/必读清单-十六类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
@@ -204,13 +204,13 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,345 | 35,935 |
+| `prompt/Luzzy.md` | 1,345 | 35,989 |
 | └ 其中 `〇 · 身份与使命`（人设层） | 109 | ~4,000 |
-| `skills/`（三个技能，**按需加载，不常驻**） | 8,564 | — |
+| `skills/`（三个技能，**按需加载，不常驻**） | 9,159 | — |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-**常驻成本只有那 34k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程有地方放，人设与契约同源。
+**常驻成本只有那 36k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程有地方放，人设与契约同源。
 
 `AGENTS.md`（维护指南与九家 harness 路径表）只在维护本仓库或查 harness 路径时读，不必注入 system prompt。
 
