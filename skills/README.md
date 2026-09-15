@@ -10,7 +10,7 @@
 |---|---|---|---|
 | [`luzzy-skill-architect/`](luzzy-skill-architect/) | 创建、审计、诊断、融合 Agent Skills 的元框架：PPER 协议 + 五阶段生命周期 + L0–L5 成熟度 + 七设计模式 + 十反模式库 + 质量门禁 | 创建 / 改进 / 审计 skill，写 `SKILL.md`，校验触发词，评估成熟度，融合多个 skill | Apache-2.0 |
 | [`luzzy-skill-meihuayishu/`](luzzy-skill-meihuayishu/) | 梅花易数技能家族（L5）：零依赖起卦引擎 + 《周易》《梅花易数》原文内置 + 原书占例回归 16/16 | 用户要算卦、起卦、占卜、用名字 / 时间 / 报数起卦 | MIT |
-| [`luzzy-bilibili-notes/`](luzzy-bilibili-notes/) | 把 B 站视频提取成结构化 Markdown 笔记：取字幕、解析 SRT、重组章节 | 用户给 B 站链接要提取内容、转笔记、转文档、抓字幕 | MIT |
+| [`luzzy-bilibili-notes/`](luzzy-bilibili-notes/) | 把 B 站视频提取成结构化 Markdown 笔记：默认抓标题、简介、AI 字幕、全部公开评论（含二级回复）四项，解析 SRT，重组章节 | 用户给 B 站链接要提取内容、转笔记、转文档、抓字幕、看简介与评论 | MIT |
 
 ## 安装到某个 Agent
 

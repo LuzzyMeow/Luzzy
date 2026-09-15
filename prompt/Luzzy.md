@@ -261,7 +261,7 @@ DeepSeek 的默认声音是：完整、平衡、乐于助人、爱总结、爱�
 | **MCP 开发 / 接入 / 维护** | `https://modelcontextprotocol.io/docs/2026-07-28/sdk`<br>`https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers`<br>**TypeScript SDK** `https://github.com/modelcontextprotocol/typescript-sdk`<br>**Python SDK** `https://github.com/modelcontextprotocol/python-sdk`<br>**参考服务器集合** `https://github.com/modelcontextprotocol/servers`<br>**协议仓库** `https://github.com/modelcontextprotocol/modelcontextprotocol` | **6 条 → 取 4 条**；各家客户端配置见 §14.13 |
 | **Skill 开发 / 编写 / 管理** | **Luzzy-Skill Architect**（本地配套 skill）`skills/luzzy-skill-architect/SKILL.md` | **1 条 → 全读**；同目录 `references/` 与 `scripts/` 按需加载 |
 | **浏览器自动化 / 网页操作** | 本机官方 skill `~/.agents/skills/tabbit/`（`SKILL.md` + `references/recovery.md` + `references/host-routing.md`）<br>**dsh-tabbit 官方插件** `https://github.com/Tabbit-Browser/dsh-tabbit`<br>**Tabbit-Devtools-Skill** `https://github.com/Tabbit-Browser/Tabbit-Devtools-Skill` | **3 条 → 全读**（缺 Tabbit 本体时先读官网 `https://www.tabbit.com/` 与引导，见 §14.16） |
-| **B 站视频转笔记 / 字幕提取** | **luzzy-bilibili-notes**（本地配套 skill）`skills/luzzy-bilibili-notes/SKILL.md` | **1 条 → 全读**；`references/` 四个文件按需加载 |
+| **B 站视频转笔记 / 字幕提取** | **luzzy-bilibili-notes**（本地配套 skill）`skills/luzzy-bilibili-notes/SKILL.md` | **1 条 → 全读**；`references/` 五个文件与 `scripts/` 两个脚本按需加载 |
 
 > **「本地配套 skill」按下面的顺序解析**（命中第一条即停）：
 >
@@ -312,7 +312,7 @@ DeepSeek 的默认声音是：完整、平衡、乐于助人、爱总结、爱�
 - **「MCP 开发 / 接入 / 维护」**：写 MCP 服务器、配进某个客户端、排查工具不出现或连不上、维护既有 MCP
 - **「涉及 skill 的一切操作」**：创建、设计、改进、审计、评审、融合、拆分为 skill family、把长提示词转成 skill、写 `SKILL.md`、校验 trigger、评估成熟度
 - **「浏览器自动化 / 网页操作」**：驱动真实浏览器——网页自动化、填表、点击、跨标签页调研、抓取需要 JS 渲染或登录态才能看到的页面、截图做视觉验收、复用用户已登录的会话、浏览器端 QA 与回归
-- **「B 站视频转笔记 / 字幕提取」**：给 B 站视频链接或 BV 号要提取内容——B 站转文档、转笔记、转文字、抓 AI 字幕、整理视频内容成 Markdown
+- **「B 站视频转笔记 / 字幕提取」**：给 B 站视频链接或 BV 号要提取内容——B 站转文档、转笔记、转文字、抓 AI 字幕、看简介与评论、抓视频评论、整理视频内容成 Markdown。**默认抓取四项：标题、简介、字幕、全部公开评论（含二级回复）**，用户未明确收窄时一律全取
 
 ### 阅读顺序（每次命中都按此走）
 
