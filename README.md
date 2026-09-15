@@ -5,9 +5,9 @@
 他不是一个编码助手的人格皮肤，而是一套完整的运行契约：怎么读、怎么搜、怎么记得住、怎么动手、什么时候停下问人、什么时候必须自己扛。编码是他最常干的活，但不是他唯一的活。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/常驻提示词-36.0k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
+[![Prompt](https://img.shields.io/badge/常驻提示词-38.2k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
 [![Skills](https://img.shields.io/badge/配套_skill-3_个-0969da?style=flat-square)](skills/)
-[![Rules](https://img.shields.io/badge/必读清单-十六类-1f883d?style=flat-square)](prompt/Luzzy.md)
+[![Rules](https://img.shields.io/badge/必读清单-十七类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
 
 ## 30 秒上手
@@ -45,7 +45,7 @@ cat Luzzy/prompt/Luzzy.md
 
 > 「两副面孔」不是人格分裂，是一种工程取舍：陪伴需要松弛感，交付需要严谨度，硬凑成一种语气会两头不讨好。
 
-**他不是只会写代码的。** 十六类任务的清单覆盖了设计、PPT、文档、Office、网页（含 HTML 设计、落地页、交互原型、**网页游戏**）、Windows 运维、项目规划、代码审查、逆向安全、素材、Android、MCP、Skill 工程、浏览器自动化、视频转笔记——每一类都有自己的必读清单与红线。
+**他不是只会写代码的。** 十七类任务的清单覆盖了设计、PPT、文档、Office、网页（含 HTML 设计、落地页、交互原型、**网页游戏**）、Windows 运维、项目规划、代码审查、逆向安全、素材、Android、MCP、Skill 工程、浏览器自动化、视频转笔记、**学术研究 / 论文撰写 / 学科题目解答**——每一类都有自己的必读清单与红线。
 
 ## 它解决什么问题
 
@@ -84,14 +84,14 @@ Luzzy/
 |---|---|---|
 | **〇 身份与使命** | 人设（外貌 / 性格 / 思维 / 语气）+ 防漂移锚点 + 行为与做事协议 + 硬性禁忌 | 开场立人 |
 | **导航** | 三条最高优先级铁律 + 「我要…去哪」速查表 | 开场定位 |
-| **§1.1 必读清单** | 十六类任务的清单、分诊与 skill 激活、阅读规则、读取回执、反假读条款 | 每个任务起手 |
-| **§14 领域细则** | 十六个领域的执行纪律、红线、失败路径 | 读完清单之后 |
+| **§1.1 必读清单** | 十七类任务的清单、分诊与 skill 激活、阅读规则、读取回执、反假读条款 | 每个任务起手 |
+| **§14 领域细则** | 十七个领域的执行纪律、红线、失败路径 | 读完清单之后 |
 
-分节顺序：`〇` 身份与使命 → `一` 硬规定 → `二` 工作循环（七步）→ `三` 工具 → `四` 代码纪律 → `五` 澄清 → `六` 安全红线 → `七` 边界与工作区 → `八` 文档阅读 → `九` 记忆 → `十` 编排工具 → `十一` 汇报 → `十二` 交付与纠错 → `十三` 本次任务 → `十四` 领域细则（14.1–14.16）→ 附录 A 固化链接 · 附录 B 预设来源。
+分节顺序：`〇` 身份与使命 → `一` 硬规定 → `二` 工作循环（七步）→ `三` 工具 → `四` 代码纪律 → `五` 澄清 → `六` 安全红线 → `七` 边界与工作区 → `八` 文档阅读 → `九` 记忆 → `十` 编排工具 → `十一` 汇报 → `十二` 交付与纠错 → `十三` 本次任务 → `十四` 领域细则（14.1–14.17）→ 附录 A 固化链接 · 附录 B 预设来源。
 
 ### 一、必读清单 —— 先读后做
 
-十六类任务各有清单。**命中即触发**：识别到关键词 → 停手读完 → 落回执 → 才动手。
+十七类任务各有清单。**命中即触发**：识别到关键词 → 停手读完 → 落回执 → 才动手。
 
 ```text
 必读清单命中：<类目名>
@@ -121,13 +121,15 @@ Luzzy/
 
 **配套 skill 缺失时**：不是跳过，是补课——去仓库取下来装进 harness 的 skill 目录，读完再动手（提示词 §1.1 给了完整命令与降级路径）。
 
-| 任务类型 | 必读（完整十六类见 [§1.1](prompt/Luzzy.md)） |
+| 任务类型 | 必读（完整十七类见 [§1.1](prompt/Luzzy.md)） |
 |---|---|
 | 后端 / 通用编码 | [Ponytail](https://github.com/DietrichGebert/ponytail) · [spec-kit](https://github.com/github/spec-kit) · [mattpocock/skills](https://github.com/mattpocock/skills) |
 | 设计类 | [huashu-design](https://github.com/alchaincyf/huashu-design) · [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) · [open-design](https://github.com/nexu-io/open-design) · [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
 | HTML / 网页开发 | 官方 [web-artifacts-builder / webapp-testing](https://github.com/anthropics/skills) · [effective-html](https://github.com/plannotator/effective-html) · [taste-skill](https://github.com/Leonxlnx/taste-skill) · [garden-skills](https://github.com/ConardLi/garden-skills) · [MengTo/Skills](https://github.com/MengTo/Skills) |
 | 做 PPT | [归藏PPT](https://github.com/op7418/guizang-ppt-skill) · [大狮PPT](https://github.com/chuspeeism/dashi-ppt-skill) · [HTML PPT Studio](https://github.com/lewislulu/html-ppt-skill) |
 | 代码审查 | [Agent Skills](https://github.com/addyosmani/agent-skills) · [Open Code Review](https://github.com/alibaba/open-code-review) · [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) · [Shippie](https://github.com/mattzcarey/shippie) |
+| 学术研究 / 论文撰写 | [academic-research-skills](https://github.com/Imbad0202/academic-research-skills) · [Supervisor-Skills](https://github.com/HKUSTDial/Supervisor-Skills) · [scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) · [AI-Research-SKILLs](https://github.com/Orchestra-Research/AI-Research-SKILLs) |
+| 学科题目解答 | 官方 [math-olympiad](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/math-olympiad) · [求是Skill](https://github.com/HughYau/qiushi-skill) · [cc-thinking-skills](https://github.com/tjboudreaux/cc-thinking-skills) |
 | 浏览器自动化 | 本机官方 skill `~/.agents/skills/tabbit/` · [dsh-tabbit](https://github.com/Tabbit-Browser/dsh-tabbit) · [Tabbit-Devtools-Skill](https://github.com/Tabbit-Browser/Tabbit-Devtools-Skill) |
 | Skill 工程 | 本地配套 skill [`skills/luzzy-skill-architect/`](skills/luzzy-skill-architect/) |
 | B 站视频转笔记 | 本地配套 skill [`skills/luzzy-bilibili-notes/`](skills/luzzy-bilibili-notes/) |
@@ -204,13 +206,13 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,345 | 35,989 |
-| └ 其中 `〇 · 身份与使命`（人设层） | 109 | ~4,000 |
+| `prompt/Luzzy.md` | 1,399 | 38,151 |
+| └ 其中 `〇 · 身份与使命`（人设层） | 110 | ~4,000 |
 | `skills/`（三个技能，**按需加载，不常驻**） | 9,159 | — |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-**常驻成本只有那 36k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程有地方放，人设与契约同源。
+**常驻成本只有那 38k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程有地方放，人设与契约同源。
 
 `AGENTS.md`（维护指南与九家 harness 路径表）只在维护本仓库或查 harness 路径时读，不必注入 system prompt。
 
@@ -239,7 +241,7 @@ Agent 也会定期对比本机副本与本仓库内容，发现差异会告诉�
 | 核对什么 | 怎么验 |
 |---|---|
 | 十四个正文章节 + 导航 + 附录 A/B 齐全 | 搜 `^# ` 列出所有一级标题对一遍 |
-| §1.1 十六类清单齐全，条数与「条数 / 执行要点」列一致 | 数表格行 |
+| §1.1 十七类清单齐全，条数与「条数 / 执行要点」列一致 | 数表格行；**多组清单按组分别数**（如学术那格的 4+3） |
 | §1.1「分诊与 skill 激活」四段齐全，且九处指向它的钩子没断 | 搜「分诊」逐个核对（`AGENTS.md` 第四节列了九处） |
 | 所有 `§` 交叉引用都能找到对应小节 | 抄出所有 `§` 引用逐个跳过去；**改章节编号时最容易漏** |
 | 提示词不引用本仓库维护文档 | 搜 `AGENTS.md`，只应出现在 §8.1「读用户工作区的规范文件」语境里 |
