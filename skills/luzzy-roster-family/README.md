@@ -26,7 +26,7 @@
 | windows | Windows 系统修复 / 优化 | 3 全读 |
 | planning | 项目规划 / 需求拆解 | 4 全读 |
 | code-review | 代码审查 | 4 全读 |
-| reverse | 逆向 / 授权渗透 / 安全研究 | 1 路由包 |
+| reverse | 逆向 / 授权渗透 / 安全研究 | 2 全读（reverse 路由包 + 本地 zip-password-recovery） |
 | assets | 素材 / 图标 / 组件库 | 4 全读 |
 | android | Android 开发 / 模拟器 | 6 取 4 |
 | mcp | MCP 开发 / 接入 / 维护 | 6 取 4 |

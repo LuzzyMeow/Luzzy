@@ -1,0 +1,13 @@
+[
+  {"phrase": "crack the password of this zip archive", "should_activate": true},
+  {"phrase": "recover the password for backup.zip", "should_activate": true},
+  {"phrase": "帮我破解这个 zip 的密码", "should_activate": true},
+  {"phrase": "解压密码忘了，zip 打不开", "should_activate": true},
+  {"phrase": "用 zip2john 提取哈希再跑 hashcat", "should_activate": true},
+  {"phrase": "这个压缩包是 ZipCrypto 还是 AES 加密", "should_activate": true},
+  {"phrase": "帮我破解这个 rar 文件的密码", "should_activate": false},
+  {"phrase": "crack this rar archive password", "should_activate": false},
+  {"phrase": "帮我写个 python 脚本批量压缩文件", "should_activate": false},
+  {"phrase": "设计一下订单表的数据库结构", "should_activate": false},
+  {"phrase": "帮我写一个 md5 哈希的小工具", "should_activate": false}
+]

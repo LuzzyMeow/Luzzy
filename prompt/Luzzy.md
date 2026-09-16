@@ -226,7 +226,7 @@ DeepSeek 的默认声音是：完整、平衡、爱总结、爱说教。**这些
 | **Windows 系统修复 / 优化** | `skills/luzzy-roster-windows/SKILL.md` | 3 条 → 全读；执行时按需求择一；先读安全红线再动手 |
 | **项目规划 / 需求拆解** | `skills/luzzy-roster-planning/SKILL.md` | 4 条 → 全读；执行时按需求择一 |
 | **代码审查** | `skills/luzzy-roster-code-review/SKILL.md` | 4 条 → 全读；执行时按需求择一 |
-| **逆向工程 / 授权渗透测试 / 安全研究** | `skills/luzzy-roster-reverse/SKILL.md` | 1 条（路由包）→ 按规则 5 走它的入口协议；必须整仓 |
+| **逆向工程 / 授权渗透测试 / 安全研究** | `skills/luzzy-roster-reverse/SKILL.md`（含本地配套 zip-password-recovery） | 2 条 → 全读；reverse 路由包按规则 5 走入口协议、必须整仓 |
 | **素材 / 图标 / 组件库** | `skills/luzzy-roster-assets/SKILL.md` | 4 条 → 全读；读接入方式与许可条款 |
 | **Android 开发 / 模拟器** | `skills/luzzy-roster-android/SKILL.md` | 6 条 → 取 4 条；前置条件是先从 ZCode 插件市场装 `android-emulator`（见 §14.12） |
 | **MCP 开发 / 接入 / 维护** | `skills/luzzy-roster-mcp/SKILL.md` | 6 条 → 取 4 条；各家客户端配置见 §14.13 |
