@@ -15,7 +15,7 @@
 | slug | 类目 | 条数口径 |
 |---|---|---|
 | backend | 后端 / 通用编码 | 3 全读 |
-| design | 设计类（基线四条） | 4 全读 |
+| design | 设计类（基线五条） | 5 全读 |
 | design-compose | 设计类子项 · Compose | 3 全读（与 design 叠加） |
 | design-vue | 设计类子项 · Vue | 3 全读（与 design 叠加） |
 | design-react | 设计类子项 · React | 3 全读（与 design 叠加） |

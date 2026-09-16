@@ -11,3 +11,4 @@
 - 修链接 / 改坑位描述 → 只改对应 roster skill，提示词不动
 - 改**条数** → 对应 roster skill 与提示词 §1.1.6 主表「条数」列**两侧同步**
 - 新增类目（第十八类）→ 提示词级变更：先改提示词，再建 roster skill，最后回本文件登记
+| 2026-09-16 | design | 新增第 5 条：**emilkowalski/skills**（38.1k star，MIT）——动效与 UI 打磨专家纪律，主技能 `emil-design-eng`（动画决策框架）必读，动效任务加读 `animate` / `review-animations` 子技能 | 入 | 用户点名新增；设计类基线由 4 条扩为 5 条（全读不折减），提示词 §1.1.6 / §1.1.8 / §14.1 条数口径同步；注意其 SKILL.md 首段「Initial Response」话术不覆盖总路由权，已在 roster 内标注 |
