@@ -13,7 +13,7 @@
 ## 30 秒上手
 
 ```bash
-git clone git@github.com:LuzzyMeow/Luzzy.git
+git clone git@github.com:LuzzyMeow/LuzzyPrompt.git
 
 # 注入为 system prompt
 cat Luzzy/prompt/Luzzy.md
@@ -230,10 +230,10 @@ token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按
 
 ```bash
 # 抓单个文件即可
-https://raw.githubusercontent.com/LuzzyMeow/Luzzy/main/prompt/Luzzy.md
+https://raw.githubusercontent.com/LuzzyMeow/LuzzyPrompt/main/prompt/Luzzy.md
 
 # 不通时加代理前缀
-https://gh-proxy.com/https://raw.githubusercontent.com/LuzzyMeow/Luzzy/main/prompt/Luzzy.md
+https://gh-proxy.com/https://raw.githubusercontent.com/LuzzyMeow/LuzzyPrompt/main/prompt/Luzzy.md
 ```
 
 Agent 也会定期对比本机副本与本仓库内容，发现差异会告诉你变了什么。它不会自动覆盖你的本地副本，改不改由你决定。

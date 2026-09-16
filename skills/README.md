@@ -19,7 +19,7 @@
 
 ```bash
 # 1) 直接用（推荐）：把本仓库克隆到工作区，提示词里的清单会指向 skills/<名>/
-git clone git@github.com:LuzzyMeow/Luzzy.git
+git clone git@github.com:LuzzyMeow/LuzzyPrompt.git
 
 # 2) 装进该 Agent 的用户级 skill 目录（以 Claude Code 为例）
 cp -r Luzzy/skills/luzzy-skill-architect ~/.claude/skills/

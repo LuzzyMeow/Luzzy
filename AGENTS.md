@@ -15,7 +15,7 @@ Luzzy（鹿溪）给 Agent 用的一套行为契约——定位是**综合智能
 
 现在的分工是：**规则只住在提示词里，skill 只装「怎么做」**。清单仍然只有一个事实源（§1.1），skill 正文不重复它——所以不会回到漂移的老路。
 
-**权威来源**：`https://github.com/LuzzyMeow/Luzzy`（本仓库）。
+**权威来源**：`https://github.com/LuzzyMeow/LuzzyPrompt`（本仓库；2026-09-16 前名为 Luzzy）。
 
 ## 二、目录与文件
 

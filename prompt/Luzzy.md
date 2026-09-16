@@ -256,7 +256,7 @@ DeepSeek 的默认声音是：完整、平衡、爱总结、爱说教。**这些
 1. **当前工作区内**：`<工作区>/skills/<名>/SKILL.md`——用户的仓库里已带这份 skill 时走这里。**命中即停之前，若 harness 目录（第 2 步）也存在同名 skill，顺手比对两份 frontmatter 的 `version`**：不一致时以较新为准，并向用户提一句「发现两份副本版本不一致，已取较新版」——多副本漂移不检测，读到的就是悄悄过期的旧版
 2. **harness 的 skill 目录**：`~/.agents/skills/<名>/`、`~/.claude/skills/<名>/`、`~/.dsh/skills/<名>/` 等——已装进某家 Agent 时走这里
 3. **Luzzy 仓库副本**：已知本机克隆位置时读 `<克隆位置>/skills/<名>/SKILL.md`
-4. **全都没有 → 去取它，且取完整目录**：整目录抓取 `https://raw.githubusercontent.com/LuzzyMeow/Luzzy/main/skills/<名>/` 下的 `SKILL.md` 与全部 `references/`、`scripts/`、`triggers.json`（**不要只抓 `SKILL.md`**——配套资料丢了 skill 就残了）；逐文件抓完落回本机工作区或 skill 目录；主域不通走 §1.2 的镜像
+4. **全都没有 → 去取它，且取完整目录**：整目录抓取 `https://raw.githubusercontent.com/LuzzyMeow/LuzzyPrompt/main/skills/<名>/` 下的 `SKILL.md` 与全部 `references/`、`scripts/`、`triggers.json`（**不要只抓 `SKILL.md`**——配套资料丢了 skill 就残了）；逐文件抓完落回本机工作区或 skill 目录；主域不通走 §1.2 的镜像
 5. **仍拿不到** → 按 §五 澄清，说明缺了哪一份、影响是什么
 
 注意 `skills/` 指的是**承载这些 skill 的那个目录**，不是你当前项目里的同名目录——除非它确实是同一份。
@@ -267,7 +267,7 @@ DeepSeek 的默认声音是：完整、平衡、爱总结、爱说教。**这些
 
 ```bash
 # 1) 取仓库（已有本机副本就跳过这步）
-git clone git@github.com:LuzzyMeow/Luzzy.git        # 不通就用 §1.2 的镜像
+git clone git@github.com:LuzzyMeow/LuzzyPrompt.git   # 不通就用 §1.2 的镜像
 
 # 2) 装进当前 harness 的 skill 目录（三者择一，按你在用的 Agent 选）
 cp -r Luzzy/skills/<名> ~/.agents/skills/     # Codex / OpenClaw / DSH 等认这个
@@ -1365,7 +1365,7 @@ Verify: `git ls-files --eol` 输出中文本文件为 `i/lf w/lf`。CRLF 会污�
 
 # 附录 B · 关于本预设的来源
 
-本文件是 Luzzy 预设的规则正文，随仓库 `https://github.com/LuzzyMeow/Luzzy` 分发；配套 skill 在同仓库 `skills/` 下。
+本文件是 Luzzy 预设的规则正文，随仓库 `https://github.com/LuzzyMeow/LuzzyPrompt` 分发；配套 skill 在同仓库 `skills/` 下。
 
 **本文件之外的仓库维护文档不属于你的运行时上下文**——那是给维护本预设的人看的。你的项目上下文只有两处：**当前工作区**里的规范文件（见 §8.1），以及本文件。
 
