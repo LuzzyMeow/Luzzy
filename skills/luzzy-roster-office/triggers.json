@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "Office文件用什么工具",
+    "should_activate": true
+  },
+  {
+    "phrase": "docx xlsx pptx的清单子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "OfficeCLI怎么接入",
+    "should_activate": true
+  },
+  {
+    "phrase": "PDF归哪一类",
+    "should_activate": true
+  },
+  {
+    "phrase": "做一份PPT",
+    "should_activate": false
+  },
+  {
+    "phrase": "写推广文案",
+    "should_activate": false
+  },
+  {
+    "phrase": "写Excel表格公式算数据处理吗",
+    "should_activate": false
+  }
+]

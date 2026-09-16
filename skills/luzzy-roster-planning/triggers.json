@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "项目规划要读哪四家",
+    "should_activate": true
+  },
+  {
+    "phrase": "需求拆解用什么skill",
+    "should_activate": true
+  },
+  {
+    "phrase": "写技术方案先读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "spec-kit和OpenSpec怎么选",
+    "should_activate": true
+  },
+  {
+    "phrase": "把今天的活列成todo",
+    "should_activate": false
+  },
+  {
+    "phrase": "审查这段代码",
+    "should_activate": false
+  },
+  {
+    "phrase": "帮我实现这个功能",
+    "should_activate": false
+  }
+]

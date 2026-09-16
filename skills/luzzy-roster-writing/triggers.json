@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "写文案怎么去AI腔",
+    "should_activate": true
+  },
+  {
+    "phrase": "stop-slop是什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "对外文章的清单子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "写README的规范清单",
+    "should_activate": true
+  },
+  {
+    "phrase": "翻译这篇英文",
+    "should_activate": false
+  },
+  {
+    "phrase": "给这段代码写注释",
+    "should_activate": false
+  },
+  {
+    "phrase": "生成一份xlsx报表",
+    "should_activate": false
+  }
+]

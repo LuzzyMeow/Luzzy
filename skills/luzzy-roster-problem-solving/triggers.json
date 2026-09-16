@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "做题用什么方法论",
+    "should_activate": true
+  },
+  {
+    "phrase": "验算怎么防止自己骗自己",
+    "should_activate": true
+  },
+  {
+    "phrase": "math-olympiad适合什么场景",
+    "should_activate": true
+  },
+  {
+    "phrase": "核查一个解答对不对",
+    "should_activate": true
+  },
+  {
+    "phrase": "写一篇学术论文",
+    "should_activate": false
+  },
+  {
+    "phrase": "直接把答案抄给我",
+    "should_activate": false
+  },
+  {
+    "phrase": "推荐一本数学教材",
+    "should_activate": false
+  }
+]

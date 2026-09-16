@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "设计类的基线四条是什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "做UI设计要读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "设计类基线哪条失效了",
+    "should_activate": true
+  },
+  {
+    "phrase": "纯视觉稿要不要读框架子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "Compose的设计子项是哪三条",
+    "should_activate": false
+  },
+  {
+    "phrase": "写一个React组件",
+    "should_activate": false
+  },
+  {
+    "phrase": "配置Android模拟器",
+    "should_activate": false
+  }
+]

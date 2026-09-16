@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "浏览器自动化读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "tabbit的官方skill在哪",
+    "should_activate": true
+  },
+  {
+    "phrase": "接管已登录的浏览器",
+    "should_activate": true
+  },
+  {
+    "phrase": "网页操作的任务名怎么起",
+    "should_activate": true
+  },
+  {
+    "phrase": "用AnySearch搜个资料",
+    "should_activate": false
+  },
+  {
+    "phrase": "写个requests爬虫",
+    "should_activate": false
+  },
+  {
+    "phrase": "抓一个公开API的数据",
+    "should_activate": false
+  }
+]

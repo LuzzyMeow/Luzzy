@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "代码审查用哪四家",
+    "should_activate": true
+  },
+  {
+    "phrase": "审PR的清单子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "shippie是什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "安全和性能问题用什么审",
+    "should_activate": true
+  },
+  {
+    "phrase": "直接帮我修这个bug",
+    "should_activate": false
+  },
+  {
+    "phrase": "写单元测试",
+    "should_activate": false
+  },
+  {
+    "phrase": "重构这个模块",
+    "should_activate": false
+  }
+]

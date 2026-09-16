@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "B站视频转笔记的清单子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "BV号提取内容读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "抓字幕用哪个skill",
+    "should_activate": true
+  },
+  {
+    "phrase": "B站评论怎么整理成文档",
+    "should_activate": true
+  },
+  {
+    "phrase": "全站爬取B站评论",
+    "should_activate": false
+  },
+  {
+    "phrase": "下载这个视频的4K文件",
+    "should_activate": false
+  },
+  {
+    "phrase": "YouTube字幕怎么抓",
+    "should_activate": false
+  }
+]

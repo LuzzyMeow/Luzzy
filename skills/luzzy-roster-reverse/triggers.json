@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "逆向APK用什么skill",
+    "should_activate": true
+  },
+  {
+    "phrase": "reverse-skill的入口协议",
+    "should_activate": true
+  },
+  {
+    "phrase": "CTF靶场的清单子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "二进制分析用哪家",
+    "should_activate": true
+  },
+  {
+    "phrase": "帮我破解这个付费软件的许可",
+    "should_activate": false
+  },
+  {
+    "phrase": "扫一下这个网站看看有没有漏洞",
+    "should_activate": false
+  },
+  {
+    "phrase": "给游戏做个外挂",
+    "should_activate": false
+  }
+]

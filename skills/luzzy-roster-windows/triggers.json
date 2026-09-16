@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "Windows优化用哪家脚本",
+    "should_activate": true
+  },
+  {
+    "phrase": "去预装臃肿用哪个",
+    "should_activate": true
+  },
+  {
+    "phrase": "Sophia和WinUtil差在哪",
+    "should_activate": true
+  },
+  {
+    "phrase": "清理启动项读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "装个双系统",
+    "should_activate": false
+  },
+  {
+    "phrase": "写一个PowerShell小工具",
+    "should_activate": false
+  },
+  {
+    "phrase": "修复Linux启动",
+    "should_activate": false
+  }
+]

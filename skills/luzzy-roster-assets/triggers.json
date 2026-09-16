@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "素材类哪个仓库不能整仓clone",
+    "should_activate": true
+  },
+  {
+    "phrase": "要现成的品牌logo去哪找",
+    "should_activate": true
+  },
+  {
+    "phrase": "Lobe Icons怎么接入",
+    "should_activate": true
+  },
+  {
+    "phrase": "游戏图标去哪找",
+    "should_activate": true
+  },
+  {
+    "phrase": "帮我设计一版新logo",
+    "should_activate": false
+  },
+  {
+    "phrase": "写一个React组件库",
+    "should_activate": false
+  },
+  {
+    "phrase": "画一张插画",
+    "should_activate": false
+  }
+]

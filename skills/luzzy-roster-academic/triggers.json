@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "写论文先读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "做研究读哪四家",
+    "should_activate": true
+  },
+  {
+    "phrase": "查文献综述用什么skill",
+    "should_activate": true
+  },
+  {
+    "phrase": "scientific-agent-skills能整仓clone吗",
+    "should_activate": true
+  },
+  {
+    "phrase": "帮我算这道数学题",
+    "should_activate": false
+  },
+  {
+    "phrase": "写公众号文案",
+    "should_activate": false
+  },
+  {
+    "phrase": "帮我做期末作业的直接答案",
+    "should_activate": false
+  }
+]

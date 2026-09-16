@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "Android开发的清单子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "模拟器插件怎么装",
+    "should_activate": true
+  },
+  {
+    "phrase": "android-dev正文在哪",
+    "should_activate": true
+  },
+  {
+    "phrase": "adb文档是哪一条",
+    "should_activate": true
+  },
+  {
+    "phrase": "写Compose设计规范",
+    "should_activate": false
+  },
+  {
+    "phrase": "iOS打包",
+    "should_activate": false
+  },
+  {
+    "phrase": "写Spring后端",
+    "should_activate": false
+  }
+]

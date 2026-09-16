@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "Vue设计要读哪三条",
+    "should_activate": true
+  },
+  {
+    "phrase": "Nuxt UI的skill在哪",
+    "should_activate": true
+  },
+  {
+    "phrase": "写Vue页面读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "Vue组件库怎么选",
+    "should_activate": true
+  },
+  {
+    "phrase": "写React组件",
+    "should_activate": false
+  },
+  {
+    "phrase": "纯HTML单文件页面",
+    "should_activate": false
+  },
+  {
+    "phrase": "写Spring后端",
+    "should_activate": false
+  }
+]

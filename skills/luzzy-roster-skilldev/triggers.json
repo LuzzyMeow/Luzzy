@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "写SKILL.md之前读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "skill开发的清单子项",
+    "should_activate": true
+  },
+  {
+    "phrase": "怎么校验触发词",
+    "should_activate": true
+  },
+  {
+    "phrase": "创建skill的规范",
+    "should_activate": true
+  },
+  {
+    "phrase": "配置MCP客户端",
+    "should_activate": false
+  },
+  {
+    "phrase": "写一个爬虫",
+    "should_activate": false
+  },
+  {
+    "phrase": "设计一个网页",
+    "should_activate": false
+  }
+]

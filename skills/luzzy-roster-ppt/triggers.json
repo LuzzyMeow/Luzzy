@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "做PPT要读哪三家",
+    "should_activate": true
+  },
+  {
+    "phrase": "大狮PPT的正文在哪个子目录",
+    "should_activate": true
+  },
+  {
+    "phrase": "要导出pptx用哪家",
+    "should_activate": true
+  },
+  {
+    "phrase": "发布会风格的PPT用哪家",
+    "should_activate": true
+  },
+  {
+    "phrase": "写一份演讲稿文字",
+    "should_activate": false
+  },
+  {
+    "phrase": "做个落地页网页",
+    "should_activate": false
+  },
+  {
+    "phrase": "把pptx转成pdf就行",
+    "should_activate": false
+  }
+]

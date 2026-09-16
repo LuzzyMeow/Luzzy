@@ -5,8 +5,8 @@
 他不是一个编码助手的人格皮肤，而是一套完整的运行契约：怎么读、怎么搜、怎么记得住、怎么动手、什么时候停下问人、什么时候必须自己扛。编码是他最常干的活，但不是他唯一的活。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/常驻提示词-38.2k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
-[![Skills](https://img.shields.io/badge/配套_skill-3_个-0969da?style=flat-square)](skills/)
+[![Prompt](https://img.shields.io/badge/常驻提示词-35.6k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
+[![Skills](https://img.shields.io/badge/配套_skill-24_个-0969da?style=flat-square)](skills/)
 [![Rules](https://img.shields.io/badge/必读清单-十七类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
 
@@ -35,7 +35,7 @@ cat Luzzy/prompt/Luzzy.md
 | **写代码、查资料、做方案** | 自动切认真模式：结构化、标来源、拿不准先搜、承认局限；**但语气仍是鹿溪的** |
 | **中途接手一个陌生项目** | 先探、再判、后动手：读证据分诊出项目类型 → 按该类读清单 → 扫本机与项目自带的 skill——**「不确定」是探索的信号，不是跳过规则的借口** |
 
-人设整体写在提示词 `〇 · 身份与使命`：身份、外貌、性格、思维、语气、防漂移锚点、颜文字白名单（八类，一段最多一个）、行为协议（八条）、做事协议（六条）、七条硬性禁忌、快速参考表。
+人设整体写在提示词 `〇 · 身份与使命`：身份、外貌、性格、思维、语气、防漂移锚点、颜文字白名单（八类，一段最多一个）、行为协议（六条）、做事协议（六条）、七条硬性禁忌。
 
 **三条边界写死在契约里**：
 
@@ -119,20 +119,24 @@ Luzzy/
 
 **反假读条款**把模型最常犯的七种「假读」逐条封死：只读门面、凭记忆代读、挑一条就读、同名顶替、读完不落回执、判不出类目就跳门、分诊完不激活——外加一种「读了不照做」。
 
+**子项是叠加，不是二选一**：设计类下分裂出框架子项——命中 **Jetpack Compose / Vue / React** 任一时，**基线四条照读，再加读该子项的 3 条**（共 7 条）。基线管审美与设计判断，子项管这个框架怎么落地；两边都缺，出来的东西就是「好看但不像这个框架写的」或者「像框架写的但不好看」。
+
 **配套 skill 缺失时**：不是跳过，是补课——去仓库取下来装进 harness 的 skill 目录，读完再动手（提示词 §1.1 给了完整命令与降级路径）。
 
-| 任务类型 | 必读（完整十七类见 [§1.1](prompt/Luzzy.md)） |
+| 任务类型 | 子项明细的载体（完整十七类见 [§1.1](prompt/Luzzy.md)） |
 |---|---|
-| 后端 / 通用编码 | [Ponytail](https://github.com/DietrichGebert/ponytail) · [spec-kit](https://github.com/github/spec-kit) · [mattpocock/skills](https://github.com/mattpocock/skills) |
-| 设计类 | [huashu-design](https://github.com/alchaincyf/huashu-design) · [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) · [open-design](https://github.com/nexu-io/open-design) · [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
-| HTML / 网页开发 | 官方 [web-artifacts-builder / webapp-testing](https://github.com/anthropics/skills) · [effective-html](https://github.com/plannotator/effective-html) · [taste-skill](https://github.com/Leonxlnx/taste-skill) · [garden-skills](https://github.com/ConardLi/garden-skills) · [MengTo/Skills](https://github.com/MengTo/Skills) |
-| 做 PPT | [归藏PPT](https://github.com/op7418/guizang-ppt-skill) · [大狮PPT](https://github.com/chuspeeism/dashi-ppt-skill) · [HTML PPT Studio](https://github.com/lewislulu/html-ppt-skill) |
-| 代码审查 | [Agent Skills](https://github.com/addyosmani/agent-skills) · [Open Code Review](https://github.com/alibaba/open-code-review) · [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills) · [Shippie](https://github.com/mattzcarey/shippie) |
-| 学术研究 / 论文撰写 | [academic-research-skills](https://github.com/Imbad0202/academic-research-skills) · [Supervisor-Skills](https://github.com/HKUSTDial/Supervisor-Skills) · [scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) · [AI-Research-SKILLs](https://github.com/Orchestra-Research/AI-Research-SKILLs) |
-| 学科题目解答 | 官方 [math-olympiad](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/math-olympiad) · [求是Skill](https://github.com/HughYau/qiushi-skill) · [cc-thinking-skills](https://github.com/tjboudreaux/cc-thinking-skills) |
-| 浏览器自动化 | 本机官方 skill `~/.agents/skills/tabbit/` · [dsh-tabbit](https://github.com/Tabbit-Browser/dsh-tabbit) · [Tabbit-Devtools-Skill](https://github.com/Tabbit-Browser/Tabbit-Devtools-Skill) |
+| 后端 / 通用编码 | [`skills/luzzy-roster-backend/`](skills/luzzy-roster-backend/) |
+| 设计类 | [`skills/luzzy-roster-design/`](skills/luzzy-roster-design/)（基线四条）＋框架子项（叠加读）：[`-design-compose`](skills/luzzy-roster-design-compose/) · [`-design-vue`](skills/luzzy-roster-design-vue/) · [`-design-react`](skills/luzzy-roster-design-react/) |
+| HTML / 网页开发 | [`skills/luzzy-roster-html/`](skills/luzzy-roster-html/) |
+| 做 PPT | [`skills/luzzy-roster-ppt/`](skills/luzzy-roster-ppt/) |
+| 代码审查 | [`skills/luzzy-roster-code-review/`](skills/luzzy-roster-code-review/) |
+| 学术研究 / 论文撰写 | [`skills/luzzy-roster-academic/`](skills/luzzy-roster-academic/) |
+| 学科题目解答 | [`skills/luzzy-roster-problem-solving/`](skills/luzzy-roster-problem-solving/) |
+| 浏览器自动化 | [`skills/luzzy-roster-browser/`](skills/luzzy-roster-browser/) |
 | Skill 工程 | 本地配套 skill [`skills/luzzy-skill-architect/`](skills/luzzy-skill-architect/) |
 | B 站视频转笔记 | 本地配套 skill [`skills/luzzy-bilibili-notes/`](skills/luzzy-bilibili-notes/) |
+
+其余类目（Office / 写作 / Windows / 规划 / 逆向 / 素材 / Android / MCP）同样一类一个 `luzzy-roster-*`，见 §1.1 主表。
 
 三类硬性前置值得单独点出：
 
@@ -206,13 +210,13 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,399 | 38,151 |
-| └ 其中 `〇 · 身份与使命`（人设层） | 110 | ~4,000 |
-| `skills/`（三个技能，**按需加载，不常驻**） | 9,159 | — |
+| `prompt/Luzzy.md` | 1,371 | 35,644 |
+| └ 其中 `〇 · 身份与使命`（人设层） | 78 | ~2,600 |
+| `skills/`（24 个技能，**按需加载，不常驻**） | 7,657 | — |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-**常驻成本只有那 38k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程有地方放，人设与契约同源。
+**常驻成本只有那 35k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程有地方放，人设与契约同源。
 
 `AGENTS.md`（维护指南与九家 harness 路径表）只在维护本仓库或查 harness 路径时读，不必注入 system prompt。
 
@@ -242,7 +246,7 @@ Agent 也会定期对比本机副本与本仓库内容，发现差异会告诉�
 |---|---|
 | 十四个正文章节 + 导航 + 附录 A/B 齐全 | 搜 `^# ` 列出所有一级标题对一遍 |
 | §1.1 十七类清单齐全，条数与「条数 / 执行要点」列一致 | 数表格行；**多组清单按组分别数**（如学术那格的 4+3） |
-| §1.1「分诊与 skill 激活」四段齐全，且九处指向它的钩子没断 | 搜「分诊」逐个核对（`AGENTS.md` 第四节列了九处） |
+| §1.1「分诊与 skill 激活」四段齐全，且指向它的钩子没断 | 搜「分诊」逐个核对，引用统一用 §1.1.5 编号 |
 | 所有 `§` 交叉引用都能找到对应小节 | 抄出所有 `§` 引用逐个跳过去；**改章节编号时最容易漏** |
 | 提示词不引用本仓库维护文档 | 搜 `AGENTS.md`，只应出现在 §8.1「读用户工作区的规范文件」语境里 |
 | 无装饰性 emoji、无裸露分隔线、无硬编码密钥 | 目视 + 搜 `^---$` / `sk-`；三档标记 ✅⚠🚫 与正反例标记 ✗✓ 是内容，不算装饰 |

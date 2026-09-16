@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "Compose设计要读哪三条",
+    "should_activate": true
+  },
+  {
+    "phrase": "material-3-skill是什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "写Compose界面读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "M3主题规范在哪",
+    "should_activate": true
+  },
+  {
+    "phrase": "配置Android模拟器",
+    "should_activate": false
+  },
+  {
+    "phrase": "写Kotlin后端接口",
+    "should_activate": false
+  },
+  {
+    "phrase": "Vue页面怎么写",
+    "should_activate": false
+  }
+]

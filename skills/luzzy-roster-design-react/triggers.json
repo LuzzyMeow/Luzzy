@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "React设计要读哪三条",
+    "should_activate": true
+  },
+  {
+    "phrase": "shadcn的skill正文在哪",
+    "should_activate": true
+  },
+  {
+    "phrase": "写React组件读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "Next.js界面规范",
+    "should_activate": true
+  },
+  {
+    "phrase": "Vue3页面怎么写",
+    "should_activate": false
+  },
+  {
+    "phrase": "纯HTML单文件页面",
+    "should_activate": false
+  },
+  {
+    "phrase": "写Node后端",
+    "should_activate": false
+  }
+]

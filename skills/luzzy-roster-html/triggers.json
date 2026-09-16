@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "HTML开发7条取4条，官方那两条是什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "落地页用哪家skill",
+    "should_activate": true
+  },
+  {
+    "phrase": "网页游戏用哪家的技能",
+    "should_activate": true
+  },
+  {
+    "phrase": "线框图和交互原型用哪家",
+    "should_activate": true
+  },
+  {
+    "phrase": "写React工程组件",
+    "should_activate": false
+  },
+  {
+    "phrase": "设计系统规范文档",
+    "should_activate": false
+  },
+  {
+    "phrase": "部署到云服务器",
+    "should_activate": false
+  }
+]

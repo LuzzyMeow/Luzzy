@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "MCP类目的6条里取哪4条",
+    "should_activate": true
+  },
+  {
+    "phrase": "写MCP服务器先读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "MCP的SDK文档是哪些",
+    "should_activate": true
+  },
+  {
+    "phrase": "排查MCP工具不出现",
+    "should_activate": true
+  },
+  {
+    "phrase": "配置Claude Code客户端",
+    "should_activate": false
+  },
+  {
+    "phrase": "写一个CLI工具",
+    "should_activate": false
+  },
+  {
+    "phrase": "浏览器自动化抓页面",
+    "should_activate": false
+  }
+]

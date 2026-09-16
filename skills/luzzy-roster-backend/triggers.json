@@ -1,0 +1,30 @@
+[
+  {
+    "phrase": "后端编码要读哪些仓库",
+    "should_activate": true
+  },
+  {
+    "phrase": "写后端代码前先读什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "通用编码的清单子项是什么",
+    "should_activate": true
+  },
+  {
+    "phrase": "Ponytail 的配套命令有哪些",
+    "should_activate": true
+  },
+  {
+    "phrase": "帮我设计这个页面的UI",
+    "should_activate": false
+  },
+  {
+    "phrase": "修复Windows启动慢",
+    "should_activate": false
+  },
+  {
+    "phrase": "把这个仓库的代码全改一遍",
+    "should_activate": false
+  }
+]
