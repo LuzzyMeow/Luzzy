@@ -9,9 +9,11 @@
 | 技能 | 用途 | 何时触发 | 许可 |
 |---|---|---|---|
 | [`luzzy-roster-*/`](luzzy-roster-backend/) | 十七类必读清单的仓库子项明细——每类一个 skill（21 个：17 类 + 设计三框架子项 + 学术/解题分立），装 URL、条数、读什么、安装坑位、体积与许可警示 | 提示词 §1.1.6 命中任一类目后读对应 roster；维护子项明细时改对应 roster | MIT |
-| [`luzzy-roster-family/`](luzzy-roster-family/) | roster 家族的登记与规范目录（**非 skill**，无 SKILL.md）：生成规范 + 子项变更登记 | 维护 roster 时读，运行时不加载 | — || [`luzzy-skill-architect/`](luzzy-skill-architect/) | 创建、审计、诊断、融合 Agent Skills 的元框架：PPER 协议 + 五阶段生命周期 + L0–L5 成熟度 + 七设计模式 + 十反模式库 + 质量门禁 | 创建 / 改进 / 审计 skill，写 `SKILL.md`，校验触发词，评估成熟度，融合多个 skill | Apache-2.0 |
+| [`luzzy-roster-family/`](luzzy-roster-family/) | roster 家族的登记与规范目录（**非 skill**，无 SKILL.md）：生成规范 + 子项变更登记 | 维护 roster 时读，运行时不加载 | — |
+| [`luzzy-skill-architect/`](luzzy-skill-architect/) | 创建、审计、诊断、融合 Agent Skills 的元框架：PPER 协议 + 五阶段生命周期 + L0–L5 成熟度 + 七设计模式 + 十反模式库 + 质量门禁 | 创建 / 改进 / 审计 skill，写 `SKILL.md`，校验触发词，评估成熟度，融合多个 skill | Apache-2.0 |
 | [`luzzy-skill-meihuayishu/`](luzzy-skill-meihuayishu/) | 梅花易数技能家族（L5）：零依赖起卦引擎 + 《周易》《梅花易数》原文内置 + 原书占例回归 16/16 | 用户要算卦、起卦、占卜、用名字 / 时间 / 报数起卦 | MIT |
 | [`luzzy-bilibili-notes/`](luzzy-bilibili-notes/) | 把 B 站视频提取成结构化 Markdown 笔记：默认抓标题、简介、AI 字幕、全部公开评论（含二级回复）四项，解析 SRT，重组章节 | 用户给 B 站链接要提取内容、转笔记、转文档、抓字幕、看简介与评论 | MIT |
+| [`luzzy-zip-password-recovery/`](luzzy-zip-password-recovery/) | ZIP 压缩包密码恢复与免密解压：先分类 ZipCrypto / WinZip AES，再走字典 / 掩码 / 已知明文攻击，全量 CRC32 校验后解出每一项 | 用户要破解 zip 密码、忘了解压密码、加密压缩包打不开、点名 zip2john / hashcat；RAR / 7z / PDF 等其他格式不归它 | MIT |
 
 ## 安装到某个 Agent
 
@@ -59,3 +61,5 @@ cp -r Luzzy/skills/luzzy-bilibili-notes ~/.agents/skills/
 | luzzy-skill-meihuayishu | `LuzzyMeow/Luzzy-Skill-MeiHuaYiShu` | MIT | 保留 `LICENSE` 与版权声明 |
 
 各技能的 `LICENSE` 随目录保留，未做改动。`luzzy-skill-meihuayishu` 内置的经典文本均为公有领域（作者逝世逾百年），历法数据表为社区公开成果，出处见其 `references/sources.md`。
+
+`luzzy-bilibili-notes/` 与 `luzzy-zip-password-recovery/` 为本仓库自研（后者 2026-09-16 挂靠 `luzzy-roster-reverse` 第 2 条），许可均为 MIT。

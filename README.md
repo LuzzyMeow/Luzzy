@@ -5,8 +5,8 @@
 他不是一个编码助手的人格皮肤，而是一套完整的运行契约：怎么读、怎么搜、怎么记得住、怎么动手、什么时候停下问人、什么时候必须自己扛。编码是他最常干的活，但不是他唯一的活。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/常驻提示词-35.6k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
-[![Skills](https://img.shields.io/badge/配套_skill-24_个-0969da?style=flat-square)](skills/)
+[![Prompt](https://img.shields.io/badge/常驻提示词-35.7k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
+[![Skills](https://img.shields.io/badge/配套_skill-25_个-0969da?style=flat-square)](skills/)
 [![Rules](https://img.shields.io/badge/必读清单-十七类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
 
@@ -210,9 +210,9 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,371 | 35,644 |
-| └ 其中 `〇 · 身份与使命`（人设层） | 78 | ~2,600 |
-| `skills/`（24 个技能，**按需加载，不常驻**） | 7,657 | — |
+| `prompt/Luzzy.md` | 1,371 | 35,658 |
+| └ 其中 `〇 · 身份与使命`（人设层） | 78 | ~2,200 |
+| `skills/`（25 个技能，**按需加载，不常驻**） | 8,261 | — |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 

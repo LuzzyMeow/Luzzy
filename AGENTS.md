@@ -26,7 +26,8 @@ Luzzy/
 │   ├── README.md                  索引：用途、安装、来源与许可
 │   ├── luzzy-skill-architect/     创建 / 审计 / 融合 Agent Skills（Apache-2.0）
 │   ├── luzzy-skill-meihuayishu/   梅花易数技能家族（MIT，自带维护宪章 AGENTS.md）
-│   └── luzzy-bilibili-notes/      B 站视频转结构化笔记（MIT）
+│   ├── luzzy-bilibili-notes/      B 站视频转结构化笔记（MIT）
+│   └── luzzy-zip-password-recovery/  ZIP 压缩包密码恢复（MIT，挂靠 roster-reverse）
 ├── AGENTS.md                  本文件
 ├── README.md                  门面文档
 ├── LICENSE
@@ -122,6 +123,8 @@ python -c "import tiktoken,pathlib; t=pathlib.Path('prompt/Luzzy.md').read_text(
 
 改了提示词就要重测并更新 README 的预算表与徽章。这是**唯一无法靠肉眼发现**的漂移项，务必每次都做。
 
+`skills/` 侧的两个数字同样按实测：行数用 `find skills -type f -name '*.md' | xargs cat | wc -l`（全部 `.md` 文件合计），技能数按含 `SKILL.md` 的目录数计——改了 `skills/` 也要重测。
+
 `AGENTS.md` 自身的体量不进预算（它不必注入 system prompt）。
 
 ## 六、绝对不许做
@@ -213,7 +216,7 @@ console.log('逐字节一致:', p.config.prefix.replace(/\n$/,'')===src);
 
 **本机 skill 目录的处置（2026-09-14 清空，2026-09-15 部分恢复）**：`~/.dsh/skills/` 下 19 个 `luzzycode-*` 目录曾在 `b1833cc` 时代手工拷入（18 个子 skill + 编排器），已于 2026-09-14 删除——它们的清单与提示词重复，会让 DSH 继续扫描并暴露给模型。
 
-**恢复时的注意**：本仓库现有 `skills/` 下 24 个技能（21 个 `luzzy-roster-*` + architect / meihuayishu / bilibili），装进任何 harness 的 skill 目录（含 `~/.dsh/skills/`）都会被扫描并常驻在模型可见的技能列表里。**这是有意的**——roster skill 只在命中类目时被读正文，列表里的 description 开销可接受（每个约 100 token，24 个合计约 2.4k）。但它们**不得**被塞进 persona；`sync-persona.mjs` 只嵌 `persona.md`，与 skills 无关。
+**恢复时的注意**：本仓库现有 `skills/` 下 25 个技能（21 个 `luzzy-roster-*` + architect / meihuayishu / bilibili / zip-password-recovery），装进任何 harness 的 skill 目录（含 `~/.dsh/skills/`）都会被扫描并常驻在模型可见的技能列表里。**这是有意的**——roster skill 只在命中类目时被读正文，列表里的 description 开销可接受（每个约 100 token，25 个合计约 2.5k）。但它们**不得**被塞进 persona；`sync-persona.mjs` 只嵌 `persona.md`，与 skills 无关。
 
 **恢复来源**：若要找回更早期的 `luzzycode-*` 版本，见本仓库 git 历史 `0a474c2`（`git show 0a474c2:skills/<名>/SKILL.md`）——那里有全部 **23** 项，比本机部署的 19 项还多（含 reverse / assets / android / mcp）。
 
