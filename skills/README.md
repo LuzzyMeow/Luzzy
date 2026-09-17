@@ -8,7 +8,7 @@
 
 | 技能 | 用途 | 何时触发 | 许可 |
 |---|---|---|---|
-| [`luzzy-roster-*/`](luzzy-roster-backend/) | 十七类必读清单的仓库子项明细——每类一个 skill（21 个：17 类 + 设计三框架子项 + 学术/解题分立），装 URL、条数、读什么、安装坑位、体积与许可警示 | 提示词 §1.1.6 命中任一类目后读对应 roster；维护子项明细时改对应 roster | MIT |
+| [`luzzy-roster-*/`](luzzy-roster-backend/) | 十七类必读清单的仓库子项明细——每类一个 skill（21 个：17 类 + 设计三框架子项 + 学术/解题分立），装 URL、条数、读什么、安装坑位、体积与许可警示，以及该类目的操作性执行细则（工具面 / 命令族 / 失败路径，2026-09-18 从提示词 §十四 迁入） | 提示词 §1.1.6 命中任一类目后读对应 roster；维护子项明细或执行细则时改对应 roster | MIT |
 | [`luzzy-roster-family/`](luzzy-roster-family/) | roster 家族的登记与规范目录（**非 skill**，无 SKILL.md）：生成规范 + 子项变更登记 | 维护 roster 时读，运行时不加载 | — |
 | [`luzzy-skill-architect/`](luzzy-skill-architect/) | 创建、审计、诊断、融合 Agent Skills 的元框架：PPER 协议 + 五阶段生命周期 + L0–L5 成熟度 + 七设计模式 + 十反模式库 + 质量门禁 | 创建 / 改进 / 审计 skill，写 `SKILL.md`，校验触发词，评估成熟度，融合多个 skill | Apache-2.0 |
 | [`luzzy-skill-meihuayishu/`](luzzy-skill-meihuayishu/) | 梅花易数技能家族（L5）：零依赖起卦引擎 + 《周易》《梅花易数》原文内置 + 原书占例回归 16/16 | 用户要算卦、起卦、占卜、用名字 / 时间 / 报数起卦 | MIT |

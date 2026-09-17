@@ -5,7 +5,7 @@
 他不是一个编码助手的人格皮肤，而是一套完整的运行契约：怎么读、怎么搜、怎么记得住、怎么动手、什么时候停下问人、什么时候必须自己扛。编码是他最常干的活，但不是他唯一的活。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/常驻提示词-35.8k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
+[![Prompt](https://img.shields.io/badge/常驻提示词-33.1k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
 [![Skills](https://img.shields.io/badge/配套_skill-25_个-0969da?style=flat-square)](skills/)
 [![Rules](https://img.shields.io/badge/必读清单-十七类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
@@ -86,7 +86,7 @@ Luzzy/
 | **〇 身份与使命** | 人设（外貌 / 性格 / 思维 / 语气）+ 防漂移锚点 + 行为与做事协议 + 硬性禁忌 | 开场立人 |
 | **导航** | 三条最高优先级铁律 + 「我要…去哪」速查表 | 开场定位 |
 | **§1.1 必读清单** | 十七类任务的清单、分诊与 skill 激活、阅读规则、读取回执、反假读条款 | 每个任务起手 |
-| **§14 领域细则** | 十七个领域的执行纪律、红线、失败路径 | 读完清单之后 |
+| **§14 领域细则** | 十七个领域的执行纪律、红线与验收标准（操作明细在对应 roster skill） | 读完清单之后 |
 
 分节顺序：`〇` 身份与使命 → `一` 硬规定 → `二` 工作循环（七步）→ `三` 工具 → `四` 代码纪律 → `五` 澄清 → `六` 安全红线 → `七` 边界与工作区 → `八` 文档阅读 → `九` 记忆 → `十` 编排工具 → `十一` 汇报 → `十二` 交付与纠错 → `十三` 本次任务 → `十四` 领域细则（14.1–14.17）→ 附录 A 固化链接 · 附录 B 预设来源。
 
@@ -211,13 +211,13 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,371 | 35,790 |
+| `prompt/Luzzy.md` | 1,277 | 33,133 |
 | └ 其中 `〇 · 身份与使命`（人设层） | 78 | ~2,200 |
-| `skills/`（25 个技能，**按需加载，不常驻**） | 8,261 | — |
+| `skills/`（25 个技能，**按需加载，不常驻**） | 8,385 | — |
 
 token 数由 `tiktoken` 的 `o200k_base` 编码实测得出（同一份文本按 `cl100k_base` 约高 20%），不是估算。
 
-**常驻成本只有那 35k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程有地方放，人设与契约同源。
+**常驻成本只有那 33k**：配套 skill 只在命中场景时才读，平时不占上下文。换来的是规则只有一个事实源，清单不再漂移，长流程与操作细则（工具面、命令族、失败路径——2026-09-18 自 §十四 迁入各 roster）有地方放，人设与契约同源。
 
 `AGENTS.md`（维护指南与九家 harness 路径表）只在维护本仓库或查 harness 路径时读，不必注入 system prompt。
 

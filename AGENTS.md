@@ -236,7 +236,7 @@ console.log('逐字节一致:', p.config.prefix.replace(/\n$/,'')===src);
 | 实例固定 | 环境变量 `TABBIT_PLAYWRIGHT_INSTANCE`（16 位大写 hex） |
 | 权限配置 | DSH Settings → tabbit，或 `$DSH_HOME/settings.yaml` 的 `tabbit.pageAccess` / `tabbit.intranetFetch` |
 
-**装完必须启动一次浏览器**，CLI launcher 与官方 skill 才会注册。提示词侧的用法与红线见 `prompt/Luzzy.md` §14.16。
+**装完必须启动一次浏览器**，CLI launcher 与官方 skill 才会注册。红线见 `prompt/Luzzy.md` §14.16；操作细则（接入路径 / 命令族 / 执行纪律 / 失败路径）见 `skills/luzzy-roster-browser/SKILL.md` 执行细则节。
 
 ### Claude Code
 

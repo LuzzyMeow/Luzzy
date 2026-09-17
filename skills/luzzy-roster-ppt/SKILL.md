@@ -36,7 +36,7 @@ metadata:
 | 2 | **大狮PPT** `https://github.com/chuspeeism/dashi-ppt-skill` | 预置主题；可离线打开、浏览器里可编辑；支持导出 PPTX / PDF——要交付 .pptx / .pdf 时 |
 | 3 | **HTML PPT Studio** `https://github.com/lewislulu/html-ppt-skill` | 模板驱动：36 主题 × 36 布局 × 20 画布特效 × 15 完整 deck——要快速出量、挑主题布局，或小红书图文排版 |
 
-**安装要点差异**：归藏与 HTML PPT Studio 正文在仓库根；**大狮正文在 `skills/dashi-ppt/` 子目录**，需 Node.js 20+，导出 PPTX / PDF 要本机有 Chrome / Chromium / Edge。三家都依赖 `assets/` `references/` `templates/` 等资源目录——**必须整仓安装，只抓 `SKILL.md` 单文件拿不到可用能力**；安装前读该仓库 README 的安装章节，按 README 的命令装（多数支持 `npx skills add <owner>/<repo>`），不要自己发明命令。
+**安装要点差异**：归藏与 HTML PPT Studio 正文在仓库根；**大狮正文在 `skills/dashi-ppt/` 子目录**，需 Node.js 20+，导出 PPTX / PDF 要本机有 Chrome / Chromium / Edge。三家都依赖 `assets/` `references/` `templates/` 等资源目录——**必须整仓安装，只抓 `SKILL.md` 单文件拿不到可用能力**；安装前读该仓库 README 的安装章节，按 README 的命令装（多数支持 `npx skills add <owner>/<repo>`），不要自己发明命令。离线兜底：`git clone` 后把**含正文的那一层**拷进本机 skill 目录，拷完确认目标目录下能直接看到 `SKILL.md`；确认失败就别硬用，退回 `npx` 安装命令或改用另外两家。
 
 ## Examples
 
@@ -54,4 +54,4 @@ Output: 三家都读 → 择归藏 → 安装归藏 → 落回执。
 |------|-----------|
 | [../luzzy-roster-family/references/checklist-history.md](../luzzy-roster-family/references/checklist-history.md) | 维护场景：子项增删改登记（维护文档，非运行时上下文） |
 
-执行纪律、红线与失败路径见提示词 §14.3；本 skill 只装清单明细。
+纪律、红线与交付标准见提示词 §14.3；本 skill 装清单明细与安装要点差异。

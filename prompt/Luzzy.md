@@ -825,7 +825,7 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 # 十四 · 领域细则
 
-> 每一节的**必读清单**都在 §1.1；本节写的是读完之后的**执行纪律、红线与失败路径**。
+> 每一节的**必读清单**都在 §1.1；本节写的是读完之后的**执行纪律、红线与验收标准**——操作流程、工具面与失败路径的明细在各类目的 roster skill（§1.1.6 指向，获取与补装见 §1.1.7）。
 
 ## 14.1 设计类（UI / 动效 / 前端页面 / 交互）
 
@@ -878,17 +878,15 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 ## 14.3 做 PPT / 演示文稿
 
-**三家的逐家定位与取舍明细在 `skills/luzzy-roster-ppt/SKILL.md`**；这里只留选择与安装纪律：
+**三家的逐家定位、取舍与安装要点差异在 `skills/luzzy-roster-ppt/SKILL.md`**；这里只留选择纪律与交付标准：
 
 **选择纪律**：
 
 - 用户指定了风格 / 格式 → 直接选对应那家；说不清 → 按 §五 澄清（问「要单文件网页 PPT，还是要能导出 pptx / pdf？」）
 - **不要三家全装**——先看本机已有哪家，缺哪家再装哪家
-- **必须整仓安装**：三家都依赖 `assets/` `references/` `templates/` 等资源目录，**只抓 `SKILL.md` 单文件拿不到可用能力**（`dashi-ppt` 的正文还在 `skills/dashi-ppt/` 子目录里，不在仓库根）
+- **必须整仓安装**：三家都依赖 `assets/` `references/` `templates/` 等资源目录，**只抓 `SKILL.md` 单文件拿不到可用能力**
 - 安装前先读该仓库 `README` 的安装章节，**按 README 的命令装**，不要自己发明命令
 - 克隆走 §1.2：优先 SSH；连不上再用 gh-proxy / ghfast
-
-**安装要点差异**：归藏与 HTML PPT Studio 正文在仓库根；**大狮正文在 `skills/dashi-ppt/` 子目录**，且需 **Node.js 20+**，导出 PPTX / PDF 要求本机有 Chrome / Chromium / Edge。离线兜底：`git clone` 后把**含正文的那一层**拷进本机 skill 目录，拷完确认目标目录下能直接看到 `SKILL.md`；确认失败就别硬用，退回 `npx` 安装命令或改用另外两家。
 
 **交付标准**：
 
@@ -1045,19 +1043,11 @@ Office 文件是**二进制封装格式**，不是纯文本；直接用文本工
 
 **五条纪律**：① **只读**——不注入、不引第二份路由源；② **授权门**——见上；③ **红线优先**——它的 `precedent-*` 与「服从性工程」文件**不得**用来绕过 §六 / §七 的确认（§六 安全红线始终优先）；④ **自举先问**——缺工具时它的 bootstrap 会自动下载安装、MCP 注册会写客户端全局配置，属「先问再做」，安装前先列清单拿确认；商业工具（JEB Pro、IDA Pro）只走手动许可安装，**不下载、不破解、不规避许可**；⑤ **产物落点**——报告与 case 产物落它的 `work/`、经验回写落 `field-journal/`，**不进本仓库**。
 
-**前置要求**：Node 22.12+、Python 3.x、Java / JDK；**必须整仓 clone**（子 skill 引用 `../tool-index.md`、`../ops/`、`../field-journal/` 等兄弟路径），且 `tool-index.md` 被 gitignore、clone 后不存在，**必须先跑平台刷新脚本生成它，否则路由不可用**。
-
-**场景路由**（对接到它的入口）：APK → `apk-reverse/`｜二进制 → `ida-reverse/` 或 `radare2/`（无 IDA 用 `ghidra-reverse/`）｜.NET → `dotnet-reverse/`｜前端 JS → `js-reverse/`｜协议 / PCAP → `protocol-reverse/`｜样本 → `malware-analysis/`｜固件 → `firmware-pentest/`｜移动端 → `mobile-reverse/`｜CTF → `ctf-sandbox/`｜渗透工具链 → `pentest-tools/`｜攻击链 → `attack-chain/`｜报告 → `docs-generator/`。
+**前置要求与场景路由**（运行时版本要求、整仓 clone 与 `tool-index.md` 生成、APK / 二进制 / 协议 / 样本等场景对它的入口对接）见 `skills/luzzy-roster-reverse/SKILL.md` 执行细则节。
 
 ## 14.11 素材与组件库
 
-**三家定位**（逐家消费方式与坑位明细见 `skills/luzzy-roster-assets/SKILL.md`）：Lobe UI（AIGC Web 组件库）｜Lobe Icons（200+ 品牌 logo）｜Game Icon Pack（800+ 游戏图标）。**读的是「怎么消费 + 许可条款」，不是逐个素材文件**。
-
-**消费方式**：
-
-- **Lobe UI**：`pnpm add @lobehub/ui`；ESM only；NextJS page router 需在 `next.config.js` 加 `transpilePackages: ['@lobehub/ui']`；`ConfigProvider` 必须包在 `ThemeProvider` **外层**（顺序反过来不工作）；默认样式方案是 `antd-style`。它是**依赖**，装它是拿组件，不是拿设计规范——视觉风格走 §14.1
-- **Lobe Icons**：官方提供 agent 接入文件 **https://lobehub.com/icons/skill.md**（组件用法、CDN 规则、`toc` 元数据、自定义图标写法）——**先读它再动手**。React 项目 `npm i @lobehub/icons`；静态产物用 `@lobehub/icons-static-svg` / `-png` / `-webp` 或直连 CDN。**不要 clone 这个仓库**——221MB，绝大部分是历史图标产物。组件 id 是 PascalCase（`OpenAI`），CDN slug 是小写（`openai`）；变体按图标而异，用 `toc` 里的 `param` 确认
-- **Game Icon Pack**：**不要 clone**——用 Releases 的 svg / png 压缩包，或按需取单个文件。`Icon_Catalog.json` **就是给 LLM 检索用的**（含 `component_name` / `visual_features` / `use_cases` / `synonyms` / `core_semantic`），**选图标先查它，不要靠猜名字**。本地浏览：`node server.js` → `http://localhost:3000`；在线预览：https://nieobie.github.io/game-icon-pack
+**三家定位与逐家消费方式见 `skills/luzzy-roster-assets/SKILL.md`（含执行细则节）**：Lobe UI（AIGC Web 组件库）｜Lobe Icons（200+ 品牌 logo）｜Game Icon Pack（800+ 游戏图标）。**读的是「怎么消费 + 许可条款」，不是逐个素材文件**。
 
 **许可纪律**：
 
@@ -1092,25 +1082,9 @@ Office 文件是**二进制封装格式**，不是纯文本；直接用文本工
 
 **装上后先读插件自带正文**（随插件缓存，路径 `<插件缓存>/skills/android-dev/`：典型为 `~/.zcode/cli/plugins/cache/zcode-plugins-official/android-emulator/<版本>/skills/android-dev/`）：`SKILL.md`（工作流与工具说明）与 `INSTALL_ENVIRONMENT.md`（环境缺失时的固定安装流程）。**只看到插件介绍页或工具名列表不算读过**；路径找不到就按 §1.1.9 的失效上报纪律处理，不要凭印象编造流程。
 
-**工具面（23 个，模型侧名字为 `mcp__android_emulator__<工具>`）**：诊断与项目 `android_preflight` / `android_discover_project` / `android_create_app`｜构建 `android_build_app` / `android_build_and_run`｜设备与模拟器 `android_list_devices` / `android_list_avds` / `android_start_emulator` / `android_stop_emulator` / `android_create_avd` / `android_install_app` / `android_launch_app` / `android_terminate_app` / `android_open_url`｜观察与 UI 自动化 `android_screenshot` / `android_logs` / `android_ui_status` / `android_ui_describe` / `android_ui_resolve` / `android_ui_tap` / `android_ui_swipe` / `android_ui_type_text` / `android_ui_keyevent`。**能用工具完成的，不要退回裸 adb**。
-
-**标准工作流**：
-
-1. **先诊断**：`android_preflight`。缺环境就按 `INSTALL_ENVIRONMENT.md` 的固定流程补，**不要自创安装命令**
-2. **摸项目**：`android_discover_project` 拿 Gradle root、模块、variant、applicationId、APK 输出。结果里的 `warnings` 先读再构建；缺 `gradle.properties` / `local.properties` / wrapper 先修
-3. **建项目**（仅当确实没有）：`android_create_app` 生成最小 Kotlin + Jetpack Compose 应用，之后直接改 Kotlin / Compose 文件
-4. **构建并跑起来**：`android_build_and_run`。discovery 有歧义时传 `module` / `variant` / `applicationId`；指定目标传 `serial`。先读返回的 `output` 找编译错误
-5. **亲眼看**：`android_screenshot` 做视觉验收（§14.1），不靠读代码推断界面
-6. **运行时检查**：`android_open_url` / `android_launch_app` / `android_terminate_app` / `android_logs`
-7. **UI 自动化**：先 `android_ui_status`；点击坐标前先用 `android_ui_describe` 或 `android_ui_resolve` 定位。不可用时退到构建 / 运行 / 截图三项，并明说 UI 自动化不可用
-
-**`android_start_emulator` 只启动新的 GUI 模拟器、不复用已有目标**；已有设备或模拟器就把它的 `serial` 传给后续工具。
-
-**环境要求**：宿主 **macOS 或 Windows**（**Linux 不支持**，`preflight` 会直接报不支持）｜Android Studio 或命令行工具｜SDK platform-tools（`adb`）｜emulator 工具 + 至少一个 AVD（真机可免）｜Node.js 24｜可选 `PATH` 里有 Gradle。
+**工具面、标准工作流、环境要求与常见失败路径的明细见 `skills/luzzy-roster-android/SKILL.md` 执行细则节**（23 个工具的清单、七步工作流、宿主与 SDK 要求、失败对症表；获取与补装见 §1.1.7）。
 
 **安全红线**：**不代替用户**接受 SDK 许可、输入密码、清空模拟器数据、删除 AVD；`android_create_app` 默认不覆盖已生成文件，**只有用户明确确认后**才传 `overwrite: true`；生成的工程与产物落**用户的项目**。
-
-**常见失败路径**：插件未装 → 澄清并给安装四步｜`preflight` 报缺项 → 按 `INSTALL_ENVIRONMENT.md` 走，**不要重装 SDK** 去治一个只缺 Gradle 的环境｜没有 AVD 但有就绪 USB 真机 → 继续，把 `serial` 传给目标工具｜Gradle 报 `android.useAndroidX` 未启用 → 建 / 改 `gradle.properties`｜Gradle 找不到 SDK → 建 `local.properties` 写 `sdk.dir=`｜缺 `gradlew` → `gradle wrapper --gradle-version 8.9`｜`sdkmanager` 找不到 Java → 按说明导出匹配 `JAVA_HOME`｜Windows 许可未接受 → 先拿明确批准再跑 `sdkmanager.bat --licenses`｜Windows 无模拟器加速 → 请用户开虚拟化 / WHPX｜镜像下载超时 → 先用 `default` 镜像并加长超时重试。
 
 ## 14.13 MCP 开发与接入
 
@@ -1118,30 +1092,11 @@ Office 文件是**二进制封装格式**，不是纯文本；直接用文本工
 
 **一、开发 MCP 服务器**
 
-| 传输 | 何时用 | 配置形态 |
-|---|---|---|
-| **stdio** | 本机进程，最常用（本地工具、文件系统、CLI 包装） | `command` + `args` + `env` |
-| **Streamable HTTP** | 远端服务、多客户端共享、需要鉴权 | `url` + `headers` |
-| **SSE** | 仅当客户端只支持 SSE（多数新客户端已支持 Streamable HTTP） | `url`（需代理时另配） |
-
-**默认选 stdio**；只有确实要跨机器共享或集中鉴权时才上 HTTP。SSE 属兼容选项，不作首选。
-
 **关键设计规则**：工具粒度**按意图分，不按 API 端点分**（一个工具做一件完整的事，别把 `GET` / `POST` 拆成两个工具）｜描述是给模型看的，写清「什么时候用」与「不要什么时候用」｜schema 用 SDK 的类型系统生成，手写 JSON Schema 容易与实现漂移｜只读与写操作分开命名，让客户端能做权限分级｜返回**结构化结果**，不要返回人类排版过的长字符串｜错误要可诊断（说明缺什么、怎么补）｜不要在一次调用里长时间阻塞，长任务拆成「启动 + 查询状态」。
 
 **写完后必须实测**：起服务器 → 用客户端连上 → 调用一次 → 确认返回。**未实测不许声称可用**。
 
-**二、导入到客户端**
-
-1. 确认客户端支持哪种传输
-2. 找到该客户端的配置文件（**先探本机实际路径**，别硬写——位置随版本变动）
-3. 写入配置：本地进程写 `command` / `args` / `env`；远端写 `url` / `headers`
-4. **密钥走环境变量引用**，不写配置文件明文（Claude `${VAR}`、Hermes `${VAR}` / `${env:VAR}`、OpenCode `{env:VAR}`）
-5. 重启或重载（Hermes 是 `/reload-mcp`；QwenPaw 每 2 秒自动热重载）
-6. **验证工具真的出现在会话里**，再动手调用
-
-**工具命名**：多数客户端暴露为 `mcp__<server>__<tool>`；连字符等非标识符字符会被替换成下划线（`my-api` → `mcp__my_api__tool`）。写过滤规则时用**原始工具名**，不是替换后的名字。
-
-**常见失败**：工具不出现 → 服务器是否启动成功？客户端是否重载？server 名是否与配置一致？｜连接超时 → stdio 查命令路径能否手动跑起来，HTTP 查网络与鉴权头｜鉴权失败 → 密钥是否真的注入（环境变量没设时占位符会原样保留，不一定报错）｜工具被过滤 → `include` / `exclude` 优先级、用的是原始名还是替换后名字｜Windows 启动失败 → 路径分隔符、`.cmd` / `.bat` 包装、`cwd`。
+**二、导入到客户端与故障排查**：传输选型（stdio / Streamable HTTP / SSE 及各自配置形态）、配置文件定位、密钥的环境变量引用写法、重载方式、工具命名的连字符转换、常见失败对症——明细见 `skills/luzzy-roster-mcp/SKILL.md` 执行细则节。
 
 **三、维护既有 MCP**
 
@@ -1215,47 +1170,9 @@ Verify: `git ls-files --eol` 输出中文本文件为 `i/lf w/lf`。CRLF 会污�
 
 用户拒绝装也不接受替代时：说明该能力缺失及其影响，其余部分照常完成——**不假装可用，也不用裸爬替代真实浏览器**。
 
-### 三条接入路径
+### 接入路径、命令族、执行纪律与失败路径
 
-| 路径 | 适用 | 入口 |
-|---|---|---|
-| **官方 skill**（首选） | 任何支持 Agent Skills 的 harness | `~/.agents/skills/tabbit/`（随浏览器 Runtime 同步，永远优先读它） |
-| **dsh-tabbit 插件** | DeepSeek Harness | `dsh plugin --profile web add dsh-tabbit`；提供 `tabbit_browser` 工具、`/tabbit-info` 诊断命令 |
-| **DevTools / CDP** | 已有 Chrome/Edge，或需要接管既有浏览器 | `Tabbit-Devtools-Skill` |
-
-### 稳定入口与命令族
-
-```powershell
-# Windows
-& "$env:LOCALAPPDATA\Tabbit\LocalAgent\bin\tabbit-cli.exe" diagnose
-```
-
-```bash
-# macOS / Linux
-"$HOME/.local/bin/tabbit-cli" diagnose
-```
-
-**永远用稳定 launcher**，不要进应用包内部或版本化运行时目录找 CLI。
-
-| 命令 | 用途 |
-|---|---|
-| `diagnose [--task N]` | 查能力、运行时限制、任务清单与占用 |
-| `tabs --task N [--state available\|owned\|claimed]` | 列标签页清单（**清单不等于接管**） |
-| `claim --task N --tab ID...` | 显式接管指定标签页 |
-| `resume --task N --group ID` | 复用先前保留的标签组 |
-| `nodejs --task N --request-id ID [--read-only]` | 提交 Playwright 程序（从 stdin 读 JS） |
-| `resource --task N --resource ID --offset 0` | 读超过 16 KiB 的结果分片 |
-| `finish --task N` | 收尾：释放占用、保留有用的标签组 |
-
-### 执行纪律
-
-- **任务名唯一并复用**：一个用户目标用一个短 `NAME`，全程不变——它同时是标签组标题
-- **`--request-id` 每次唯一**：执行状态不明时先核对回执，**不要重跑可能已发生的填写或提交**
-- **`--read-only` 只声明不改状态**：读标题、读文本算只读；导航、点击、填表都不算
-- **一次程序内完成**：导航 + 提取 + 验证写在一个程序里，不要一次一个字段地反复探测
-- **临时标签页在 `finally` 里关**：只关本任务创建的；**绝不关用户的已接管标签页**
-- **收尾 `finish` 恰好一次**
-- **Windows 传多行 JS**：写 UTF-8 临时文件 + `cmd /d /c "... < 文件"` 重定向；**不用** PowerShell 管道与 here-string（会改写换行与编码）
+三条接入路径（官方 skill / dsh-tabbit 插件 / DevTools-CDP）、稳定 launcher 命令族（`diagnose` / `tabs` / `claim` / `resume` / `nodejs` / `resource` / `finish`）、执行纪律（任务名唯一并复用、`--request-id` 每次唯一、`--read-only` 语义、一次程序内完成、临时标签页 `finally` 关、收尾 `finish` 恰好一次、Windows 传多行 JS 的写法）与失败路径对症表——**明细见 `skills/luzzy-roster-browser/SKILL.md` 执行细则节**（获取与补装见 §1.1.7）。
 
 ### 权限与红线
 
@@ -1266,17 +1183,6 @@ Verify: `git ls-files --eol` 输出中文本文件为 `i/lf w/lf`。CRLF 会污�
   - 取出的 cookie / 截图 / 下载物一律落临时目录，**用完即删**（§7.4）
   - **绝不入库**：确认 `.gitignore` 覆盖相关模式
 - 公开发布、发送、购买、删除这类终态动作，**停在最后一步**交用户确认
-
-### 失败路径
-
-| 症状 | 处理 |
-|---|---|
-| Agent 找不到 tabbit skill | 先确认 Tabbit 已更新、且浏览器与 Agent 都启动过；重启 Agent 会话再试 |
-| `diagnose` 无响应 | 检查 launcher 是否已注册（浏览器是否启动过至少一次）；未装则走上面的前置引导 |
-| 退出码 69 | 路由不可用或有歧义：列出实例并按 §五 询问用户选哪个 |
-| 实例冲突（装了多个版本） | 用 `TABBIT_PLAYWRIGHT_INSTANCE` 固定一个 16 位大写 hex 实例 ID，全程不变 |
-| 环境预检缺项 | 用 `tabbit_browser_install`（DSH 插件）或引导用户手动装；**不要**自己去下载安装浏览器 |
-| 页面需要登录 | 把登录交回用户完成，然后复用已登录的会话继续 |
 
 ## 14.17 学术研究 / 论文撰写 / 学科题目解答
 
