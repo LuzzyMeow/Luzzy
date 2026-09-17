@@ -5,7 +5,7 @@
 他不是一个编码助手的人格皮肤，而是一套完整的运行契约：怎么读、怎么搜、怎么记得住、怎么动手、什么时候停下问人、什么时候必须自己扛。编码是他最常干的活，但不是他唯一的活。
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f?style=flat-square)](LICENSE)
-[![Prompt](https://img.shields.io/badge/常驻提示词-35.7k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
+[![Prompt](https://img.shields.io/badge/常驻提示词-35.8k_tokens-8250df?style=flat-square)](prompt/Luzzy.md)
 [![Skills](https://img.shields.io/badge/配套_skill-25_个-0969da?style=flat-square)](skills/)
 [![Rules](https://img.shields.io/badge/必读清单-十七类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
@@ -71,6 +71,7 @@ Luzzy/
 │   ├── luzzy-skill-architect/    创建 / 审计 / 融合 Agent Skills 的元框架
 │   ├── luzzy-skill-meihuayishu/  梅花易数技能家族（零依赖引擎 + 原文内置）
 │   └── luzzy-bilibili-notes/     B 站视频转结构化笔记
+├── evals/                    门评测层：§1.1.8 × 真实任务语料的覆盖审计 + 回执核验
 ├── AGENTS.md                 维护指南 + 九家 harness 路径速查
 ├── README.md
 └── LICENSE
@@ -210,7 +211,7 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,371 | 35,658 |
+| `prompt/Luzzy.md` | 1,371 | 35,790 |
 | └ 其中 `〇 · 身份与使命`（人设层） | 78 | ~2,200 |
 | `skills/`（25 个技能，**按需加载，不常驻**） | 8,261 | — |
 
@@ -252,6 +253,7 @@ Agent 也会定期对比本机副本与本仓库内容，发现差异会告诉�
 | 无装饰性 emoji、无裸露分隔线、无硬编码密钥 | 目视 + 搜 `^---$` / `sk-`；三档标记 ✅⚠🚫 与正反例标记 ✗✓ 是内容，不算装饰 |
 | **提示词里没有双花括号变量语法** | DSH 会把 persona 里的它当 prompt 变量解析，**全大写形式会让预设加载失败**；占位符统一用 `${...}` |
 | 三个配套 skill 通过各自校验 | `validate-trigger.py`（architect / bilibili）与梅花易数三条回归命令 |
+| §1.1.8 触发口径的词面覆盖 | 跑 `python evals/eval-gate-coverage.py`（门槛 ≥80%）；改了触发口径或新增类目时同步 `evals/` 语料与 CANON |
 | **README 的行数与 token 等于实测值** | 跑下面的命令重测 |
 
 ```bash

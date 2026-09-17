@@ -28,19 +28,20 @@ Luzzy/
 │   ├── luzzy-skill-meihuayishu/   梅花易数技能家族（MIT，自带维护宪章 AGENTS.md）
 │   ├── luzzy-bilibili-notes/      B 站视频转结构化笔记（MIT）
 │   └── luzzy-zip-password-recovery/  ZIP 压缩包密码恢复（MIT，挂靠 roster-reverse）
+├── evals/                    门评测层：§1.1.8 覆盖审计 + 回执核验（Python，仅标准库）
 ├── AGENTS.md                  本文件
 ├── README.md                  门面文档
 ├── LICENSE
 └── .gitattributes
 ```
 
-**没有** `package.json` / `pyproject.toml` 之类的清单文件，也**没有构建脚本**——本仓库不是软件项目，是提示词加一组 skill 文本。但 `skills/` 里**有可执行校验**（Python，仅用标准库）：改动对应技能时必须跑通，见第四节。
+**没有** `package.json` / `pyproject.toml` 之类的清单文件，也**没有构建脚本**——本仓库不是软件项目，是提示词加一组 skill 文本。但 `skills/` 与 `evals/` 里**有可执行校验**（Python，仅用标准库）：改动对应技能或 §1.1 触发口径时必须跑通，见第四节。
 
 ## 三、改动流程
 
 1. 读 `README.md` 与 `prompt/Luzzy.md`，确认要动的是哪一节；动 `skills/` 下的技能前，先读该技能的 `SKILL.md`（梅花易数还要读它的 `AGENTS.md` 宪章）
 2. 改对应文件
-3. 按第四节的清单人工核对（尤其 `§` 交叉引用与数字）
+3. 按第四节的清单人工核对（尤其 `§` 交叉引用与数字）；改了 §1.1.8 触发口径就跑 `python evals/eval-gate-coverage.py`（门槛 ≥80%）
 4. 按实测更新 `README.md` 的「提示词预算」表与徽章数字（口径见第五节）
 5. 推送走 SSH：`git remote -v` 两行都应是 `git@github.com:` 开头
 
@@ -80,6 +81,7 @@ Luzzy/
 | **清单指向** | §1.1.6 每行指向的 roster skill 路径真实存在 | 逐个 `Test-Path` / `ls` 核对该路径（含 `luzzy-skill-architect` 与 `luzzy-bilibili-notes`） |
 | **上下文边界** | `prompt/Luzzy.md` **不引用本仓库的维护文档**（本文件、`README.md` 的维护章节） | 搜 `AGENTS.md`：只应出现在 §8.1「读**用户工作区**的规范文件」的语境里；出现「本仓库自带 AGENTS.md」「见 AGENTS.md 第七节」一类指向 → **违规**，必须改成工作区相对表述 |
 | 规则语义 | 「全读 / 超过 4 条取 4」「读 ≠ 装 ≠ 用」「先读后做 + 读取回执」「反假读七条」在位 | 搜关键词 |
+| **门覆盖** | §1.1.8 触发口径对真实任务说法的词面覆盖 ≥80%，triage / chitchat 零误命中 | `python evals/eval-gate-coverage.py`；漏报优先在 §1.1.8 **只增不删**补同义词，补完重跑；靠改语料消掉漏报不算过 |
 | **分诊条款** | §1.1.5「分诊与 skill 激活」四段（探 / 判 / 激活 / 回写）齐全且内部自洽 | 搜「分诊」，逐个跳过去看；应串成一条完整链路：§0.1 做事协议与快速参考 → 导航铁律与速查表 → §1.1.1 硬门 / §1.1.4 反假读 / §1.1.5 本体四段 / §1.1.8 触发口径 → §二 第 1 步与脚注 → §3.1 技能自寻 → §8.1 与 §8.3 → §十一 播报例外 → §十二 自查 → §十三 第 1 步。**任何一环缺失或章节号改了没跟，就是断链**。指向 §1.1 内部小节的引用一律用 §1.1.x 编号，不写全名定位 |
 | **交叉引用** | 文中所有 `§N.N` 都能找到对应小节；**roster 的行内引用（`luzzy-roster-<slug>`）与实际目录、登记表三方一致** | 把所有 `§` 引用抄出来逐个跳过去看（改章节编号时最容易漏）；再把所有 `luzzy-roster-<slug>` 行内引用抄出来，与 `skills/` 目录名及 `skills/luzzy-roster-family/README.md` 的 slug 表三方比对——更名 roster 时最容易漏 §1.1.8 与 §十四 的行内引用和 family 登记表 |
 | 残留 | 无指向旧机制的写法（`luzzycode-*`、被删的上游仓库链接、`§1.1a`、被撤的 `luzzy-skill-roster`） | 搜 `luzzy-skill-roster`，应无结果；搜 `Luzzy-Skill-Architect` / `Luzzy-Skill-MeiHuaYiShu`，应只在来源说明里出现 |
