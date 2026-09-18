@@ -9,6 +9,7 @@
 [![Skills](https://img.shields.io/badge/配套_skill-25_个-0969da?style=flat-square)](skills/)
 [![Rules](https://img.shields.io/badge/必读清单-十七类-1f883d?style=flat-square)](prompt/Luzzy.md)
 [![Harness](https://img.shields.io/badge/接入-九家_harness-8957e5?style=flat-square)](AGENTS.md)
+[![Gate evals](https://img.shields.io/badge/门评测-156语料_80%门槛-8250df?style=flat-square)](evals/)
 
 ## 30 秒上手
 
@@ -211,7 +212,7 @@ python <skill_dir>/scripts/anysearch_cli.py search "关键词" --max_results 5
 
 | 内容 | 行数 | 实测 token |
 |---|---|---|
-| `prompt/Luzzy.md` | 1,277 | 33,133 |
+| `prompt/Luzzy.md` | 1,277 | 33,136 |
 | └ 其中 `〇 · 身份与使命`（人设层） | 78 | ~2,200 |
 | `skills/`（25 个技能，**按需加载，不常驻**） | 8,385 | — |
 
