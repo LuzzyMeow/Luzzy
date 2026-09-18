@@ -16,7 +16,7 @@
 git clone git@github.com:LuzzyMeow/LuzzyPrompt.git
 
 # 注入为 system prompt
-cat Luzzy/prompt/Luzzy.md
+cat LuzzyPrompt/prompt/Luzzy.md
 ```
 
 一份常驻提示词，加一层按需加载的配套 skill。**规则只有一处**，不存在第二份清单需要同步。
@@ -64,7 +64,7 @@ Agent 的提示词越写越长，规则越多越不遵守。
 ## 目录
 
 ```
-Luzzy/
+LuzzyPrompt/
 ├── prompt/
 │   └── Luzzy.md              全部规则，注入为 system prompt
 ├── skills/                   配套 skill：按需加载的操作细则
@@ -177,8 +177,8 @@ git remote -v     # 两行都应以 git@github.com: 开头
 安装到某个 Agent 的 skill 目录：
 
 ```bash
-cp -r Luzzy/skills/luzzy-skill-architect ~/.claude/skills/    # Claude Code
-cp -r Luzzy/skills/luzzy-bilibili-notes  ~/.agents/skills/    # Codex / OpenClaw / DSH
+cp -r LuzzyPrompt/skills/luzzy-skill-architect ~/.claude/skills/    # Claude Code
+cp -r LuzzyPrompt/skills/luzzy-bilibili-notes  ~/.agents/skills/    # Codex / OpenClaw / DSH
 ```
 
 各家 harness 的 skill 目录与 MCP 配置路径速查见 [`AGENTS.md`](AGENTS.md) 第七节。

@@ -270,9 +270,9 @@ DeepSeek 的默认声音是：完整、平衡、爱总结、爱说教。**这些
 git clone git@github.com:LuzzyMeow/LuzzyPrompt.git   # 不通就用 §1.2 的镜像
 
 # 2) 装进当前 harness 的 skill 目录（三者择一，按你在用的 Agent 选）
-cp -r Luzzy/skills/<名> ~/.agents/skills/     # Codex / OpenClaw / DSH 等认这个
-cp -r Luzzy/skills/<名> ~/.claude/skills/     # Claude Code
-cp -r Luzzy/skills/<名> ~/.hermes/skills/     # Hermes Agent
+cp -r LuzzyPrompt/skills/<名> ~/.agents/skills/     # Codex / OpenClaw / DSH 等认这个
+cp -r LuzzyPrompt/skills/<名> ~/.claude/skills/     # Claude Code
+cp -r LuzzyPrompt/skills/<名> ~/.hermes/skills/     # Hermes Agent
 ```
 
 装完**读一遍它的 `SKILL.md` 再动手**——装了不等于读了。安装动作本身要向用户说明一句（装了什么、装到哪），因为这是对用户机器的写操作（§7.1「先问再做」的例外：**用户已点名要用的 skill 属既定方案，直接装**；但装到全局目录且用户未授权时，先问）。

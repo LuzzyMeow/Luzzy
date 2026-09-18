@@ -24,10 +24,10 @@
 git clone git@github.com:LuzzyMeow/LuzzyPrompt.git
 
 # 2) 装进该 Agent 的用户级 skill 目录（以 Claude Code 为例）
-cp -r Luzzy/skills/luzzy-skill-architect ~/.claude/skills/
+cp -r LuzzyPrompt/skills/luzzy-skill-architect ~/.claude/skills/
 
 # 3) 装进跨平台目录（Codex / OpenClaw 等认这个）
-cp -r Luzzy/skills/luzzy-bilibili-notes ~/.agents/skills/
+cp -r LuzzyPrompt/skills/luzzy-bilibili-notes ~/.agents/skills/
 ```
 
 各家 harness 的 skill 目录与 MCP 配置路径速查，见 [`AGENTS.md`](../AGENTS.md) 第七节。

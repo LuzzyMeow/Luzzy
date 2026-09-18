@@ -14,7 +14,7 @@
 
 ```bash
 # 从 Luzzy 仓库取本技能
-cp -r Luzzy/skills/luzzy-skill-architect ~/.workbuddy/skills/
+cp -r LuzzyPrompt/skills/luzzy-skill-architect ~/.workbuddy/skills/
 
 # 运行自验证
 python scripts/validate-trigger.py .

@@ -20,7 +20,7 @@ Luzzy（鹿溪）给 Agent 用的一套行为契约——定位是**综合智能
 ## 二、目录与文件
 
 ```
-Luzzy/
+LuzzyPrompt/
 ├── prompt/Luzzy.md            全部规则（唯一载体，注入为 system prompt）
 ├── skills/                    配套 skill（按需加载的操作细则，含 21 个 luzzy-roster-*）
 │   ├── README.md                  索引：用途、安装、来源与许可
